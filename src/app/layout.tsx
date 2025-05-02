@@ -2,7 +2,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layouts/footer";
-import NavigationMenuDemo from "@/components/layouts/navbar/navbar1";
+//import NavigationMenuDemo from "@/components/layouts/navbar/navbar1";
 
 
 const inter = Inter({

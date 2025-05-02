@@ -4,28 +4,27 @@ import Link from 'next/link'
 import React from 'react'
 import { NavigationMenu } from "radix-ui";
 
-
-type ListItemProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+type ListItemProps = {
     className?: string;
     children: React.ReactNode;
+    href: string
 };
 
-const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
-    ({ className, children, ...props }, forwardedRef) => {
-        return (
-            <li>
-                <NavigationMenu.Link asChild>
-                    <Link
-                        href={props.href ?? ""}
-                        className={cn('font-medium', className)}
-                        {...props}
-                        ref={forwardedRef}
-                    >
-                        {children}
-                    </Link>
-                </NavigationMenu.Link>
-            </li>
-        )
-    })
+
+const ListItem = ({ className, children, href, ...props }: ListItemProps) => {
+    return (
+        <li>
+            <NavigationMenu.Link asChild>
+                <Link
+                    href={href ?? ""}
+                    className={cn('font-medium', className)}
+                    {...props}
+                >
+                    {children}
+                </Link>
+            </NavigationMenu.Link>
+        </li>
+    )
+}
 
 export default ListItem;

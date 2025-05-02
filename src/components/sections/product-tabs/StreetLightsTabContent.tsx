@@ -6,7 +6,7 @@ import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
 
 
-type Props = {}
+//type Props = {}
 
 const items = [
     {
@@ -26,7 +26,7 @@ const items = [
   ];
 
   
-function StreetLightTabContent({ }: Props) {
+function StreetLightTabContent() {
     const [active, setActive] = useState<string>("solar-panel");
 
     const current = items.find((item) => item.id === active);

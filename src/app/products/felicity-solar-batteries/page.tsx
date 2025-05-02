@@ -1,8 +1,8 @@
 import React from 'react'
 
-type Props = {}
+//type Props = {}
 
-function page({}: Props) {
+function page() {
   return (
     <div>solar Batteries</div>
   )

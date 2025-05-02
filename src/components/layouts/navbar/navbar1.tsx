@@ -1,6 +1,7 @@
 import * as React from "react";
 import { NavigationMenu } from "radix-ui";
 import classNames from "classnames";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
@@ -32,7 +33,7 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
 		</li>
 	),
 );
-
+ListItem.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuDemo = () => {
 	return (
 		<NavigationMenu.Root className="relative z-10 flex w-screen justify-center">
@@ -49,7 +50,7 @@ const NavigationMenuDemo = () => {
 						<ul className="one m-0 grid list-none gap-x-2.5 p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
 							<li className="row-span-3 grid">
 								<NavigationMenu.Link asChild>
-									<a
+									<Link
 										className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-purple9 to-indigo9 p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px] focus:shadow-violet7"
 										href="/"
 									>
@@ -70,7 +71,7 @@ const NavigationMenuDemo = () => {
 										<p className="text-[14px] leading-[1.3] text-mauve4">
 											Unstyled, accessible components for React.
 										</p>
-									</a>
+									</Link>
 								</NavigationMenu.Link>
 							</li>
 

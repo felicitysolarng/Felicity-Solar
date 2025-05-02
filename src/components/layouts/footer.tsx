@@ -5,9 +5,9 @@ import { company_nav_links } from "@/lib/data";
 import { products_nav_links } from "@/lib/data";
 
 
-type Props = {}
+//type Props = {}
 
-function Footer({ }: Props) {
+function Footer() {
     return (
         <footer className="bg-black py-20">
             <div className="grid gap-y-12 mx-auto w-[90%] 2xl:w-[75%] gap-x-8 lg:grid-cols-4 grid-cols-1 md:grid-cols-2">

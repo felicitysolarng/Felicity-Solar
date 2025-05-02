@@ -5,9 +5,9 @@ import Pagination from '@/components/ui/pagination'
 import { articles } from '@/lib/data'
 import React, { useState } from 'react'
 
-type Props = {}
+//type Props = {}
 
-function Articles({ }: Props) {
+function Articles() {
     const [currentPage, setCurrentPage] = useState(1);
 
 

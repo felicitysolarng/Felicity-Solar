@@ -6,7 +6,7 @@ import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
 
 
-type Props = {}
+//type Props = {}
 
 const items = [
     {
@@ -26,7 +26,7 @@ const items = [
   ];
 
   
-function InverterTabContent({ }: Props) {
+function InverterTabContent() {
     const [active, setActive] = useState<string>("solar-inverters");
 
     const current = items.find((item) => item.id === active);

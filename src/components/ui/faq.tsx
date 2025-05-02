@@ -10,7 +10,7 @@ const AccordionDemo: React.FC = () => (
         defaultValue="What products does Felicity Solar Limited offer?"
         collapsible
     >
-        {faq.map((f, i) => {
+        {faq.map((f) => {
             return (
                 <AccordionItem key={f.question} value={f.question} className="data-[state=open]:px-4 data-[state=open]:py-6 data-[state=open]:bg-grey-950 flex flex-col justify-center">
                     <AccordionTrigger className="text-lg data-[state=open]:shadow-[0_0_0] data-[state=open]:text-white font-semibold">{f.question}</AccordionTrigger>

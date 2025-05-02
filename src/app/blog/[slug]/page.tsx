@@ -1,29 +1,28 @@
 import Navbar from '@/components/layouts/navbar/Navbar';
 import { ChevronRight } from 'lucide-react';
-import { Metadata } from "next";
+//import { Metadata } from "next";
 import Image from 'next/image';
 import Link from 'next/link';
 //import { useRouter } from 'next/router'
 
 
-type Props = {
+
+/* type PageProps = {
     params: {
-        slug: string;
+      slug: string;
     };
-};
+  }; */
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { slug } = await params;
+ /*  export async function generateMetadata({ params }: PageProps) {
     return {
-        title: `Blog Post - ${slug}`,
-        description: 'We have the best Solar products in town. Hybrid inverter, MPPT controller, Solar lithium battery, Gel battery, Solar all in one street light',
-    }
-};
+      title: `Blog Post - ${params.slug}`,
+      description: 'We have the best Solar products in town...',
+    };
+  } 
+ */
 
-
-
-export default async function index({ params }: Props) {
-    const { slug } = await params
+export default function Page() {
+    //const { slug } = params
 
     return (
         <div className="flex flex-col">
@@ -31,12 +30,12 @@ export default async function index({ params }: Props) {
             <main className='font-[family-name:var(--font-inter)] bg-white mx-auto w-[90%] flex-col gap-y-8 xl:w-[70%] 2xl:w-[60%]'>
                 <div className="flex lg:pb-4 pt-8 gap-y-1 lg:gap-y-0 lg:items-center flex-col md:flex-row">
                     <Link href="/blog" className='flex font-medium  text-sm 2xl:text-base items-center text-grey-400'>Blog <ChevronRight size={16} /></Link>
-                    <p className='text-grey-700 text-sm 2xl:text-base font-medium'>Post: {slug}</p>
+                    <p className='text-grey-700 text-sm 2xl:text-base font-medium'>Post: {}</p>
                 </div>
 
                 <section className='w-full lg:w-4/5 pb-32 pt-14'>
                     <div className="flex w-full">
-                        <Image src={"/assets/images/blog1_lg.png"} width={678} height={300} alt={slug} />
+                        <Image src={"/assets/images/blog1_lg.png"} width={678} height={300} alt={""} />
                     </div>
                     <div className="flex flex-col gap-y-2 mt-5 mb-18">
                         <h3 className='uppercase text-primary font-bold text-xs xl:text-sm '>Annoucement</h3>

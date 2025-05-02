@@ -1,12 +1,12 @@
 "use client";
 
-import React, { FormEvent } from 'react'
+import React from 'react'
 
-type Props = {}
+//type Props = {}
 
-function ContactForm({ }: Props) {
+function ContactForm() {
 
-    async function onSubmit(event: FormEvent<HTMLFormElement>) {
+   /*  async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
         const formData = new FormData(event.currentTarget)
@@ -18,7 +18,7 @@ function ContactForm({ }: Props) {
         // Handle response if necessary
         const data = await response.json()
         // ...
-    }
+    } */
     return (
         <div>
             <form className="w-[90%] mx-auto ">
