@@ -41,6 +41,7 @@ const LinkButton = ({ className, icon, variant, size, label, href, ...props }: L
     return (
         <Link
             href={href}
+            style={{ transitionTimingFunction: 'cubic-bezier(0, 0.52, 0.39, 1)' }} 
             className={cn(linkVariants({ variant, size, className }), icon && "flex justify-center items-center")}
 
             {...props}

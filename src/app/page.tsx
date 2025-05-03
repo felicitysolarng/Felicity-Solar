@@ -45,7 +45,7 @@ export default function Home() {
           </div>
           <p className='text-white font-medium text-lg'>Affordable, sustainable solar solutions made for Nigeria</p>
           <div className="flex gap-x-10 items-center">
-            <LinkButton variant={"primary"} href='/get-a-free-quote' size={"lg"} label='Get a Free Quote' />
+            <LinkButton className='transition-all duration-[250ms] hover:scale-105 hover:bg-[#007f24] hover:text-white' variant={"primary"} href='/get-a-free-quote' size={"lg"} label='Get a Free Quote' />
             <div className="flex items-center">
               <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_413_1638)">

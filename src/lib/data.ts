@@ -45,6 +45,44 @@ const testimonials = [
         "message": "Felicity Solar has been our go-to partner for solar solutions across all our residential projects. Their solar panels and inverters are highly efficient, and clients love the cost savings. It’s a win-win!"
     }
 ]
+
+const products = [
+    {
+        title: "FL-SCCM12048 Li 120A MPPT 12V24V48 system (lithium battery wake up function)",
+        category: "Solar Battery",
+        id: "1",
+        price: "208000"
+    },
+    {
+        title: "FL-SCCM12048 Li 120A MPPT 12V24V48 system (lithium battery wake up function)",
+        category: "Solar Battery",
+        id: "2",
+        price: "208000"
+    },
+    {
+        title: "FL-15003 150W Floor Light with 45W Panel", category: "Solar Floor light",
+        id: "3",
+        price: "10600"
+    },
+    {
+        title: "FL-M-450W Mono Panel",
+        category: "Solar Battery",
+        id: "4",
+        price: "18200"
+    },
+    {
+        title: "FL-SCCM12048 Li 120A MPPT 12V24V48 system (lithium battery wake up function)",
+        category: "Solar Battery",
+        id: "5",
+        price: "208000"
+    },
+    {
+        title: "FL-SCCM4524 Li 45A MPPT 12V24V system (lithium battery wake up function)",
+        price: "119000",
+        category: "Solar Battery",
+        id: "6"
+    }
+]
 const milestones = [
     {
         cover: "/assets/images/2007.png",
@@ -155,6 +193,10 @@ const productsCats = [
         value: "controllers",
         label: "Charge controllers"
     },
+    {
+        value: "floor_light",
+        label: "Floor light"
+    },
 ]
 const nav_items = [{
     url: "/",
@@ -184,25 +226,29 @@ const nav_items = [{
 
 const products_nav_links = [
     {
-        url: "/products/solar-panels",
+        url: "/products/felicity-solar-panels",
         label: "Solar Panels"
     },
     {
-        url: "/products/solar-batteries",
+        url: "/products/felicity-solar-batteries",
         label: "Batteries"
     },
     {
-        url: "/products/street-light",
+        url: "/products/felicity-solar-street-light",
         label: "Street Lights"
     }
     ,
     {
-        url: "/products/inverters",
+        url: "/products/felicity-solar-inverter",
         label: "Inverters"
     },
     {
-        url: "/products/charge-inverters",
+        url: "/products/felicity-charge-controller",
         label: "Charge controller"
+    },
+    {
+        url: "/products/felicity-solar-floor-light",
+        label: "Floor Light"
     }
 ]
 const company_nav_links = [
@@ -268,67 +314,67 @@ const why_choose_us = [
 
 const articles = [
     {
-      title: "Africa’s Most Outstanding Solar Power Company of the Year 2024",
-      category: "Awards",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "africas-most-outstanding-solar-power-company-2024"
+        title: "Africa’s Most Outstanding Solar Power Company of the Year 2024",
+        category: "Awards",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "africas-most-outstanding-solar-power-company-2024"
     },
     {
-      title: "New Range of Lithium Batteries Now Available",
-      category: "product",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "new-range-of-lithium-batteries-now-available"
+        title: "New Range of Lithium Batteries Now Available",
+        category: "product",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "new-range-of-lithium-batteries-now-available"
     },
     {
-      title: "Felicity Solar Sponsors National Renewable Energy Conference",
-      category: "event",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "felicity-solar-sponsors-national-renewable-energy-conference"
+        title: "Felicity Solar Sponsors National Renewable Energy Conference",
+        category: "event",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "felicity-solar-sponsors-national-renewable-energy-conference"
     },
     {
-      title: "Solar Installation Training Now Open to Technicians",
-      category: "training",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "solar-installation-training-open-to-technicians"
+        title: "Solar Installation Training Now Open to Technicians",
+        category: "training",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "solar-installation-training-open-to-technicians"
     },
     {
-      title: "Maintenance Tips for Your Solar Panels",
-      category: "tips",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "maintenance-tips-for-solar-panels"
+        title: "Maintenance Tips for Your Solar Panels",
+        category: "tips",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "maintenance-tips-for-solar-panels"
     },
     {
-      title: "Why More Homes are Choosing Felicity Solar",
-      category: "insight",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "why-more-homes-choose-felicity-solar"
+        title: "Why More Homes are Choosing Felicity Solar",
+        category: "insight",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "why-more-homes-choose-felicity-solar"
     },
     {
-      title: "Solar Street Light Projects Completed in 5 States",
-      category: "project",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "solar-street-light-projects-5-states"
+        title: "Solar Street Light Projects Completed in 5 States",
+        category: "project",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "solar-street-light-projects-5-states"
     },
     {
-      title: "Felicity Solar Launches Smart Inverter Series",
-      category: "product",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "felicity-solar-smart-inverter-series"
+        title: "Felicity Solar Launches Smart Inverter Series",
+        category: "product",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "felicity-solar-smart-inverter-series"
     },
     {
-      title: "How Solar is Empowering Women in Rural Areas",
-      category: "impact",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "solar-empowering-women-rural-areas"
+        title: "How Solar is Empowering Women in Rural Areas",
+        category: "impact",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "solar-empowering-women-rural-areas"
     },
     {
-      title: "Office Holiday Closure Notice",
-      category: "announcement",
-      image: "/assets/images/blog_placeholder_image.png",
-      slug: "office-holiday-closure-notice"
+        title: "Office Holiday Closure Notice",
+        category: "announcement",
+        image: "/assets/images/blog_placeholder_image.png",
+        slug: "office-holiday-closure-notice"
     }
-  ];
-  
+];
 
-export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles }
+
+export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles, products }
 
