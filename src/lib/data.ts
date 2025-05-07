@@ -211,7 +211,7 @@ const nav_items = [{
     label: "Products"
 },
 {
-    url: "/project-showcases",
+    url: "/project-showcase",
     label: "Project show cases"
 },
 {
@@ -222,6 +222,43 @@ const nav_items = [{
     url: "/contact-us",
     label: "Contact us"
 }
+]
+
+const distributors = [
+    {
+        id: "1",
+        city: "lagos",
+        cover: "/assets/images/lagos.png",
+        contact: {
+            name: "Grace Johnson",
+            email: "grace.johnson@gmail.com",
+            phone: "+23470837383732",
+            address: "24 Unity Road, Ikeja, Lagos State, Nigeria"
+        }
+    },
+    {
+        id: "2",
+        city: "abuja",
+        cover: "/assets/images/abuja.png",
+        contact: {
+            name: "Grace Johnson",
+            email: "grace.johnson@gmail.com",
+            phone: "+23470837383732",
+            address: "24 Unity Road, Ikeja, Lagos State, Nigeria"
+        }
+    },
+    {
+        id: "3",
+        city: "kano",
+        cover: "/assets/images/kano.png",
+        contact: {
+            name: "Grace Johnson",
+            email: "grace.johnson@gmail.com",
+            phone: "+23470837383732",
+            address: "24 Unity Road, Ikeja, Lagos State, Nigeria"
+        }
+    },
+
 ]
 
 const products_nav_links = [
@@ -376,5 +413,5 @@ const articles = [
 ];
 
 
-export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles, products }
+export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles, products, distributors }
 
