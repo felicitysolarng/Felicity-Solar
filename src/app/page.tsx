@@ -1,4 +1,3 @@
-
 import BatteryTabContent from '@/components/sections/product-tabs/BatteryTabContent';
 import ChargeControllersTabContent from '@/components/sections/product-tabs/ChargeControllerTabContent';
 import InverterTabContent from '@/components/sections/product-tabs/InverterTabContent';
@@ -29,22 +28,24 @@ export default function Home() {
   return (
     <main className=" font-[family-name:var(--font-inter)]">
 
-      <section className=" slideshow flex relative flex-col h-[90vh] md:h-[70vh] xl:h-[95vh] bg-no-repeat bg-center bg-cover bg-[url('/assets/images/landing_page_hero1.png')] justify-center ">
-        <Navbar linkClassName="text-white" className='hidden mx-auto top-0 absolute w-full  lg:flex text-black' variant='white'/>
-        <div className="w-[90%] xl:w-[80%] 2xl:w-[75%] mx-auto gap-y-8 flex flex-col">
+      <section className=" slideshow flex relative flex-col h-screen md:h-[70vh] xl:h-[95vh] bg-no-repeat bg-center bg-cover bg-[url('/assets/images/landing_page_hero1.png')] justify-center ">
+        <Navbar linkClassName="text-white" className='hidden mx-auto top-0 absolute w-full  lg:flex text-black' variant='white' />
+        <div className="w-[90%] xl:w-[80%] 2xl:w-[75%] mx-auto gap-y-20 lg:gap-y-8 flex flex-col">
 
-
-          <div className="flex flex-col">
-            <h1 className='text-6xl flex gap-y-2 flex-col font-semibold text-white w-w-[90%] xl:w-[90%]'>
-              <span className='lg:block'>Power Your Home or Business</span>
-              <span className='xl:block'>
-                with <span className='text-primary'>Reliable</span> Solar
-                <span className='xl:block'> Energy</span>
-              </span>
-            </h1>
+          <div className="flex flex-col gap-y-6">
+            <div className="flex flex-col">
+              <h1 className='text-4xl md:text-5xl block md:leading-14 xl:leading-16 lg:text-6xl lg:flex gap-y-2 flex-col font-semibold text-white w-full xl:w-[90%] md:w-full' data-aos="zoom-in">
+                <span className='lg:block'>Power Your Home or</span>
+                <span className='lg:block'> Business {" "} with <span className='text-primary'>Reliable {" "}</span></span>
+                <span className='md:block'>
+                  Solar Energy
+                </span>
+              </h1>
+            </div>
+            <p className='text-white font-medium text-lg' data-aos="fade-right">Affordable, sustainable solar solutions made for Nigeria</p>
           </div>
-          <p className='text-white font-medium text-lg'>Affordable, sustainable solar solutions made for Nigeria</p>
-          <div className="flex gap-x-10 items-center">
+
+          <div className="flex gap-x-10 flex-col md:flex-row md:items-center">
             <LinkButton className='transition-all duration-[250ms] hover:scale-105 hover:bg-[#007f24] hover:text-white' variant={"primary"} href='/get-a-free-quote' size={"lg"} label='Get a Free Quote' />
             <div className="flex items-center">
               <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,10 +78,12 @@ export default function Home() {
         </div>
       </section>
       {/* SECTION ONE */}
-      <section className='flex  py-32 mx-auto w-[90%] 2xl:w-[75%] md:gap-x-8 lg:gap-x-26'>
-        <div className="flex flex-col gap-y-4 basis-1/2">
+      <section className='flex flex-col lg:flex-row gap-y-20 py-18 md:py-32 mx-auto w-[90%] 2xl:w-[75%] md:gap-x-8 lg:gap-x-26'>
+        <div id="example-anchor" className="flex flex-col gap-y-4 basis-1/2" data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine">
           <h3 className='text-base italize italic text-primary'>About us</h3>
-          <h2 className='uppercase text-[101928] text-2xl font-bold'>GUANGZHOU FELICITY SOLAR NIG LTD</h2>
+          <h2 className='uppercase text-[101928] text-2xl md:text-3xl font-bold'>GUANGZHOU FELICITY SOLAR NIG LTD</h2>
           <div className="flex flex-col gap-y-4">
             <p className='text-[#667185] text-base font-medium'>Established in 2016 and headquartered in Festac, Lagos, Felicity Solar Nigeria has grown to become one of the most recognized and trusted solar energy brands in the country. </p>
             <p className='text-[#667185] text-base font-medium'>With a strong focus on sales and after-sales support, we have built a robust network of over 12 service centers across Nigeria—ensuring fast, efficient, and professional assistance for our customers nationwide </p>
@@ -88,21 +91,24 @@ export default function Home() {
           </div>
           <LinkButton href='/about-us' label='Read more' className='w-[132px]' />
         </div>
-        <div className="flex basis-1/2 justify-center">
+        <div className="flex basis-1/2 lg:justify-center" data-aos="slide-up"
+          data-aos-anchor="#example-anchor"
+          data-aos-offset="500"
+          data-aos-duration="500">
           <Image src={"/assets/images/about_us_image.png"} alt='About Felicity solar limited' width={481} height={475} />
         </div>
       </section>
       {/* SECTION TWO */}
-      <section className='  py-32 '>
+      <section className='py-18 md:py-32 '>
         <div className="flex gap-y-12 mx-auto w-[90%] 2xl:w-[75%] gap-x-26 flex-col">
           <div className="flex items-center flex-col gap-y-4">
             <h3 className='text-base italize italic text-primary'>Felicity Solar Products</h3>
-            <h2 className=' text-[#101928] text-3xl font-bold'>What do we Offer to you?</h2>
+            <h2 className=' text-[#101928] text-2xl md:text-3xl font-bold'>What do we Offer to you?</h2>
             <h3 className='text-[#667185] font-medium text-base'>Solar Panels. Batteries. Inverters. All in One Place.</h3>
           </div>
 
           <Tabs.Root defaultValue="solar_panels" orientation="vertical">
-            <Tabs.List aria-label="products" className='bg-[#F7F9FC] border border-[#F0F2F5] rounded-full flex gap-x-12 px-4 py-3 w-fit mx-auto'>
+            <Tabs.List aria-label="products" className='bg-[#F7F9FC] border border-[#F0F2F5] rounded-full hidden md:flex gap-x-12 px-4 py-3 lg:w-fit mx-auto'>
               {productsCats.map(i => {
                 return (
                   <Tabs.Trigger value={i.value} key={i.value} className='data-[state=active]:text-white data-[state=active]:bg-grey-950 data-[state=active]:rounded-full data-[state=active]:px-12 data-[state=active]:py-4 font-medium'>{i.label}</Tabs.Trigger>
@@ -118,54 +124,54 @@ export default function Home() {
         </div>
       </section>
       {/* SECTION THREE */}
-      <section className='  py-32 '>
-        <div className="flex gap-y-12 mx-auto w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
+      <section className='py-18 md:py-32 '>
+        <div className="flex gap-y-12 mx-auto w-[95%] md:w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
           <div className="flex items-center flex-col gap-y-4">
             <h3 className='text-base italize italic text-primary'>Locations</h3>
-            <h2 className=' text-[#101928] text-3xl font-bold'>How To Find Us?</h2>
+            <h2 className=' text-[#101928] text-2xl md:text-3xl font-bold' data-aos="zoom-in">How To Find Us?</h2>
           </div>
-          <div className="flex bg-primary rounded-lg min-h-[400px] py-12 px-8 xl:px-22 justify-between">
-            <div className="flex flex-col gap-y-16 basis-2/5">
+          <div className="flex flex-col gap-y-8 lg:flex-row bg-primary rounded-lg min-h-[400px] py-12 px-6 md:px-8 xl:px-22 justify-between" data-aos="fade-up">
+            <div className="flex flex-col gap-y-8 md:gap-y-16 basis-2/5">
               <Image src={"/assets/images/location_frame_1.png"} width={224} height={44} alt='locations logos' />
               <div className="flex gap-y-4 flex-col">
-                <h3 className='text-xl font-bold text-white'>Looking to buy our solar panels, <span className='xl:block'>batteries, or street lights?</span> </h3>
-                <p className='text-sm text-white font-medium'>We’ve made it easy for you to find a trusted distributor right in your area. Visit, call, or message our partners across Nigeria to get started with clean and reliable solar energy.</p>
+                <h3 className='text-xl md:text-3xl lg:text-xl font-bold text-white'>Looking to buy our solar panels, <span className='xl:block'>batteries, or street lights?</span> </h3>
+                <p className='text-sm md:text-base lg:text-sm text-white font-medium'>We’ve made it easy for you to find a trusted distributor right in your area. Visit, call, or message our partners across Nigeria to get started with clean and reliable solar energy.</p>
               </div>
               <LinkButton className='max-w-[214px] max-h-12' variant={"white"} href="/locations" label="See All Locations " icon={<MoveRight className='ml-2' />} />
             </div>
-            <div className="flex flex-col gap-y-8 basis-1/2">
+            <div className="flex flex-col gap-y-8 basis-1/2 md:hidden lg:flex">
               <Image src={"/assets/images/location_frame_2.png"} width={519} height={370} alt='location pin point where felicity solar limited have their offices' />
             </div>
           </div>
         </div>
       </section>
       {/* SECTION FOUR [TESTIMONIAL] */}
-      <section className='py-32  custom-gradient' >
+      <section className='py-18 md:py-32 custom-gradient' >
         <div className="flex flex-col mx-auto w-[95%] 2xl:w-[90%] gap-x-26 gap-y-20">
           <div className="flex justify-center items-center flex-col gap-y-4">
             <h3 className='text-base italize italic text-primary'>Customer success stories</h3>
-            <h2 className=' text-[#101928] text-3xl font-bold'>See what our customers are saying</h2>
+            <h2 className=' text-[#101928] text-2xl md:text-3xl font-bold text-center md:text-left' data-aos="zoom-in">See what our customers are saying</h2>
           </div>
           <Testimonials />
         </div>
 
       </section>
       {/* SECTION FOUR {FAQ]*/}
-      <section className='py-32 flex-col flex gap-y-22' >
-        <h2 className=' text-[#101928] text-3xl text-center font-bold'>Frequently Asked Questions</h2>
-        <div className="flex gap-y-12 mx-auto w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
+      <section className='py-18 md:py-10 lg:py-32 flex-col flex gap-y-22' >
+        <h2 className=' text-[#101928] text-2xl md:text-3xl text-center font-bold' lg:data-aos="zoom-in">Frequently Asked Questions</h2>
+        <div className="flex gap-y-12 mx-auto w-[98%] md:w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
           <FAQ />
         </div>
       </section>
       {/* SECTION FIVE [BLOG] */}
-      <section className='py-32 flex-col flex gap-y-22' >
+      <section className='py-18 md:py-10 lg:py-32 flex-col flex gap-y-22' >
 
         <div className="flex gap-y-26 mx-auto w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
-          <div className="flex justify-between items-center">
-            <h2 className=' text-[#101928] text-3xl text-center font-bold'>The Future of Solar Power</h2>
-            <LinkButton className='max-w-[214px] max-h-12 text-grey-800 border border-grey-700' variant={"white"} href="/locations" label="View all " icon={<MoveRight className='ml-2' />} />
+          <div className="flex justify-between md:items-center flex-col md:flex-row gap-y-8 md:gap-y-0">
+            <h2 className=' text-[#101928] text-2xl md:text-3xl md:text-center font-bold' data-aos="zoom-in">The Future of Solar Power</h2>
+            <LinkButton className='max-w-[160px] md:max-w-[214px] max-h-12 text-grey-800 border border-grey-700 flex items-center' variant={"white"} href="/locations" label="View all " icon={<MoveRight className='ml-2' />} />
           </div>
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-x-10 lg:gap-y-28 xl:gap-y-0">
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-x-10 lg:gap-y-28 md:gap-y-16 xl:gap-y-0">
             {
               blogs.length > 1 ? blogs.map(b =>
                 <Article key={b.title} title={b.title} category={b.category} cover={b.cover} url='/blog' />
@@ -175,18 +181,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='py-32 '>
-        <div className="flex gap-y-12 mx-auto w-[90%] 2xl:w-[75%] flex-col ">
+      <section className='py-18 md:py-10 lg:py-32 '>
+        <div className="flex gap-y-12 mx-auto w-[95%] md:w-[90%] 2xl:w-[75%] flex-col ">
 
-          <div className="flex justify-center items-center flex-col bg-cover bg-center bg-no-repeat bg-[url('/assets/images/cta_section.png')] w-full min-h-[500px] rounded-lg py-12 px-22 gap-y-8 ">
+          <div className="flex justify-center items-center flex-col bg-cover bg-center bg-no-repeat bg-[url('/assets/images/cta_section.png')] w-full min-h-[700px] md:min-h-[500px] rounded-lg py-12 px-6 md:px-2 lg:px-22 gap-y-8" data-aos="zoom-in-right">
             <div className="flex flex-col gap-y-3">
-              <h2 className='font-bold text-4xl text-white'>Ready to Enjoy Uninterrupted Power?</h2>
-              <p className='text-sm text-white font-medium text-center'>Felicity is built to run residential solar workflows end to end or can be a plug and play <span className='lg:block'>solution with other existing apps.</span></p>
+              <h2 className='font-bold text-2xl md:text-3xl lg:text-4xl  text-white text-center lg:text-left'>Ready to Enjoy Uninterrupted Power?</h2>
+              <p className='text-sm md:text-base lg:text-sm text-white font-medium text-center'>Felicity is built to run residential solar workflows end to end or can be a plug and play <span className='lg:block'>solution with other existing apps.</span></p>
             </div>
-            <div className="flex gap-x-6">
-              <LinkButton className='max-w-[310px] px-6 text-base font-medium max-h-12 group-hover:text-white' variant={"white"} href={"/get-free-quote"} label="Get a Free Energy Quote Now" icon={<MoveRight className='ml-2' />} />
+            <div className="flex gap-x-6 flex-col md:flex-row gap-y-8 md:gap-y-0">
+              <LinkButton className='max-w-[310px] px-6 text-base font-medium h-12 md:max-h-12 group-hover:text-white' variant={"white"} href={"/get-free-quote"} label="Get a Free Energy Quote Now" icon={<MoveRight className='ml-2' />} />
 
-              <Link href="/get-free-quote" className='flex  items-center gap-x-2 rounded-md max-w-[310px] bg-[#25D366] px-6 text-base font-medium max-h-12 group-hover:text-white'>
+              <Link href="/get-free-quote" className='flex justify-center items-center gap-x-2 h-12 rounded-md max-w-[310px] bg-[#25D366] px-6 text-base font-medium md:max-h-12 group-hover:text-white'>
                 <WhatsApp />
                 <span>Send a Message</span>
                 <MoveRight className='ml-0' />

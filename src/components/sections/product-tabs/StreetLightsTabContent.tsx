@@ -53,7 +53,7 @@ function StreetLightTabContent() {
                         {items.map((item) => (
                             <div key={item.id} className="flex flex-col gap-y-2">
                                 <h2
-                                    className="text-left text-grey-800 font-semibold text-2xl cursor-pointer"
+                                    className="text-left text-grey-800 font-semibold text-xl md:text-2xl  cursor-pointer"
                                     onClick={() => setActive(item.id)}
                                 >
                                     {item.title}

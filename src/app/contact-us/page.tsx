@@ -38,7 +38,7 @@ function page() {
               <Mail size={35} color='#ed6f20a0' />
               <div className="flex flex-col">
                 <h3 className='font-medium md:font-semibold  text-base text-grey-700 '>info@felicitysolar.ng</h3>
-                <p className='text-sm italic leading-6 text-[#667185]  font-medium'>
+                <p className='text-sm italic leading-6 text-primary font-medium'>
                   Send an Email
                 </p>
               </div>
@@ -48,7 +48,7 @@ function page() {
 
               <div className="flex flex-col">
                 <h3 className='font-medium md:font-semibold text-base text-grey-700 '>+234 817 147 9561</h3>
-                <p className='text-sm italic leading-6 text-[#667185]  font-medium'>
+                <p className='text-sm italic leading-6 text-primary font-medium'>
                   Make a Call
                 </p>
               </div>
@@ -59,7 +59,7 @@ function page() {
 
               <div className="flex flex-col">
                 <h3 className='font-medium md:font-semibold text-base text-grey-700 '>Estate 2, Omotayo Omotosho Street, Durbar Road, Amuwo Odofin Estate, Lagos State Nigeria</h3>
-                <p className='text-sm italic leading-6 text-[#667185]  font-medium'>
+                <p className='text-sm italic leading-6 text-primary font-medium'>
                   Office Address
                 </p>
               </div>

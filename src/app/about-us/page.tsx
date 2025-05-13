@@ -16,7 +16,7 @@ function index() {
 
             <Navbar linkClassName="text-grey-800 font-semibold" className='hidden border-b border-grey-100 lg:flex bg-white' variant='primary' />
 
-            <section className='flex flex-col lg:flex-row mt-12 lg:mt-28 py-32 mx-auto w-[90%] 2xl:w-[75%] md:gap-x-8 lg:gap-x-26 gap-y-10 lg:gap-y-0'>
+            <section className='flex flex-col lg:flex-row mt-12 py-32 mx-auto w-[90%] 2xl:w-[75%] md:gap-x-8 lg:gap-x-26 gap-y-10 lg:gap-y-0'>
                 <div className="order-2 lg:order-1 flex flex-col gap-y-4 basis-1/2">
                     <h3 className='text-base italize italic text-primary'>About us</h3>
                     <h2 className='uppercase text-[101928] text-2xl font-bold'>GUANGZHOU FELICITY SOLAR NIG LTD</h2>

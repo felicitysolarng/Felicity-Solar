@@ -2,6 +2,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layouts/footer";
+import Script from "next/script";
+import AOSInitializer from "@/components/AOSInitializer";
 //import NavigationMenuDemo from "@/components/layouts/navbar/navbar1";
 
 
@@ -35,10 +37,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+  
       <body
         className={`${inter.className} ${inter.variable} antialiased`}
       >
-       {/*  <NavigationMenuDemo /> */}
+        <AOSInitializer />
+        {/*  <NavigationMenuDemo /> */}
         {children}
 
         <Footer />
