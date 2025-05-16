@@ -18,7 +18,7 @@ function ProductImageGallery() {
     }
     return (
         <div className="w-full md:w-1/2 md:px-4 mb-8">
-            <img
+            <Image
                 src={coverImg}
                 alt="Product"
                 className="w-full h-auto rounded-lg shadow-md mb-4" id="mainImage"

@@ -2,7 +2,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layouts/footer";
-import Script from "next/script";
+//import Script from "next/script";
 import AOSInitializer from "@/components/AOSInitializer";
 //import NavigationMenuDemo from "@/components/layouts/navbar/navbar1";
 

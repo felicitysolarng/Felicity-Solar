@@ -10,28 +10,28 @@ import Link from 'next/link';
 
 const items = [
     {
-        id: "Felicity-M-175W-MONO-Solar-Panel",
-        title: "Felicity M-175W MONO Solar Panel",
-        description: "The Felicity M-175W Monocrystalline Solar Panel offers high efficiency, compact design, and reliable performance in all weather. Ideal for homes, streetlights, and mobile systems, it delivers stable 175W output with durable, low-light-friendly cells. Perfect for clean energy setups.",
-        link: "/products/felicity-solar-panels",
-        image: "/assets/images/FL-M-175W-MONO-panel-back-view.jpeg",
+        id: "FL-15003",
+        title: "FL-15003 150W Floor Light with 45W Panel",
+        description: "The Felicity FL-15003 is a high-lumen 150W floor light powered by a durable 45W solar panel, delivering bright, eco-friendly lighting for outdoor environments. Perfect for pathways, parks, gardens, and compounds, this light combines performance and aesthetics with zero electricity cost.",
+        link: "/products/felicity-solar-lights",
+        image: "/assets/images/FL-15003-150W-floor-light-with-45W-panel-packaged-view.jpeg",
     },
     {
-        id: "felicity-M-450W-MONO-Panel",
-        title: "Felicity M-450W MONO Panel",
-        description: "The FL-M-450W Monocrystalline Solar Panel delivers high power output, superior efficiency, and excellent low-light performance. Built for durability and large-scale setups, it's ideal for homes, businesses, and off-grid systems needing reliable solar energy.",
-        link: "/products/felicity-solar-panels",
-        image: "/assets/images/solar_panels.jpg",
+        id: "FL-10003",
+        title: "FL-10003 100W floor light with 35W panel",
+        description: "High-efficiency monocrystalline solar panel with fast charging and long life-span. ·Long-term environmental Batteries with overcharge and over discharge protection, more safe and reliable.",
+        link: "/products/felicity-solar-lights",
+        image: "/assets/images/FL-15003-150W-floor-light-with-45W-panel.jpeg",
     },
 ];
 
 
-function SolarPanelTabContent() {
-    const [active, setActive] = useState<string>("Felicity-M-175W-MONO-Solar-Panel");
+function SolarLightTabContent() {
+    const [active, setActive] = useState<string>("FL-15003");
 
     const current = items.find((item) => item.id === active);
     return (
-        <Tabs.Content value="solar_panels" className=' w-full mt-16 flex justify-between items-center gap-x-20'>
+        <Tabs.Content value="floor_light" className=' w-full mt-16 flex justify-between items-center gap-x-20'>
 
 
             <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -53,7 +53,7 @@ function SolarPanelTabContent() {
                     {items.map((item) => (
                         <div key={item.id} className="flex flex-col gap-y-2">
                             <h2
-                                className="text-left text-grey-800 font-semibold text-xl md:text-2xl cursor-pointer"
+                                className="text-left text-grey-800 font-semibold text-xl md:text-2xl  cursor-pointer"
                                 onClick={() => setActive(item.id)}
                             >
                                 {item.title}
@@ -78,4 +78,4 @@ function SolarPanelTabContent() {
     )
 }
 
-export default SolarPanelTabContent
+export default SolarLightTabContent;

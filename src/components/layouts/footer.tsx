@@ -13,7 +13,7 @@ function Footer() {
         <footer className="bg-black py-20">
             <div className="grid gap-y-12 mx-auto w-[90%] 2xl:w-[75%] gap-x-8 grid-cols-4 md:grid-cols-3 xl:grid-cols-4">
                 <div className="flex w-full md:w-[155px] h-[64px] col-start-1 col-end-5 xl:col-start-1 xl:col-end-2">
-                    <Image src={"/logo.png"} className="w-auto h-auto" width={155} height={64} alt="felicity solar limited" />
+                    <Image src={"/logo.png"} className="w-auto h-auto" width={155} height={64} alt="felicity solar limited" priority />
                 </div>
 
                 <div className="flex flex-col gap-y-4 col-start-1 md:col-end-2 col-end-3 xl:col-start-2 xl:col-end-3">

@@ -1,3 +1,5 @@
+import Navbar from '@/components/layouts/navbar/Navbar'
+import GetQuote from '@/components/sections/get-a-quote'
 import { Metadata } from 'next'
 import React from 'react'
 
@@ -9,7 +11,10 @@ export const metadata: Metadata = {
 }
 function page() {
   return (
-    <div>Get Free Quotes</div>
+    <div>
+      <Navbar linkClassName="text-grey-800 font-semibold" className='hidden border-b border-grey-100 lg:flex bg-white' variant='primary' />
+      <GetQuote />
+    </div>
   )
 }
 

@@ -15,7 +15,7 @@ import Testimonials from '@/components/sections/testimonial';
 import Article from '@/components/ui/article';
 import { WhatsApp } from '@/lib/icons';
 import Link from 'next/link';
-
+import SolarLightTabContent from '@/components/sections/product-tabs/SolarLightTabContent';
 
 
 export const metadata: Metadata = {
@@ -25,11 +25,13 @@ export const metadata: Metadata = {
 
 export default function Home() {
 
+
   return (
     <main className=" font-[family-name:var(--font-inter)]">
 
       <section className=" slideshow flex relative flex-col h-screen md:h-[70vh] xl:h-[95vh] bg-no-repeat bg-center bg-cover bg-[url('/assets/images/landing_page_hero1.png')] justify-center ">
-        <Navbar linkClassName="text-white" className='hidden mx-auto top-0 absolute w-full  lg:flex text-black' variant='white' />
+        <Navbar linkClassName="text-white" className=' mx-auto top-0 absolute w-full  lg:flex text-black' variant='white' />
+
         <div className="w-[90%] xl:w-[80%] 2xl:w-[75%] mx-auto gap-y-20 lg:gap-y-8 flex flex-col">
 
           <div className="flex flex-col gap-y-6">
@@ -45,7 +47,7 @@ export default function Home() {
             <p className='text-white font-medium text-lg' data-aos="fade-right">Affordable, sustainable solar solutions made for Nigeria</p>
           </div>
 
-          <div className="flex gap-x-10 flex-col md:flex-row md:items-center">
+          <div className="flex gap-x-10 flex-col md:flex-row md:items-center" data-aos="slide-left">
             <LinkButton className='transition-all duration-[250ms] hover:scale-105 hover:bg-[#007f24] hover:text-white' variant={"primary"} href='/get-a-free-quote' size={"lg"} label='Get a Free Quote' />
             <div className="flex items-center">
               <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,6 +122,7 @@ export default function Home() {
             <StreetLightTabContent />
             <InverterTabContent />
             <ChargeControllersTabContent />
+            <SolarLightTabContent />
           </Tabs.Root>
         </div>
       </section>
@@ -158,7 +161,7 @@ export default function Home() {
       </section>
       {/* SECTION FOUR {FAQ]*/}
       <section className='py-18 md:py-10 lg:py-32 flex-col flex gap-y-22' >
-        <h2 className=' text-[#101928] text-2xl md:text-3xl text-center font-bold' lg:data-aos="zoom-in">Frequently Asked Questions</h2>
+        <h2 className=' text-[#101928] text-2xl md:text-3xl text-center font-bold' data-aos="zoom-in">Frequently Asked Questions</h2>
         <div className="flex gap-y-12 mx-auto w-[98%] md:w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
           <FAQ />
         </div>
@@ -190,9 +193,9 @@ export default function Home() {
               <p className='text-sm md:text-base lg:text-sm text-white font-medium text-center'>Felicity is built to run residential solar workflows end to end or can be a plug and play <span className='lg:block'>solution with other existing apps.</span></p>
             </div>
             <div className="flex gap-x-6 flex-col md:flex-row gap-y-8 md:gap-y-0">
-              <LinkButton className='max-w-[310px] px-6 text-base font-medium h-12 md:max-h-12 group-hover:text-white' variant={"white"} href={"/get-free-quote"} label="Get a Free Energy Quote Now" icon={<MoveRight className='ml-2' />} />
+              <LinkButton className='max-w-[310px] px-6 text-base font-medium h-12 md:max-h-12 group-hover:text-white' variant={"white"} href={"/get-a-free-quote"} label="Get a Free Energy Quote Now" icon={<MoveRight className='ml-2' />} />
 
-              <Link href="/get-free-quote" className='flex justify-center items-center gap-x-2 h-12 rounded-md max-w-[310px] bg-[#25D366] px-6 text-base font-medium md:max-h-12 group-hover:text-white'>
+              <Link href="https://api.whatsapp.com/send/?text=Hi&phone=2348171479561" target="__blank" className='flex justify-center items-center gap-x-2 h-12 rounded-md max-w-[310px] bg-[#25D366] px-6 text-base font-medium md:max-h-12 group-hover:text-white'>
                 <WhatsApp />
                 <span>Send a Message</span>
                 <MoveRight className='ml-0' />

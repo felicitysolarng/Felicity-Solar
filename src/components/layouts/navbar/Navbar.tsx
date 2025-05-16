@@ -4,12 +4,12 @@ import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/constants';
 import LinkButton from '../../ui/Link';
-import { nav_items } from '@/lib/data';
-//import ListItem from './Navitem';
-//import { CaretDownIcon } from '@radix-ui/react-icons';
-//import { NavigationMenuList, NavigationMenu, NavigationMenuItem } from './navigation-menu';
+import { cities, nav_items } from '@/lib/data';
 import Link from 'next/link';
-//import ProductsDropdown from './product-dropdown';
+import MobileNavbar from './mobile-navbar';
+import { ChevronDown, ExternalLink } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Tabs } from 'radix-ui';
 
 type Props = {
     className?: string,
@@ -19,20 +19,135 @@ type Props = {
 }
 
 function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white" }: Props) {
-    return (
-        <nav className={cn("h-24 flex sticky top-0 z-50 ", className)}>
+    const pathname = usePathname();
+    const isHomePage = pathname === '/'
+    return (<React.Fragment>
+        <nav className={cn("h-24 hidden lg:flex sticky top-0 z-50 ", className)}>
             <div className={cn("flex justify-between items-center mx-auto", width)}>
                 <Image src={"/logo.png"} height={64} width={147} alt='felicity solar logo' priority />
 
                 <ul className="flex gap-x-6 list-none">
-                    {nav_items.map(nav => <li key={nav.url}>
-                        <Link href={nav.url ?? ""} className={cn("text-white ", linkClassName)}>{nav.label}</Link>
-                    </li>
-                    )}
+                    {nav_items.map((nav) => (
+                        <li key={nav.url} className="relative group py-4">
+                            {nav.children && <button className={`${isHomePage ? "text-white " : "text-grey-800 font-semibold"} flex items-center gap-1`}>
+                                {nav.label}
+                                {nav.children && (
+                                    <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                                )}
+                            </button>}
+                            {
+                                !nav.children && <Link
+                                    href={nav.url ?? ""}
+                                    className={cn("text-white flex items-center gap-1", linkClassName)}
+                                >
+                                    {nav.label}
+
+                                </Link>
+                            }
+
+
+                            {nav.children && (
+                                <>
+                                    {nav.url === "/project-showcase" &&
+                                        <div className='absolute min-w-[460px] left-0 top-[calc(100%+0px)] hidden group-hover:block bg-white text-black shadow-lg rounded-md px-4 py-2 z-50'
+                                            data-aos="zoom-in">
+                                            <div className="flex flex-col gap-y-3">
+                                                <h3 className='text-primary font-inter font-semibold text-lg'>Trusted Across Cities</h3>
+                                                <p className='text-grey-900 font-inter font-normal text-sm'>We’ve delivered successful solar projects in major cities across the country.</p>
+                                            </div>
+                                            <div className="flex-wrap gap-4 py-4 rounded-md flex  items-center">
+                                                {cities.map(city => {
+                                                    return (
+                                                        <Link href={city.path} key={city.name} className=' flex items-center justify-center gap-x-2'>
+                                                            <Image src={city.logo} width={36} height={36} alt={city.name} />
+                                                            <p className='text-sm hover:underline font-medium text-grey-900'>{city.name}</p>
+                                                        </Link>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>}
+                                    {nav.url === "/products" &&
+                                        <div className='absolute left-0 top-[calc(100%+0px)] hidden group-hover:flex hover:justify-between group-hover:gap-x-10  bg-white text-black shadow-lg rounded-md min-w-[50vw] mx-auto min-h-80 -translate-x-2/6 px-4 py-6 z-50'>
+                                            <Tabs.Root defaultValue="panels" orientation="vertical" className='flex gap-x-6' >
+                                                <Tabs.List aria-label="panels" className=' flex-col flex px-4 py-3 lg:w-fit gap-y-4 mx-auto basis-2/5 justify-start items-start border-r border-grey-100'>
+                                                    <Tabs.Trigger value={"panels"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                        Solar Panels
+                                                    </Tabs.Trigger>
+                                                    <Tabs.Trigger value={"batteries"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                        Solar Batteries
+                                                    </Tabs.Trigger>
+                                                    <Tabs.Trigger value={"inverters"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                        Inverters
+                                                    </Tabs.Trigger>
+                                                    <Tabs.Trigger value={"controllers"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                        Charge Controllers
+                                                    </Tabs.Trigger>
+                                                    <Tabs.Trigger value={"floor_light"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                        Solar Floor Light
+                                                    </Tabs.Trigger>
+                                                </Tabs.List>
+                                                <Tabs.Content value="panels" className='basis-3/5 flex flex-col gap-y-2'>
+                                                    <h3 className=' text-grey-900 text-lg font-medium'>Off Grid Solar Panels? — we have panels to fit your space and power goals.</h3>
+                                                    <Link href={"/products/felicity-solar-panels"} className='text-base no-underline flex items-center text-primary  font-medium'>Find the Perfect Panel <ExternalLink size={16} className='ml-1' /></Link>
+                                                    <div className="flex">
+                                                        <Image alt='lithium battery front view' src={'/assets/images/FL-M-280W-MONO-panel.jpeg'} width={220} height={250} />
+                                                        <Image alt='lithium battery front view' src={'/assets/images/FL-M-350W-MONO-panel.jpeg'} width={220} height={250} />
+                                                    </div>
+                                                </Tabs.Content>
+                                                <Tabs.Content value="batteries" className='basis-3/5  flex flex-col gap-y-2'>
+                                                    <h3 className=' text-grey-900 text-lg font-medium'>No matter the capacity, use case, or budget — we’ve got the right battery for you.</h3>
+                                                    <Link href={"/products/felicity-solar-batteries"} className='text-base no-underline flex items-center text-primary  font-medium'>Explore Our Batteries <ExternalLink size={16} className='ml-1' /></Link>
+                                                    <div className="flex">
+                                                        <Image alt='lithium battery front view' src={'/assets/images/lithium-battery-front-rear-view.png'} width={220} height={250} />
+                                                        <Image alt='lithium battery front view' src={'/assets/images/lithium-battery-front-view.png'} width={220} height={250} />
+                                                    </div>
+                                                </Tabs.Content>
+                                                <Tabs.Content value="inverters" className='basis-3/5 flex flex-col gap-y-2'>
+                                                    <h3 className=' text-grey-900 text-lg font-medium'>Top-quality options that ensure smooth energy conversion and seamless power delivery</h3>
+                                                    <Link href={"/products/felicity-solar-inverter"} className='text-base no-underline flex items-center text-primary  font-medium'>Get the Right Inverter <ExternalLink size={16} className='ml-1' /></Link>
+                                                    <div className="flex">
+                                                        <Image alt='IVPM 10KVA 48V Pure Sine Wave Inverter With 120A MPPT Charger High Frequency Inverter' src={'/assets/images/1-1e65.webp'} width={220} height={250} />
+                                                        <Image alt='IVEM 3KVA 48V Low Voltage Solar System Inverter Bulit-in 110A MPPT Charge Controller' src={'/assets/images/1-c082.webp'} width={220} height={250} />
+                                                    </div>
+                                                </Tabs.Content>
+                                                <Tabs.Content value="controllers" className='basis-3/5 flex flex-col gap-y-2'>
+                                                    <h3 className=' text-grey-900 text-lg font-medium'>Protect your system and extend battery life with our range of solar charge controllers</h3>
+                                                    <Link href={"/products/felicity-charge-controller"} className='text-base no-underline flex items-center text-primary  font-medium'>Find the Right Match <ExternalLink size={16} className='ml-1' /></Link>
+                                                    <div className="flex">
+                                                        <Image alt='45Amps 12V 24v 48v IP20 3-Step mppt Solar Charge Controller' src={'/assets/images/charge_controllers.webp'} width={220} height={250} />
+                                                        <Image alt='IVEM 3KVA 48V Low Voltage Solar System Inverter Bulit-in 110A MPPT Charge Controller' src={'/assets/images/charge_controllers2.webp'} width={220} height={250} />
+                                                    </div>
+                                                </Tabs.Content>
+                                                <Tabs.Content value="floor_light" className='basis-3/5 flex flex-col gap-y-2'>
+                                                    <h3 className=' text-grey-900 text-lg font-medium'>Flood lights or street lights — we’ve got solar lighting built to last</h3>
+                                                    <Link href={"/products/felicity-solar-lights"} className='text-base no-underline flex items-center text-primary  font-medium'>Explore Lighting Options <ExternalLink size={16} className='ml-1' /></Link>
+                                                    <div className="flex">
+                                                        <Image alt='FL-P2-40W-all-in-one-street-light' src={'/assets/images/FL-P2-40W-all-in-one-street-light-all-view.jpeg'} width={220} height={250} />
+                                                        <Image alt='150W Waterproof Solar Outdoor Flood Garden Stadium Reflector Floodlights/Led Flood Light' src={'/assets/images/floor_light2.webp'} width={220} height={250} />
+                                                    </div>
+                                                </Tabs.Content>
+                                            </Tabs.Root>
+
+
+                                        </div>}
+
+                                </>
+
+
+                            )}
+                        </li>
+                    ))}
                 </ul>
+
+
+
                 <LinkButton variant={variant} href="/get-a-free-quote" label="Get a Quote" />
             </div>
+
         </nav>
+        <MobileNavbar />
+    </React.Fragment>
+
 
     )
 }

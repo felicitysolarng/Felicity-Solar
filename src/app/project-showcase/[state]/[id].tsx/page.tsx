@@ -27,7 +27,7 @@ export default function Page() {
     return (
         <div className="flex flex-col">
             <Navbar linkClassName="text-black" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
-            <main className='font-[family-name:var(--font-inter)] bg-white mx-auto w-[90%] flex-col gap-y-8 xl:w-[70%] 2xl:w-[60%]'>
+            <main className='font-[family-name:var(--font-inter)] bg-white mx-auto w-[90%] flex-col gap-y-8 xl:w-[70%] 2xl:w-[60%] mt-12 lg:mt-0'>
                 <div className="flex lg:pb-4 pt-8 gap-y-1 lg:gap-y-0 lg:items-center">
                     <Link href="/project-showcase" className='flex font-medium  text-sm 2xl:text-base items-center text-grey-400'>Project showcase <ChevronRight size={16} /></Link>
                     <p className='text-grey-700 text-sm 2xl:text-base font-medium'>Title goes here: {}</p>

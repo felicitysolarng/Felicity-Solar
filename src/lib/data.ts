@@ -208,11 +208,23 @@ const nav_items = [{
 },
 {
     url: "/products",
-    label: "Products"
+    label: "Products",
+    children: [
+        { label: "Solar Panels", url: "/products/solar-panels" },
+        { label: "Inverters", url: "/products/inverters" },
+        { label: "Batteries", url: "/products/batteries" },
+        { label: "Street Lights", url: "/products/street-lights" },
+    ],
 },
 {
     url: "/project-showcase",
-    label: "Project show cases"
+    label: "Project show cases",
+    children: [
+        { label: "Solar Panels", url: "/products/solar-panels" },
+        { label: "Inverters", url: "/products/inverters" },
+        { label: "Batteries", url: "/products/batteries" },
+        { label: "Street Lights", url: "/products/street-lights" },
+    ],
 },
 {
     url: "/blog",
@@ -284,8 +296,8 @@ const products_nav_links = [
         label: "Charge controller"
     },
     {
-        url: "/products/felicity-solar-floor-light",
-        label: "Floor Light"
+        url: "/products/felicity-solar-lights",
+        label: "Solar Lights"
     }
 ]
 const company_nav_links = [
@@ -411,7 +423,23 @@ const articles = [
         slug: "office-holiday-closure-notice"
     }
 ];
+const cities = [
+    {
+        name: "Lagos",
+        logo: "/assets/images/lagos_logo.png",
+        path: "/project-showcase/lagos"
+    },
+    {
+        name: "Abuja",
+        logo: "/assets/images/abuja_logo.png",
+        path: "/project-showcase/abuja"
+    },
+    {
+        name: "Kano",
+        logo: "/assets/images/kano_logo.png",
+        path: "/project-showcase/kano"
+    },
+]
 
-
-export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles, products, distributors }
+export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles, products, distributors, cities }
 

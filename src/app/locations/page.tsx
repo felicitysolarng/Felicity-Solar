@@ -18,7 +18,7 @@ function page() {
 
       <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
 
-      <section className='flex justify-center flex-col mx-auto w-[90%] 2xl:w-[75%] '>
+      <section className='flex justify-center flex-col mt-12 lg:mt-0'>
         <div className="flex lg:hidden my-10 ">
           <Link href={"/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
         </div>
@@ -35,7 +35,7 @@ function page() {
         {
           distributors.map(d => {
             return (
-              <p>Hello</p>
+              <p key={d.id}>{d.contact.name}</p>
             )
           })
         }

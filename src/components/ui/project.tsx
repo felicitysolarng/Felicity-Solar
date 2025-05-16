@@ -2,12 +2,12 @@
 import Link from 'next/link'
 import React from 'react'
 
-type Props = {}
+//type Props = {}
 
-function Project({ }: Props) {
+function Project() {
     return (
 
-        <Link href={"/project-showcase/joshua0920"} className="relative flex-shrink-0 overflow-hidden bg-orange-500 rounded-lg  shadow-lg group" >
+        <Link href={"/project-showcase/lagos/joshua0920"} className="relative flex-shrink-0 overflow-hidden bg-orange-500 rounded-lg  shadow-lg group" >
 
             {/* Main image section */}
             <div className=" pt-10 px-10 flex items-center min-h-72 justify-center group-hover:scale-110 transition-transform duration-300 bg-[url('/assets/images/solar_panel_project.jpg')] bg-center bg-no-repeat bg-cover" >
@@ -29,7 +29,7 @@ function Project({ }: Props) {
                 <span className="block opacity-75 bg-primary px-1 text-sm font-medium -mb-1 text-white rounded-xs w-fit">
                     Solar panel
                 </span>
-                <span className="block font-semibold text-xl">50K System Installed at Felicity Solar's New Plant</span>
+                <span className="block font-semibold text-xl">50K System Installed at Felicity Solar`&apos;s New Plant</span>
             </div >
 
         </Link >
