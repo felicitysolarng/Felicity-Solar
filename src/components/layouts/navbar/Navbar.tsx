@@ -29,7 +29,7 @@ function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white"
                 <ul className="flex gap-x-6 list-none">
                     {nav_items.map((nav) => (
                         <li key={nav.url} className="relative group py-4">
-                            {nav.children && <button className={`${isHomePage ? "text-white " : "text-grey-800 font-semibold"} flex items-center gap-1`}>
+                            {nav.children && <button className={`${isHomePage ? "text-white " : "text-grey-800 "} flex items-center gap-1 font-medium`}>
                                 {nav.label}
                                 {nav.children && (
                                     <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
@@ -38,7 +38,7 @@ function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white"
                             {
                                 !nav.children && <Link
                                     href={nav.url ?? ""}
-                                    className={cn("text-white flex items-center gap-1", linkClassName)}
+                                    className={cn("text-white flex items-center gap-1 font-medium", linkClassName)}
                                 >
                                     {nav.label}
 

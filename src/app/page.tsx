@@ -172,9 +172,9 @@ export default function Home() {
         <div className="flex gap-y-26 mx-auto w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
           <div className="flex justify-between md:items-center flex-col md:flex-row gap-y-8 md:gap-y-0">
             <h2 className=' text-[#101928] text-2xl md:text-3xl md:text-center font-bold' data-aos="zoom-in">The Future of Solar Power</h2>
-            <LinkButton className='max-w-[160px] md:max-w-[214px] max-h-12 text-grey-800 border border-grey-700 flex items-center' variant={"white"} href="/locations" label="View all " icon={<MoveRight className='ml-2' />} />
+            <LinkButton className='max-w-[160px] md:max-w-[214px] max-h-12 text-grey-800 border border-grey-700 flex items-center' variant={"white"} href="/blog" label="View all " icon={<MoveRight className='ml-2' />} />
           </div>
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-x-10 lg:gap-y-28 md:gap-y-16 xl:gap-y-0">
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-x-10 gap-y-10 lg:gap-y-28 md:gap-y-16 xl:gap-y-0">
             {
               blogs.length > 1 ? blogs.map(b =>
                 <Article key={b.title} title={b.title} category={b.category} cover={b.cover} url='/blog' />
@@ -193,7 +193,7 @@ export default function Home() {
               <p className='text-sm md:text-base lg:text-sm text-white font-medium text-center'>Felicity is built to run residential solar workflows end to end or can be a plug and play <span className='lg:block'>solution with other existing apps.</span></p>
             </div>
             <div className="flex gap-x-6 flex-col md:flex-row gap-y-8 md:gap-y-0">
-              <LinkButton className='max-w-[310px] px-6 text-base font-medium h-12 md:max-h-12 group-hover:text-white' variant={"white"} href={"/get-a-free-quote"} label="Get a Free Energy Quote Now" icon={<MoveRight className='ml-2' />} />
+              <LinkButton className='max-w-[310px] px-6 text-base font-medium h-12 md:max-h-12 group-hover:text-white' variant={"white"} href={"/get-a-free-quote"} label="Get a Free Quote Now" icon={<MoveRight className='ml-2' />} />
 
               <Link href="https://api.whatsapp.com/send/?text=Hi&phone=2348171479561" target="__blank" className='flex justify-center items-center gap-x-2 h-12 rounded-md max-w-[310px] bg-[#25D366] px-6 text-base font-medium md:max-h-12 group-hover:text-white'>
                 <WhatsApp />

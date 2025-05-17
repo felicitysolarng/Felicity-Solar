@@ -3,7 +3,14 @@ import LinkButton from './Link'
 import Image from 'next/image'
 
 type Props = {
-    id: string, category: string, category_path?: string, cover: string, title: string, price: string, description: string, path?: string
+    id: string,
+    category: string,
+    category_path?: string,
+    cover: string,
+    title: string,
+    price: string,
+    description: string,
+    path?: string
 }
 
 function Product({ id, category, category_path, cover, title, price, description }: Props) {
@@ -20,7 +27,7 @@ function Product({ id, category, category_path, cover, title, price, description
                 </div>
                 <div className=" justify-between items-center flex p-4 border-t border-gray-200 ">
                     <span className="font-bold text-xl  text-gray-800 ">${price}</span>
-                    <LinkButton href={`/products${`${category_path ? `/${category_path}`:""}`}/${id}`} className='h-10 px-2 uppercase' label='View details' />
+                    <LinkButton href={`/products${`${category_path ? `/${category_path}` : ""}`}/${id}`} className='h-10 px-2 uppercase' label='View details' />
                 </div>
             </div>
 
