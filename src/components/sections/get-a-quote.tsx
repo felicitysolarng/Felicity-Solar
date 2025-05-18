@@ -11,7 +11,7 @@ function GetQuote() {
                 <div className="max-w-2xl px-4 lg:pr-24">
                     <p className="mb-2 text-primary">Have Custom Needs</p>
                     <h3 className="mb-5 text-3xl font-semibold">Let’s Design the Perfect Solar Solution for You</h3>
-                    <p className="mb-16 text-lg text-gray-600">Whether you're looking to power your home, business, school, or farm, our solar experts are here to help. </p>
+                    <p className="mb-16 text-lg text-gray-600">Whether you&apos;re looking to power your home, business, school, or farm, our solar experts are here to help. </p>
                     <div className="mb-5 flex font-medium">
                        
                         <div className="">

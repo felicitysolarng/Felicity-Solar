@@ -1,4 +1,5 @@
 //import { Metadata } from 'next';
+import Navbar from '@/components/layouts/navbar/Navbar'
 import React from 'react'
 
 /* type Props = {
@@ -17,14 +18,18 @@ import React from 'react'
 
 
 
-export default async function index() { 
+export default async function index() {
     //const { slug } = await params
 
     return (
-        <div>
+        <main className='font-[family-name:var(--font-inter)]'>
 
-            <h1>Product Page</h1>
-            <p>{}</p>
-        </div>
+            <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
+            <section className='flex justify-center flex-col mt-12 lg:mt-0 py-32 mx-auto w-[90%] 2xl:w-[75%]'>
+                <h1>Product Page</h1>
+                <p>{ }</p>
+            </section>
+
+        </main>
     )
 }
