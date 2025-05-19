@@ -29,24 +29,23 @@ export default async function index() {
     return (
         <main className='font-[family-name:var(--font-inter)]'>
             <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
-            <section className='flex justify-center flex-col mt-12 lg:mt-0'>
+            <section className='flex justify-center flex-col mt-12 lg:mt-0 w-[90%] 2xl:w-[75%] mx-auto'>
                 <div className="flex lg:hidden my-10 ">
-                    <Link href={"/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
+                    <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
                 </div>
                 <div className=" items-center my-10 flex-row gap-x-1 hidden lg:flex">
                     <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'> Products</Link>
-                  
                     <span className='text-grey-700 text-sm font-medium flex items-center'><ChevronRight color='#98A2B3' size={16} />MPPT Solar Charge Controller - 150V 100A</span>
                 </div>
 
 
-                <div className="container mx-auto px-4 py-8">
-                    <div className="flex flex-wrap -mx-4">
+                <div className="container mx-auto py-8 lg:mb-22">
+                    <div className="flex gap-x-10 flex-col md:flex-row">
 
                         <ProductImageGallery />
 
 
-                        <div className="w-full md:w-1/2 mdpx-4">
+                        <div className="w-full md:w-1/2 md;px-4">
                             <h2 className="text-3xl font-bold mb-2">Premium Wireless Headphones</h2>
                             <p className="text-gray-600 mb-4">SKU: WH1000XM4</p>
                             <div className="mb-4">
@@ -65,8 +64,8 @@ export default async function index() {
                                 with
                                 these wireless headphones. Perfect for music lovers and frequent travelers.</p>
 
-                           
-                                               
+
+
                             <div className="mb-6">
                                 <h3 className="text-lg font-semibold mb-2">Color:</h3>
                                 <div className="flex space-x-2">
@@ -109,16 +108,22 @@ export default async function index() {
                                 </button>
                             </div>
 
-                            <div>
-                                <h3 className="text-lg font-semibold mb-2">Key Features:</h3>
-                                <ul className="list-disc list-inside text-gray-700">
-                                    <li>Industry-leading noise cancellation</li>
-                                    <li>30-hour battery life</li>
-                                    <li>Touch sensor controls</li>
-                                    <li>Speak-to-chat technology</li>
-                                </ul>
-                            </div>
+
                         </div>
+                    </div>
+                    <div className='w-full'>
+                        <h3 className="text-lg font-semibold mb-2">Key Features:</h3>
+                        <ul className="list-disc list-inside text-gray-700">
+                            <li>Industry-leading noise cancellation</li>
+                            <li>30-hour battery life</li>
+                            <li>Touch sensor controls</li>
+                            <li>Speak-to-chat technology</li>
+                        </ul>
+                        <div className="flex produt_description mt-10 flex-col">
+                            <h3 className="text-lg font-semibold mb-2">Description:</h3>
+                            <p className='text-gray-700'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at qui sit incidunt? Eaque beatae laboriosam, labore sint sit molestias est voluptates dignissimos, totam blanditiis quia nisi nostrum temporibus aliquid asperiores ipsa! Quo voluptas id nam repudiandae molestias veritatis quidem cum asperiores ad quas corporis at, a ipsum rem vero.</p>
+                        </div>
+
                     </div>
                 </div>
             </section>

@@ -1,21 +1,20 @@
-import BatteryTabContent from '@/components/sections/product-tabs/BatteryTabContent';
-import ChargeControllersTabContent from '@/components/sections/product-tabs/ChargeControllerTabContent';
-import InverterTabContent from '@/components/sections/product-tabs/InverterTabContent';
-import SolarPanelTabContent from '@/components/sections/product-tabs/SolarPanelsTabContent';
-import StreetLightTabContent from '@/components/sections/product-tabs/StreetLightsTabContent';
+
 import FAQ from '@/components/ui/faq';
 import LinkButton from '@/components/ui/Link';
-import { blogs, productsCats } from '@/lib/data';
+import { blogs } from '@/lib/data';
 import { MoveRight } from 'lucide-react';
 import type { Metadata } from 'next'
 import Image from 'next/image';
-import { Tabs } from "radix-ui";
+
 import Navbar from '@/components/layouts/navbar/Navbar';
 import Testimonials from '@/components/sections/testimonial';
 import Article from '@/components/ui/article';
 import { WhatsApp } from '@/lib/icons';
 import Link from 'next/link';
-import SolarLightTabContent from '@/components/sections/product-tabs/SolarLightTabContent';
+import TabSection from '@/components/sections/product-tabs/TabSection';
+
+//import { DropdownMenuIcon } from '@radix-ui/react-icons';
+
 
 
 export const metadata: Metadata = {
@@ -106,24 +105,10 @@ export default function Home() {
           <div className="flex items-center flex-col gap-y-4">
             <h3 className='text-base italize italic text-primary'>Felicity Solar Products</h3>
             <h2 className=' text-[#101928] text-2xl md:text-3xl font-bold'>What do we Offer to you?</h2>
-            <h3 className='text-[#667185] font-medium text-base'>Solar Panels. Batteries. Inverters. All in One Place.</h3>
+            <h3 className='text-[#667185] font-medium text-base text-center'>Solar Panels. Batteries. Inverters. All in One Place.</h3>
           </div>
+          <TabSection />
 
-          <Tabs.Root defaultValue="solar_panels" orientation="vertical">
-            <Tabs.List aria-label="products" className='bg-[#F7F9FC] border border-[#F0F2F5] rounded-full hidden md:flex gap-x-12 px-4 py-3 lg:w-fit mx-auto'>
-              {productsCats.map(i => {
-                return (
-                  <Tabs.Trigger value={i.value} key={i.value} className='data-[state=active]:text-white data-[state=active]:bg-grey-950 data-[state=active]:rounded-full data-[state=active]:px-12 data-[state=active]:py-4 font-medium'>{i.label}</Tabs.Trigger>
-                )
-              })}
-            </Tabs.List>
-            <SolarPanelTabContent />
-            <BatteryTabContent />
-            <StreetLightTabContent />
-            <InverterTabContent />
-            <ChargeControllersTabContent />
-            <SolarLightTabContent />
-          </Tabs.Root>
         </div>
       </section>
       {/* SECTION THREE */}

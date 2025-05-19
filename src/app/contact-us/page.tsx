@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 function page() {
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col font-[family-name:var(--font-inter)]">
       <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white w-full text-grey-800 border-b border-grey-100 ' variant='primary' />
 
-      <section className='w-full lg:w-4/5 pb-32 flex flex-col lg:gap-y-22 pt-14 mx-auto'>
-        <div className="flex w-full lg:w-3/5 mx-auto min-h-[300px] justify-center items-center md:bg-center bg-right bg-no-repeat bg-cover lg:min-w-[1027px] bg-[url('/assets/images/contact_us_lg.png')] flex-col gap-y-3">
+      <section className='w-full lg:w-4/5 pb-32 flex flex-col lg:gap-y-22 pt-14 mx-auto mt-12 lg:mt-0'>
+        <div className="flex w-[99%] lg:w-3/5 mx-auto min-h-[300px] justify-center items-center md:bg-center bg-right bg-no-repeat bg-cover lg:min-w-[1027px] bg-[url('/assets/images/contact_us_lg.png')] flex-col gap-y-3 rounded-lg">
           <h1 className='font-bold px-4 md:px-0 text-3xl md:text-4xl text-white'>How can we help you?</h1>
           <p className='leading-5 text-sm 2xl:text-base text-center text-white'>Get in touch with our sales and support teams for demos, <span className='md:block'>system requirements, or product questions.</span></p>
         </div>
@@ -67,7 +67,7 @@ function page() {
 
 
           </div>
-          
+
         </div>
       </section>
     </div>

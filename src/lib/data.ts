@@ -84,9 +84,9 @@ const products = [
     }
 ]
 const milestones = [
-    {
+      {
         cover: "/assets/images/2007.png",
-        msg: "Felicity Solar was founded"
+        msg: "Felicity Solar was founded in 2007 in Guangzhou."
     },
     {
         cover: "/assets/images/2008.png",
@@ -127,23 +127,23 @@ const milestones = [
     },
     {
         cover: "/assets/images/2021.png",
-        msg: "Completed 400 million sales and established 5 branches"
+        msg: "Completed 400 million sales and established 5 more branches"
     },
     {
         cover: "/assets/images/2022.png",
         msg: "Established South Africa, Germany, Netherlands, Philippines,Syria, and 4 more  branches"
     },
-    {
+  /*   {
         cover: "/assets/images/2023.png",
         msg: "Established Thailand branch. New large factory relocation and more than 30 branches set up!"
     },
     {
         cover: "/assets/images/2024.png",
         msg: "Established 3 branches in South America and Europe. ."
-    },
+    }, */
     {
         cover: "/assets/images/2025.png",
-        msg: "Stay tuned for more glorious achievements in Felicity Solar.."
+        msg: "Stay tuned for more glorious achievements from Felicity Solar.."
     },
 ]
 const faq = [

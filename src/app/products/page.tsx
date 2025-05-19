@@ -22,7 +22,7 @@ function page() {
 
       <section className='flex justify-center flex-col mt-12 lg:mt-0 '>
         <div className="flex mx-auto w-[90%] 2xl:w-[75%]">
-          <div className="flex items-center my-10 flex-row gap-x-1 mx-auto w-[90%] 2xl:w-[75%]">
+          <div className="flex items-center my-10 flex-row gap-x-1 mx-auto w-full 2xl:w-[75%]">
             <Link href={"/"} className='text-grey-400 font-medium text-sm' aria-label='link to homepage'>Home </Link>
             <span className='text-grey-700 text-sm font-medium flex items-center'><ChevronRight color='#98A2B3' size={16} /> Products</span>
           </div>
