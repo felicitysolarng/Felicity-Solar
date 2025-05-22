@@ -52,10 +52,11 @@ function Footer() {
                         <span>Email:</span> <Link href={"mailto:info@felicitysolar.ng"}>info@felicitysolar.ng</Link>
                     </p>
                     <p className="font-semibold text-sm text-white">
-                        Estate 2, Omotayo Omotosho Street, Durbar Road, Amuwo Odofin Estate, Lagos State Nigeria
+                        7 Nworisa Okechukwu Ernest, Adamawa Estate, Amuwo Odofin Lagos
+                        {/* Estate 2, Omotayo Omotosho Street, Durbar Road, Amuwo Odofin Estate, Lagos State Nigeria */}
                     </p>
                 </div>
-                <p className='font-inter text-sm lg:text-base md:text-center text-white col-start-1 col-end-5'><span>Copyright &copy; {currentYear} | </span> Designed <span className='hidden md:inline'>and developed</span> by <Link href="https://orisfinatech.com.ng" target="__blank" className='text-primary'>Orisfina Tech</Link></p>
+                <p className='font-inter text-sm lg:text-base md:text-center text-white col-start-1 col-end-5'><span>Copyright &copy; {currentYear} | </span> Designed <span className='hidden md:inline'>and developed</span> by <Link href="https://oyewole-joshua.netlify.ap/" target="__blank" className='text-primary'>Joshua Oyewole</Link></p>
 
             </div>
         </footer>
