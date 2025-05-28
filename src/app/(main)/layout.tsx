@@ -1,6 +1,6 @@
 // app/(main)/layout.tsx (server component)
 import Footer from "@/components/layouts/footer";
-//import AOSInitializer from "@/components/AOSInitializer";
+import AOSInitializer from "@/components/AOSInitializer";
 
 export default function MainLayout({
   children,
