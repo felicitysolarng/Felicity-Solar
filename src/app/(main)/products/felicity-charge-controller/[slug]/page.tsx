@@ -8,13 +8,13 @@ import React from 'react'
 import { getActualPrice } from '@/lib/constants'
 import { Metadata } from 'next'
 import { IProduct } from '../../page'
-
+/* 
 type Props = {
     params: {
         slug: string;
     };
 };
-
+ */
 export async function generateMetadata({
     params,
 }: {
@@ -47,6 +47,8 @@ export async function generateMetadata({
             },
         };
     } catch (error) {
+        console.log(error);
+        
         return {
             title: "Product Not Found | Felicity Solar",
             description: "We couldn't find this product. Browse our catalog for more solar solutions.",
@@ -57,7 +59,7 @@ export async function generateMetadata({
 export default async function index({ params }: { params: { slug: string } }) {
     const { slug } =  params;
     // Fetch product details from the API
-    let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
         next: { revalidate: 3600 } // Revalidate every hour
     });
     const response: {

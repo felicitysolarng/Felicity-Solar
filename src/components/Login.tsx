@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
 
-type Props = {}
 
-function Login({ }: Props) {
+
+function Login() {
     return (
         <section className="bg-black dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

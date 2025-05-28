@@ -5,7 +5,7 @@ import { company_nav_links } from "@/lib/data";
 import { products_nav_links } from "@/lib/data";
 
 
-//type Props = {}
+//
 
 function Footer() {
     const currentYear = new Date().getFullYear();

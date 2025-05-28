@@ -3,7 +3,7 @@ import { ChevronLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
-//type Props = {}
+//
 
 function Goback() {
     const router = useRouter()

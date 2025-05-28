@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Delete, DeleteIcon, Trash, Trash2 } from 'lucide-react'
+//import { Delete, DeleteIcon, Trash, Trash2 } from 'lucide-react'
 import { IProductsResponse } from '@/app/(main)/products/page';
 import { useQuery } from '@tanstack/react-query';
 
@@ -63,7 +63,7 @@ function Products() {
                 </thead>
                 <tbody>
                   {products.data.map(p=>{
-                    return <p>Joshua</p>
+                    return <p key={p.id}>{p.category_name}</p>
                   })}
                 </tbody>
             </table>

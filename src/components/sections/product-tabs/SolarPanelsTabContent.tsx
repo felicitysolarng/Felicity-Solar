@@ -6,7 +6,7 @@ import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
 
 
-//type Props = {}
+//
 
 const items = [
     {

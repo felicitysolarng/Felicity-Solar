@@ -8,7 +8,6 @@ import { AddProductSchema } from '@/lib/schema';
 import { CloudUpload } from 'lucide-react';
 import axios from 'axios';
 import { ICreateProduct } from '@/lib/types';
-import { create } from 'domain';
 //import { FormFieldProps, AddProductFormData } from '@/lib/types';
 //import FormField from '@/components/ui/FormField';
 
@@ -144,6 +143,7 @@ function AddProduct() {
     if (categoriesResponse.isLoading) {
         return <p>Loading</p>
     }
+    console.log(uploading);
 
     const categories = categoriesResponse?.data?.data;
 

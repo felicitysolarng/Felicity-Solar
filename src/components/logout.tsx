@@ -2,9 +2,9 @@ import React from 'react'
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
-type Props = {}
 
-function Logout({ }: Props) {
+
+function Logout() {
     const router = useRouter();
 
     function logout() {

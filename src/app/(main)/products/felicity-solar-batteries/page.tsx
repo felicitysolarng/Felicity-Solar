@@ -7,7 +7,7 @@ import Link from 'next/link'
 import React from 'react'
 import { IProductsResponse } from '../page'
 
-//type Props = {}
+//
 
 export const metadata: Metadata = {
   title: 'Charge Controllers - Felicity Solar',

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import type { Metadata } from 'next'
 import Project from '@/components/ui/project'
-//type Props = {}
+//
 
 export const metadata: Metadata = {
   title: "Project Catelogue - Felicity Solar",

@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import React from 'react'
 
-////type Props = {}
+////
 
 export const metadata: Metadata = {
   title: 'Distributors Locations- Felicity Solar',

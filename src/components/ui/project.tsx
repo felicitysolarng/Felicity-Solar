@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-//type Props = {}
+//
 
 function Project() {
     return (

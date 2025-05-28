@@ -3,9 +3,8 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 
 
-type Props = {}
 
-function Login({ }: Props) {
+function Login() {
     const router = useRouter();
 
 

@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 import MobileProductDropdown from './components/MobileProductDropdown';
 import MobileShowcaseDropdown from './components/MobileShowcaseDropdown';
 
-//type Props = {}
+//
 
 function MobileNavbar() {
     const pathname = usePathname();

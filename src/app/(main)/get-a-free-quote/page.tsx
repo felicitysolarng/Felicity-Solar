@@ -3,7 +3,7 @@ import GetQuote from '@/components/sections/get-a-quote'
 import { Metadata } from 'next'
 import React from 'react'
 
-////type Props = {}
+////
 
 export const metadata: Metadata = {
   title: 'Get Free Quote- Felicity Solar',
