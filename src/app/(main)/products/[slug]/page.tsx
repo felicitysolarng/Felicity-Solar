@@ -47,6 +47,8 @@ export async function generateMetadata({
             },
         };
     } catch (error) {
+        console.log(error);
+
         return {
             title: "Product Not Found | Felicity Solar",
             description: "We couldn't find this product. Browse our catalog for more solar solutions.",
@@ -54,10 +56,10 @@ export async function generateMetadata({
     }
 }
 
-export default async function index({ params }: { params: { slug: string } }) {
+export default async function index({ params }: Props) {
     const { slug } = params;
     // Fetch product details from the API
-    let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
         next: { revalidate: 3600 } // Revalidate every hour
     });
     const response: {

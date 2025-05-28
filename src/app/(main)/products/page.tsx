@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 async function page() {
 
   // Fetch products from the API
-  let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products`);
   const response: IProductsResponse = await res.json();
 
 

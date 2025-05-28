@@ -26,8 +26,9 @@ export const deleteFromCloudinary = async (publicId: string) => {
 
   return res.data; // response from Cloudinary
 };
-export const getCloudinaryImageUrl = (publicId: string, options: Record<string, any> = {}) => {
+/* export const getCloudinaryImageUrl = (publicId: string, options: Record<string, any> = {}) => {
   const baseUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUD_NAME}/image/upload`;
   const queryParams = new URLSearchParams(options).toString();
   return `${baseUrl}/${publicId}${queryParams ? `?${queryParams}` : ''}`;
 };
+ */

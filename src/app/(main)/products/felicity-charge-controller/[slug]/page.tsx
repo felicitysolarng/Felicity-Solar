@@ -28,7 +28,7 @@ export default async function index() {
 
    
     // Fetch product details from the API
-    let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/3`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/3`);
     const response: {
         data: IProduct,
         message: string,
