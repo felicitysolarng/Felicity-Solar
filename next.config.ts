@@ -31,6 +31,23 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'user-images.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flowbite.s3.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ueeshop.ly200-cdn.com',
+      }
+      ,
+      {
+        protocol: 'https',
+        hostname: 'felicitysolarcompany.com.ng',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       }
     ],
   },

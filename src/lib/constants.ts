@@ -26,7 +26,16 @@ export function removeItem(key: string): void {
     localStorage.removeItem(`${DATA_PREFIX}${key}`);
   }
 }
-
+export const getActualPrice = (price: string, discountRate: string) => {
+  const priceNumber = Number(price);
+  const discountRateNumber = Number(discountRate);
+  if (isNaN(priceNumber) || isNaN(discountRateNumber)) {
+    return price;
+  }
+  const discountAmount = (priceNumber * discountRateNumber) / 100;
+  const actualPrice = priceNumber - discountAmount;
+  return actualPrice;
+}
 
 export function capitalizeFirstLetter(word: string) {
   if (word.length === 0) {
