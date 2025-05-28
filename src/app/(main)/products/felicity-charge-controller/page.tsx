@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 async function page() {
-  let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/category/5`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/category/5`);
   const response: IProductsResponse = await res.json();
   if (!response || !response.data) {
     return <p>No products available at the moment.</p>;

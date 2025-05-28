@@ -32,14 +32,13 @@ const order = async (variables: ISubmitOrder) => {
     return response;
 }
 function ProcessOrder({ productName }: { productName: string }) {
-    let [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-        watch,
         reset,
         setValue,
     } = useForm<FormSchema>({

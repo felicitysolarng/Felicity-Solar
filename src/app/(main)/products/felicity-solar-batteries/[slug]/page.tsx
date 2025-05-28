@@ -53,7 +53,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     const slug = (await params).slug;
     // Fetch product details from the API
-    let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
         next: { revalidate: 3600 } // Revalidate every hour
     });
     const response: {

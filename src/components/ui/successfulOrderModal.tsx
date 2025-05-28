@@ -5,7 +5,7 @@ import React from 'react'
 
 
 function SuccessfulOrderModal() {
-    let [isOpen, setIsOpen] = React.useState(true);
+    const [isOpen, setIsOpen] = React.useState(true);
     return (
         <Dialog open={isOpen} onClose={() => setIsOpen(!isOpen)} className="relative z-50">
             <DialogBackdrop className="fixed inset-0 bg-black/30" />
