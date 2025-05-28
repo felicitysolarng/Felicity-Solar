@@ -57,7 +57,7 @@ function ProcessOrder({ productName }: { productName: string }) {
         if (productName) {
             setValue('productName', productName);
         }
-    }, [productName])
+    }, [productName,setValue])
 
 
 

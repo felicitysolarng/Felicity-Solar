@@ -204,62 +204,74 @@ function AddProduct() {
 
                     <h2 className='text-grey-800 font-inter text-base font-semibold'>Add Products</h2>
                     <div className="flex gap-x-3">
-                        <div
-                            className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
-                            onClick={() => handleIconClick(fileInputRef)}
-                        >
-                            <CloudUpload size={30} />
-                            <p className="text-sm text-black font-semibold">First Image</p>
+                        <div className="flex flex-col w-full">
+                            <div
+                                className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
+                                onClick={() => handleIconClick(fileInputRef)}
+                            >
+                                <CloudUpload size={30} />
+                                <p className="text-sm text-black font-semibold">First Image</p>
 
-                            <input
-                                type="file"
-                                ref={fileInputRef}
-                                onChange={(e) => handleImageUpload(e, "thumbnail1")}
-                                className="hidden"
-                            />
+                                <input
+                                    type="file"
+                                    ref={fileInputRef}
+                                    onChange={(e) => handleImageUpload(e, "thumbnail1")}
+                                    className="hidden"
+                                />
+                            </div>
+                            {errors.thumbnail1 && <p className="text-red-500 text-sm">{errors.thumbnail1.message}</p>}
                         </div>
-                        <div
-                            className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
-                            onClick={() => handleIconClick(fileInputRef2)}
-                        >
-                            <CloudUpload size={30} />
-                            <p className="text-sm text-black font-semibold">Second Image</p>
+                        <div className="flex flex-col w-full">
+                            <div
+                                className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
+                                onClick={() => handleIconClick(fileInputRef2)}
+                            >
+                                <CloudUpload size={30} />
+                                <p className="text-sm text-black font-semibold">Second Image</p>
 
-                            <input
-                                type="file"
-                                ref={fileInputRef2}
-                                onChange={(e) => handleImageUpload(e, "thumbnail2")}
-                                className="hidden"
-                            />
+                                <input
+                                    type="file"
+                                    ref={fileInputRef2}
+                                    onChange={(e) => handleImageUpload(e, "thumbnail2")}
+                                    className="hidden"
+                                />
+                            </div>
+                            {errors.thumbnail1 && <p className="text-red-500 text-sm">{errors.thumbnail1.message}</p>}
                         </div>
-                        <div
-                            className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
-                            onClick={() => handleIconClick(fileInputRef3)}
-                        >
-                            <CloudUpload size={30} />
-                            <p className="text-sm text-black font-semibold">Third Image</p>
+                        <div className="flex flex-col w-full">
+                            <div
+                                className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
+                                onClick={() => handleIconClick(fileInputRef3)}
+                            >
+                                <CloudUpload size={30} />
+                                <p className="text-sm text-black font-semibold">Third Image</p>
 
-                            <input
-                                type="file"
-                                ref={fileInputRef3}
-                                onChange={(e) => handleImageUpload(e, "thumbnail3")}
-                                className="hidden"
-                            />
+                                <input
+                                    type="file"
+                                    ref={fileInputRef3}
+                                    onChange={(e) => handleImageUpload(e, "thumbnail3")}
+                                    className="hidden"
+                                />
+                            </div>
+                            {errors.thumbnail3 && <p className="text-red-500 text-sm">{errors.thumbnail3.message}</p>}
                         </div>
-                        <div
-                            className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
-                            onClick={() => handleIconClick(fileInputRef4)}
-                        >
-                            <CloudUpload size={30} />
-                            <p className="text-sm text-black font-semibold">Fourth Image</p>
+                        <div className="flex flex-col w-full">
+                            <div
+                                className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
+                                onClick={() => handleIconClick(fileInputRef4)}
+                            >
+                                <CloudUpload size={30} />
+                                <p className="text-sm text-black font-semibold">Fourth Image</p>
 
-                            <input
-                                type="file"
-                                ref={fileInputRef4}
-                                onChange={(e) => handleImageUpload(e, "thumbnail4")}
-                                className="hidden"
-                            />
+                                <input
+                                    type="file"
+                                    ref={fileInputRef4}
+                                    onChange={(e) => handleImageUpload(e, "thumbnail4")}
+                                    className="hidden"
+                                />
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="py-6">

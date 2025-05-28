@@ -13,20 +13,20 @@ function AdminNavbar() {
     const pathname = usePathname();
 
     const navItems = [
-        {
+      /*   {
             href: "/admin/dashboard",
             label: "Dashboard", icon: <HomeIcon size={16} />
-        },
+        }, */
         {
             href: "/admin/products",
             label: "Product listing",
             icon: <ShoppingBag size={16} />
         },
-        {
+       /*  {
             href: "/admin/blogs",
             label: "Blogs",
             icon: <NotebookPen size={16} />
-        },
+        }, */
     ];
 
     return (
