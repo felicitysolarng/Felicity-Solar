@@ -55,7 +55,7 @@ export async function generateMetadata({
 }
 
 export default async function index({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+    const { slug } =  params;
     // Fetch product details from the API
     let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
         next: { revalidate: 3600 } // Revalidate every hour
@@ -75,11 +75,11 @@ export default async function index({ params }: { params: { slug: string } }) {
             <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
             <section className='flex justify-center flex-col mt-12 lg:mt-0 w-[90%] 2xl:w-[75%] mx-auto'>
                 <div className="flex lg:hidden my-10 ">
-                    <Link href={"/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
+                    <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
                 </div>
                 <div className=" items-center my-10 flex-row gap-x-1 hidden lg:flex">
                     <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'> Products</Link>
-                    <Link href={"/products/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronRight color='#98A2B3' size={16} /> Charge Controller</Link>
+               
                     <span className='text-grey-700 text-sm font-medium flex items-center'><ChevronRight color='#98A2B3' size={16} />{product?.product_name}</span>
                 </div>
 

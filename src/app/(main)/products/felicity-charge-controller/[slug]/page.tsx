@@ -5,30 +5,61 @@ import RatingStar from '@/components/layouts/rating-star'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
-import { IProduct } from '../../page'
 import { getActualPrice } from '@/lib/constants'
+import { Metadata } from 'next'
+import { IProduct } from '../../page'
 
-/* type Props = {
+type Props = {
     params: {
         slug: string;
     };
-}; */
-
-export function generateMetadata() {
-    // const { slug } = await params;
-    return {
-        title: `MPPT Solar Charge Controller - 150V 100A`,
-        description: 'We have the best Solar products in town. Hybrid inverter, MPPT controller, Solar lithium battery, Gel battery, Solar all in one street light',
-    }
 };
 
+export async function generateMetadata({
+    params,
+}: {
+    params: { slug: string }
+}): Promise<Metadata> {
+    const id = params.slug
 
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
+            next: { revalidate: 60 }, // Optional: revalidate every 60s
+        });
 
-export default async function index() {
+        if (!res.ok) {
+            throw new Error("Failed to fetch product");
+        }
 
-   
+        const data: {
+            data: IProduct;
+            message: string;
+            status: number;
+        } = await res.json();
+
+        const product = data.data;
+
+        return {
+            title: `${product.product_name} | Felicity Solar`,
+            description: product.description.slice(0, 160), // Shorten description for SEO
+            openGraph: {
+                images: [product.image_1],
+            },
+        };
+    } catch (error) {
+        return {
+            title: "Product Not Found | Felicity Solar",
+            description: "We couldn't find this product. Browse our catalog for more solar solutions.",
+        };
+    }
+}
+
+export default async function index({ params }: { params: { slug: string } }) {
+    const { slug } =  params;
     // Fetch product details from the API
-    let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/3`);
+    let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
+        next: { revalidate: 3600 } // Revalidate every hour
+    });
     const response: {
         data: IProduct,
         message: string,
@@ -44,11 +75,12 @@ export default async function index() {
             <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
             <section className='flex justify-center flex-col mt-12 lg:mt-0 w-[90%] 2xl:w-[75%] mx-auto'>
                 <div className="flex lg:hidden my-10 ">
-                    <Link href={"/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
+                    <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
                 </div>
                 <div className=" items-center my-10 flex-row gap-x-1 hidden lg:flex">
                     <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'> Products</Link>
-                    <Link href={"/products/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronRight color='#98A2B3' size={16} /> Charge Controller</Link>
+                    <Link href={"/products/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'> <ChevronRight color='#98A2B3' size={16} /> Charge Controller</Link>
+               
                     <span className='text-grey-700 text-sm font-medium flex items-center'><ChevronRight color='#98A2B3' size={16} />{product?.product_name}</span>
                 </div>
 

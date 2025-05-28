@@ -10,12 +10,12 @@ import { IProductsResponse } from '../page'
 //type Props = {}
 
 export const metadata: Metadata = {
-  title: 'Products - Felicity Solar',
+  title: 'Charge Controllers - Felicity Solar',
   description: 'We have the best Solar products in town. Hybrid inverter, MPPT controller, Solar lithium battery, Gel battery, Solar all in one street light',
 }
 
 async function page() {
-  let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/category/1`);
+  let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/category/5`);
   const response: IProductsResponse = await res.json();
   if (!response || !response.data) {
     return <p>No products available at the moment.</p>;
