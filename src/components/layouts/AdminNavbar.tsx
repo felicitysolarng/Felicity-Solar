@@ -1,11 +1,11 @@
 "use client"
-import { HomeIcon, NotebookPen, ShoppingBag } from 'lucide-react'
+import {  ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation'
 
-
+//HomeIcon, NotebookPen,
 
 
 
