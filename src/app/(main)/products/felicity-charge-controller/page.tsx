@@ -43,7 +43,7 @@ async function page() {
 
       </section>
       <section className='py-32 mx-auto w-[90%] 2xl:w-[75%]'>
-        <div className=" w-full flex items-center justify-center">
+        <div className=" w-full flex items-center">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-y-14 gap-x-7 xl:grid-cols-3">
             {response.data && response.data.length > 0 ?
               response.data.map(p => {

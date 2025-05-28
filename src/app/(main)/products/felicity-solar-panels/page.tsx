@@ -34,7 +34,7 @@ async function page() {
         </div>
 
         <div className="flex flex-col justify-center items-center xl:rounded-xl relative h-56 xl:w-[75%] xl:mx-auto">
-          <Image src={"/assets/images/solar_street_light.jpg"} alt='felicity solar products' width={1200} height={250} className='xl:rounded-xl h-full  object-fit' />
+          <Image src={"/assets/images/solar_panels_bg.webp"} alt='felicity solar products' width={1200} height={250} className='xl:rounded-xl h-full  object-fit' />
           <div className="absolute z-20">
             <h1 className='text-white text-4xl lg:text-5xl font-semibold'>Solar Panel</h1>
           </div>
@@ -43,7 +43,7 @@ async function page() {
 
       </section>
       <section className='py-32 mx-auto w-[90%] 2xl:w-[75%]'>
-        <div className=" w-full flex items-center justify-center">
+        <div className=" w-full flex items-center">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-y-14 gap-x-7 xl:grid-cols-3">
             {response.data && response.data.length > 0 ?
               response.data.map(p => {

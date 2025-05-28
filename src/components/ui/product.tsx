@@ -1,18 +1,34 @@
 import React from 'react'
-import LinkButton from './Link'
 import Image from 'next/image'
 import { IProduct } from '@/app/(main)/products/page'
+import Link from 'next/link'
+
+
+
+
 type Props = {
     details: IProduct,
     category_path?: string
 }
 
 function Product({ details, category_path }: Props) {
-    const { id, product_name, key_features, price, image_1 } = details;
+    const { id, product_name,price, image_1 } = details;
 
     return (
         <>
+            <article className='w-full min-h-[517px] min-w-[264px] max-w-[396px]'>
+                <Link href={`/products${`${category_path ? `/${category_path}` : ""}`}/${id}`} className="group flex flex-col justify-center items-center"  >
+                    <Image src={image_1} alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8 border border-gray-100" width={600} height={500} />
+                    <h3 className="mt-4 text-sm text-center text-gray-700">{product_name}</h3>
+                    <p className="mt-1 text-center text-lg font-medium text-gray-900">&#8358;{Number(price).toLocaleString()}</p>
 
+                </Link>
+                <div className="flex w-full justify-center items-center">
+                    <Link href={`/products${`${category_path ? `/${category_path}` : ""}`}/${id}`} className="text-sm font-inter font-normal bg-primary text-white px-2 py-2 rounded-sm flex w-max mt-4" aria-label={`View details of ${product_name}`}>
+                        View Details</Link>
+                </div>
+
+            </article>
 
             {/* 
             <article className="max-w-sm w-full bg-white rounded-lg shadow-lg overflow-hidden ">
@@ -33,10 +49,8 @@ function Product({ details, category_path }: Props) {
                 </div> 
                 </div >
 
-            </article > */}
-
-
-            <article className="max-w-sm rounded-2xl shadow-md overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300">
+            </article > 
+             <article className="max-w-sm rounded-2xl shadow-md overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300">
                 <Image
                     src={image_1}
                     alt={key_features}
@@ -54,11 +68,13 @@ function Product({ details, category_path }: Props) {
 
                     <p className="text-lg font-bold text-green-600 mb-4">₦{price}</p>
                     <LinkButton href={`/products${`${category_path ? `/${category_path}` : ""}`}/${id}`} className='w-full bg-primary hover:bg-orange-600 text-white py-2 px-4 rounded-md h-11 text-sm font-medium transition-colors duration-300' label='View details' />
-                    {/*      <button className="w-full bg-primary hover:bg-orange-600 text-white py-2 px-4 rounded-md h-11 text-sm font-medium transition-colors duration-300">
-                        View Details
-                    </button> */}
+                
                 </div>
             </article>
+            */}
+
+
+
         </>
     )
 }

@@ -8,19 +8,14 @@ import React from 'react'
 import { getActualPrice } from '@/lib/constants'
 import { Metadata } from 'next'
 import { IProduct } from '../../page'
-/* 
+
+
 type Props = {
-    params: {
-        slug: string;
-    };
-};
- */
-export async function generateMetadata({
-    params,
-}: {
-    params: { slug: string }
-}): Promise<Metadata> {
-    const id = params.slug
+    params: Promise<{ slug: string }>
+}
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+    const id = (await params).slug;
 
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
@@ -48,7 +43,7 @@ export async function generateMetadata({
         };
     } catch (error) {
         console.log(error);
-        
+
         return {
             title: "Product Not Found | Felicity Solar",
             description: "We couldn't find this product. Browse our catalog for more solar solutions.",
@@ -56,8 +51,8 @@ export async function generateMetadata({
     }
 }
 
-export default async function index({ params }: { params: { slug: string } }) {
-    const { slug } =  params;
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+    const slug = (await params).slug;
     // Fetch product details from the API
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
         next: { revalidate: 3600 } // Revalidate every hour
@@ -82,7 +77,7 @@ export default async function index({ params }: { params: { slug: string } }) {
                 <div className=" items-center my-10 flex-row gap-x-1 hidden lg:flex">
                     <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'> Products</Link>
                     <Link href={"/products/felicity-charge-controller"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'> <ChevronRight color='#98A2B3' size={16} /> Charge Controller</Link>
-               
+
                     <span className='text-grey-700 text-sm font-medium flex items-center'><ChevronRight color='#98A2B3' size={16} />{product?.product_name}</span>
                 </div>
 
@@ -102,9 +97,9 @@ export default async function index({ params }: { params: { slug: string } }) {
                             <h2 className="text-3xl font-bold mb-2">{product?.product_name}</h2>
                             <p className="text-gray-600 mb-4">Category: <span className='bg-grey-100 rounded-sm py-1 px-2'>{product.category_name}</span></p>
                             <div className="mb-4">
-                                <span className="text-2xl font-bold mr-2">&#8358; {getActualPrice(product.price, product.discount_rate)}</span>
+                                <span className="text-2xl font-bold mr-2">{Number(getActualPrice(product.price, product.discount_rate)).toLocaleString()}</span>
                                 {/* product?.category_name */}
-                                <span className="text-gray-500 line-through">&#8358;{product?.price}</span>
+                                <span className="text-gray-500 line-through">&#8358;{Number(product?.price).toLocaleString()}</span>
                             </div>
                             <div className="flex items-center mb-4">
                                 <RatingStar />

@@ -1,14 +1,14 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie';
+//import { useRouter } from 'next/navigation';
+//import Cookies from 'js-cookie';
 
 
 
 function Login() {
-    const router = useRouter();
+   // const router = useRouter();
 
 
-    async function handleLogin() {
+  /*   async function handleLogin() {
         const res = await fetch("https://your-php-api.com/login", {
             method: "POST",
             //body: JSON.stringify(formData),
@@ -26,7 +26,7 @@ function Login() {
         } else {
             alert("Unauthorized or not an admin.");
         }
-    }
+    } */
     return (
         <div>
             <form>

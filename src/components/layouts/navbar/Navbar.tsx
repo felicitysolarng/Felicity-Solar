@@ -70,19 +70,19 @@ function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white"
                                         <div className='absolute left-0 top-[calc(100%+0px)] hidden group-hover:flex hover:justify-between group-hover:gap-x-10  bg-white text-black shadow-lg rounded-md min-w-[50vw] mx-auto min-h-80 -translate-x-2/6 px-4 py-6 z-50'>
                                             <Tabs.Root defaultValue="panels" orientation="vertical" className='flex gap-x-6' >
                                                 <Tabs.List aria-label="panels" className=' flex-col flex px-4 py-3 lg:w-fit gap-y-4 mx-auto basis-2/5 justify-start items-start border-r border-grey-100'>
-                                                    <Tabs.Trigger value={"panels"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                    <Tabs.Trigger value={"panels"} className='text-grey-800 text-sm hover:bg-[#fdfdfd] py-3 rounded-md data-[state=active]:bg-grey-100 px-3 xl:text-base font-medium'>
                                                         Solar Panels
                                                     </Tabs.Trigger>
-                                                    <Tabs.Trigger value={"batteries"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                    <Tabs.Trigger value={"batteries"} className='text-grey-800 text-sm hover:[#fdfdfd] py-3 rounded-md data-[state=active]:bg-grey-100 px-3 xl:text-base font-medium'>
                                                         Solar Batteries
                                                     </Tabs.Trigger>
-                                                    <Tabs.Trigger value={"inverters"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                    <Tabs.Trigger value={"inverters"} className='text-grey-800 text-sm hover:[#fdfdfd] py-3 rounded-md data-[state=active]:bg-grey-100 px-3 xl:text-base font-medium'>
                                                         Inverters
                                                     </Tabs.Trigger>
-                                                    <Tabs.Trigger value={"controllers"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                    <Tabs.Trigger value={"controllers"} className='text-grey-800 text-sm hover:[#fdfdfd] py-3 rounded-md px-3 xl:text-base data-[state=active]:bg-grey-100 font-medium'>
                                                         Charge Controllers
                                                     </Tabs.Trigger>
-                                                    <Tabs.Trigger value={"floor_light"} className='text-grey-800 text-sm hover:bg-grey-100 py-3 rounded-md px-3 xl:text-base font-medium'>
+                                                    <Tabs.Trigger value={"floor_light"} className='text-grey-800 text-sm hover:[#fdfdfd] py-3 rounded-md px-3 xl:text-base data-[state=active]:bg-grey-100 font-medium'>
                                                         Solar Floor Light
                                                     </Tabs.Trigger>
                                                 </Tabs.List>

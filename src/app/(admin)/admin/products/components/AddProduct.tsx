@@ -21,13 +21,13 @@ type ICategories = {
 }
 
 const fetchCategories = async () => {
-    const res = await fetch('http://localhost:80/api/categories');
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/categories`);
     const response: { status: number; message: string; data: ICategories[] } = await res.json();
     return response
 }
 
 const createProduct = async (variables: ICreateProduct) => {
-    const res = await fetch('http://localhost:80/api/products', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

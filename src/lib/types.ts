@@ -9,6 +9,15 @@ export type AddProductFormData = {
     discount: string;
 };
 
+export type ISubmitOrder = {
+    fullnames: string;
+    productName: string;
+    email: string;
+    phone: string;
+    qty?: string;
+    notes?: string;
+}
+
 export type ICreateProduct = {
     product_name: string;
     category_id: string;

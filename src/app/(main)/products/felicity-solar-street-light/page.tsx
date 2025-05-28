@@ -5,15 +5,22 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { IProductsResponse } from '../page'
 
 //
 
 export const metadata: Metadata = {
-  title: 'Products - Felicity Solar',
+  title: 'Street Light - Felicity Solar',
   description: 'We have the best Solar products in town. Hybrid inverter, MPPT controller, Solar lithium battery, Gel battery, Solar all in one street light',
 }
 
-function page() {
+async function page() {
+  let res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/category/4`);
+  const response: IProductsResponse = await res.json();
+  if (!response || !response.data) {
+    return <p>No products available at the moment.</p>;
+  }
+
   return (
     <main className='font-[family-name:var(--font-inter)]'>
 
@@ -35,22 +42,21 @@ function page() {
 
       </section>
       <section className='py-32 mx-auto w-[90%] 2xl:w-[75%]'>
-        <div className=" w-full flex items-center justify-center ">
+        <div className=" w-full flex items-center ">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-y-14 gap-x-7 xl:grid-cols-3">
-            {["Joshua", "oris", "jos", "job", "Aina", "Tosin"].map(a => {
-              return (
-                <Product
-                category='Street light'
-                category_path='felicity-solar-street-light'
-                  id={a}
-                  key={a}
-                  cover="https://images.unsplash.com/photo-1542291026-7eec264c27ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHxzbmVha2Vyc3xlbnwwfDB8fHwxNzEyMjIzNDAyfDA&ixlib=rb-4.0.3&q=80&w=1080"
-                  title='FL-M-450W Mono Panel'
-                  description='High Top (Lemon Yellow)'
-                  price='60'
-                />
-              )
-            })}
+            {response.data && response.data.length > 0 ?
+              response.data.map(p => {
+                return (
+                  <Product
+                    details={p}
+                    key={p.id}
+                    category_path="felicity-solar-street-light"
+                  />
+                )
+              })
+              :
+              <p>No Product currently available</p>
+            }
           </div>
 
 

@@ -13,6 +13,14 @@ const AddProductSchema = z.object({
     //thumbnail5: z.string().optional(),
     keyFeatures: z.string().optional(),
 });
+const OrderProductSchema = z.object({
+    fullnames: z.string().min(1, 'Fullnames is required'),
+    productName: z.string().min(1, 'Product name is required'),
+    email: z.string().min(1, 'Email is required'),
+    phone: z.string().min(5, 'Phone number is required'),
+    qty: z.string().optional(),
+    notes: z.string().optional()
+});
 
 
-export { AddProductSchema }
+export { AddProductSchema, OrderProductSchema }
