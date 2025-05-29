@@ -2,12 +2,15 @@
 import Link from 'next/link'
 import React from 'react'
 
-//
+type IProps = {
+    state: string
+    id: string
+}
 
-function Project() {
+function Project({ state, id }: IProps) {
     return (
 
-        <Link href={"/project-showcase/lagos/joshua0920"} className="relative flex-shrink-0 overflow-hidden bg-orange-500 rounded-lg  shadow-lg group" >
+        <Link href={`/project-showcase/${state}/${id}`} className="relative flex-shrink-0 overflow-hidden bg-orange-500 rounded-lg  shadow-lg group" >
 
             {/* Main image section */}
             <div className=" pt-10 px-10 flex items-center min-h-72 justify-center group-hover:scale-110 transition-transform duration-300 bg-[url('/assets/images/solar_panel_project.jpg')] bg-center bg-no-repeat bg-cover" >

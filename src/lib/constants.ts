@@ -41,7 +41,9 @@ export function capitalizeFirstLetter(word: string) {
   if (word.length === 0) {
     return word; // Return the original string if it's empty
   }
-  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  const firstChar = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  
+  return firstChar
 }
 export function capitalizeFirstLetterOfEachWord(sentence: string) {
   return sentence

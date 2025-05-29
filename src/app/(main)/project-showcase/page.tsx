@@ -28,12 +28,12 @@ function page() {
 
       <section className='flex justify-center my-22 flex-col mx-auto w-[90%] 2xl:w-[75%]'>
         <div className="grid gap-x-9 gap-y-20 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          <Project />
-          <Project />
-          <Project />
-          <Project />
-          <Project />
-          <Project />
+          <Project state="kano" id={"50K System Installed at Felicity Solar's New Plant"} />
+          <Project state="lagos" id={"50K System Installed at Felicity Solar's New Plant"} />
+          <Project state="abuja" id={"50K System Installed at Felicity Solar's New Plant"} />
+          <Project state="lagos" id={"50K System Installed at Felicity Solar's New Plant"} />
+          <Project state="lagos" id={"50K System Installed at Felicity Solar's New Plant"} />
+          <Project state="abuja" id={"50K System Installed at Felicity Solar's New Plant"} />
         </div>
 
       </section>

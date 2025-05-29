@@ -30,7 +30,7 @@ export default function Page() {
             <main className='font-[family-name:var(--font-inter)] bg-white mx-auto w-[90%] flex-col gap-y-8 xl:w-[70%] 2xl:w-[60%] mt-12 lg:mt-0'>
                 <div className="flex lg:pb-4 pt-8 gap-y-1 lg:gap-y-0 lg:items-center">
                     <Link href="/project-showcase" className='flex font-medium  text-sm 2xl:text-base items-center text-grey-400'>Project showcase <ChevronRight size={16} /></Link>
-                    <p className='text-grey-700 text-sm 2xl:text-base font-medium'>Title goes here: {}</p>
+                    <p className='text-grey-700 text-sm 2xl:text-base font-medium'>Felicity Solar Announces Construction of 3rd Plant.</p>
                 </div>
 
                 <section className='w-full lg:w-4/5 pb-32 pt-14'>
