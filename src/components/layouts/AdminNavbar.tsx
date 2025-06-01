@@ -1,5 +1,5 @@
 "use client"
-import {  ShoppingBag } from 'lucide-react'
+import { HomeIcon, NotebookPen, ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -13,20 +13,20 @@ function AdminNavbar() {
     const pathname = usePathname();
 
     const navItems = [
-      /*   {
+        {
             href: "/admin/dashboard",
             label: "Dashboard", icon: <HomeIcon size={16} />
-        }, */
+        },
         {
             href: "/admin/products",
             label: "Product listing",
             icon: <ShoppingBag size={16} />
         },
-       /*  {
+        {
             href: "/admin/blogs",
             label: "Blogs",
             icon: <NotebookPen size={16} />
-        }, */
+        },
     ];
 
     return (
@@ -35,7 +35,7 @@ function AdminNavbar() {
             <ul className="flex flex-col gap-y-5">
                 {navItems.map((item) => {
                     const isActive = pathname.startsWith(item.href);
-                   return (
+                    return (
                         <li
                             key={item.href}
                             className={`rounded-md flex justify-start items-center h-11 px-4",
@@ -43,7 +43,7 @@ function AdminNavbar() {
                             }
                         >
                             {item.icon}
-                            <Link href={item.href} className="text-sm ml-1 font-medium">
+                            <Link href={item.href} className="text-sm ml-3 font-medium">
                                 {item.label}
                             </Link>
                         </li>

@@ -11,14 +11,14 @@ import Link from 'next/link';
 const items = [
     {
         id: "FL-LPBF-48200",
-        title: "FL-LPBF 48200 48V-H 10KWH Lithium Battery",
+        title: "FL-LPBF 48200 48V-H 10KWH lithium Battery",
         description: "Power your home, business, or solar system with the Felicity FL-LPBF 48200 48V-H, a robust 10kWh lithium battery engineered for high-performance energy storage. Designed to deliver stable, long-lasting power, it’s ideal for both off-grid and hybrid solar energy setups.",
         link: "/products/felicity-solar-batteries",
         image: "/assets/images/FL-LPBF-48200-48V-10KWH-Lithium-Battery-FIVE-years-warranty.jpeg",
     },
     {
         id: "FL-LPBF48350",
-        title: "FL-LPBF48350 51.2V 17.5KWH lithium battery",
+        title: "FL-LPBF 48350 51.2V 17.5KWH lithium Battery",
         description: "The Felicity FL-LPBF48350 is a high-capacity 51.2V lithium battery designed to meet the demands of advanced solar energy systems and large-scale backup power applications. With 17.5kWh of reliable storage, it offers long-lasting energy independence, exceptional safety, and seamless integration.",
         link: "/products/felicity-solar-batteries",
         image: "/assets/images/FL-LPBF48250-48V-12.5KWH-lithium-battery.jpeg",
@@ -64,10 +64,10 @@ function BatteryTabContent() {
                                     <p className="text-grey-500 text-left">{item.description}</p>
                                     <Link
                                         href={item.link}
-                                        className="flex items-center text-primary font-medium text-sm"
+                                        className="flex h-11 items-center mt-3 text-white p-1 bg-primary hover:bg-primary/90 rounded-sm lg:w-[120px] justify-center font-medium text-base"
                                     >
                                         <span className="mr-1">View more</span>
-                                        <MoveRight color="#ED7020" size={16} />
+                                        <MoveRight color="#fff" size={16} />
                                     </Link>
                                 </div>
                             )}

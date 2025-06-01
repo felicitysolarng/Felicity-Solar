@@ -13,7 +13,7 @@ function index() {
 
     return (
         <>
-            <header className="max-h-16 py-8 border border-[#F0F2F5] flex justify-start px-6 items-center text-grey-800 font-bold text-2xl">
+            <header className="max-h-16 bg-white py-8 border border-[#F0F2F5] flex justify-start px-6 items-center text-grey-800 font-bold text-2xl">
                 Product Listing
             </header>
             <AddProduct />

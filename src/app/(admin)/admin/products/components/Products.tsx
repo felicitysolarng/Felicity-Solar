@@ -3,6 +3,8 @@ import React from 'react';
 //import { Delete, DeleteIcon, Trash, Trash2 } from 'lucide-react'
 import { IProductsResponse } from '@/app/(main)/products/page';
 import { useQuery } from '@tanstack/react-query';
+import { capitalizeFirstLetterOfEachWord } from '@/lib/constants';
+import { SquarePen, Trash2 } from 'lucide-react';
 
 const fetchProduts = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products`);
@@ -36,35 +38,50 @@ function Products() {
     return (
         <div className="relative overflow-hidden  shadow-md sm:rounded-lg py-8 px-5">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className=" text-gray-700 uppercase bg-grey-100 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" className="p-4">
+                        <th scope="col" className="p-4 text-base">
                             {/*  <div className="flex items-center">
                                 <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                     <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
                             </div> */}
+                            Product
                         </th>
-                        <th scope="col" className="px-6 py-3">
-                            Product name
+                        <th scope="col" className="px-6 py-3 text-base">
+                            Date added
                         </th>
-                        <th scope="col" className="px-6 py-3">
-                            Color
-                        </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-base">
                             Category
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-base">
                             Price
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-base">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                  {products.data.map(p=>{
-                    return <p key={p.id}>{p.category_name}</p>
-                  })}
+                    {products.data.map(p => {
+                        return <tr key={p.id}>
+                            <td className="font-inter p-5 text-sm lg:text-base leading-6 font-medium text-gray-900 break-words"> {p.product_name}</td>
+                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900 "> {p.created_at}</td>
+                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900"> {capitalizeFirstLetterOfEachWord(p.category_name)} </td>
+                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900">&#8358;{Number(p?.price).toLocaleString()}</td>
+                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900 ">
+                                <div className="flex gap-x-6 items-center justify-center">
+                                    <button className='bg-transparent' onClick={() => alert("hello")}>
+                                        <SquarePen size={20} color='#00102e' />
+                                    </button>
+                                    <button className='bg-transparent' onClick={() => alert("hello")}>
+                                        <Trash2 size={20} color='#9f0202b7' />
+                                    </button>
+                                </div>
+
+
+                            </td>
+                        </tr>
+                    })}
                 </tbody>
             </table>
             <nav className="flex mt-6 items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">

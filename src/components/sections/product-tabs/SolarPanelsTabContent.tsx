@@ -63,10 +63,10 @@ function SolarPanelTabContent() {
                                     <p className="text-grey-500 text-left">{item.description}</p>
                                     <Link
                                         href={item.link}
-                                        className="flex items-center text-primary font-medium text-sm"
+                                        className="flex h-11 items-center mt-3 text-white p-1 bg-primary hover:bg-primary/90 rounded-sm lg:w-[120px] justify-center font-medium text-base"
                                     >
                                         <span className="mr-1">View more</span>
-                                        <MoveRight color="#ED7020" size={16} />
+                                        <MoveRight color="#fff" size={16} />
                                     </Link>
                                 </div>
                             )}

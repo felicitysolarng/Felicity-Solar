@@ -25,7 +25,7 @@ function MobileNavbar() {
     };
 
     return (
-        <div className={`flex absolute top-0 justify-between items-center w-full p-4 mx-auto lg:hidden `}>
+        <div className={`flex absolute top-0 justify-between items-center z-50 w-full p-4 mx-auto lg:hidden `}>
             <Link href={"/"} >
                 <Image src={isHomePage ? "/logo.png" : "/logo1.png"} width={110} height={48} alt='logo' />
             </Link>

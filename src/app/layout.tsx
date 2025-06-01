@@ -2,7 +2,7 @@ import AOSInitializer from "@/components/AOSInitializer";
 import "./globals.css"
 import { Inter } from "next/font/google";
 import ReactQueryProvider from "./provider";
-
+import { ToastContainer} from 'react-toastify';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +19,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <ReactQueryProvider>
           {children}
         </ReactQueryProvider>
-
+        <ToastContainer />
       </body>
     </html>
   );

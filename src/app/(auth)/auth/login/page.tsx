@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 function AdminLoginPage() {
     return (
-        <main className={`${inter.className} ${inter.variable} antialiased`}>
+        <main className={`${inter.className} ${inter.variable} antialiased h-screen overflow-y-scroll`}>
             <Login />
         </main>
     )

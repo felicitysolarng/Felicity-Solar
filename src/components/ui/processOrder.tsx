@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import SuccessfulOrderModal from './successfulOrderModal';
+import { toast } from 'react-toastify';
 
 
 type FormSchema = z.infer<typeof OrderProductSchema>;
@@ -57,7 +58,7 @@ function ProcessOrder({ productName }: { productName: string }) {
         if (productName) {
             setValue('productName', productName);
         }
-    }, [productName,setValue])
+    }, [productName, setValue])
 
 
 
@@ -70,6 +71,7 @@ function ProcessOrder({ productName }: { productName: string }) {
 
         mutation.mutate(data, {
             onSuccess: (data) => {
+                toast.success("Order placed successfully");
                 console.log("Order placed successfully:", data);
                 reset();
                 setIsOpen(false);
@@ -77,7 +79,7 @@ function ProcessOrder({ productName }: { productName: string }) {
             },
             onError: (error) => {
                 console.error("Error placing order:", error);
-                alert(error);
+                toast.error(error.message);
                 setIsOpen(false);
             }
         });
@@ -145,8 +147,12 @@ function ProcessOrder({ productName }: { productName: string }) {
                                 ></textarea>
                             </div>
 
-                            <button type="submit" className='bg-primary text-white px-2 py-2 text-sm rounded-md mt-8'>
-                                {mutation.isPending ? "Submitting order..." : " Submit"}
+                            <button
+                                type="submit"
+                                className='bg-primary text-white px-2 py-2 text-sm rounded-md mt-8'
+                                disabled={mutation.isPending}
+                            >
+                                {mutation.isPending ? "Submitting Order..." : " Submit"}
                             </button>
 
                         </form>
