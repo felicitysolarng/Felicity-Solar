@@ -69,6 +69,11 @@ function MobileNavbar() {
                                         Products
                                         <ChevronRight size={18} />
                                     </li>
+                                     <li className='pb-4 '>
+                                        <Link href="/find-installers" className="w-full text-white text-left font-inter text-base">
+                                            Find Installers
+                                        </Link>
+                                    </li>
                                     <li
                                         onClick={() => openDropdown("project_showcases")}
                                         className="w-full text-white text-left font-inter text-base flex justify-between pb-4 items-center "

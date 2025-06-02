@@ -42,7 +42,7 @@ export default function Home() {
             <source src="/assets/vid/bg_video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        
+
           <div className="absolute top-0 left-0 w-full bg-black opacity-60 h-screen md:h-[70vh] xl:h-[95vh] z-10" />
           <Navbar linkClassName="text-white" className="mx-auto top-0 absolute w-full lg:flex z-50 text-black" variant="white" />
 
@@ -113,17 +113,17 @@ export default function Home() {
         <section className='py-18 md:py-32 '>
           <div className="flex gap-y-12 mx-auto w-[95%] md:w-[90%] 2xl:w-[75%] gap-x-26 flex-col ">
             <div className="flex items-center flex-col gap-y-4">
-              <h3 className='text-base italize italic text-primary'>Locations</h3>
-              <h2 className=' text-[#101928] text-2xl md:text-3xl font-bold' data-aos="zoom-in">How To Find Us?</h2>
+              <h3 className='text-base italize italic text-primary'>Installers</h3>
+              <h2 className=' text-[#101928] text-2xl md:text-3xl font-bold' data-aos="zoom-in">Trusted Certified Installers Near You</h2>
             </div>
             <div className="flex flex-col gap-y-8 lg:flex-row bg-primary rounded-lg min-h-[400px] py-12 px-6 md:px-8 xl:px-22 justify-between" data-aos="fade-up">
               <div className="flex flex-col gap-y-8 md:gap-y-16 basis-2/5">
                 <Image src={"/assets/images/location_frame_1.png"} width={224} height={44} alt='locations logos' />
                 <div className="flex gap-y-4 flex-col">
-                  <h3 className='text-xl md:text-3xl lg:text-xl font-bold text-white'>Looking to buy our solar panels, <span className='xl:block'>batteries, or street lights?</span> </h3>
-                  <p className='text-sm md:text-base lg:text-sm text-white font-medium'>We’ve made it easy for you to find a trusted distributor right in your area. Visit, call, or message our partners across Nigeria to get started with clean and reliable solar energy.</p>
+                  <h3 className='text-xl md:text-3xl lg:text-xl font-bold text-white'>Need a Certified Solar Installer You Can Trust? </h3>
+                  <p className='text-sm md:text-base lg:text-sm text-white font-medium'>We’ve partnered with trained and verified professionals to ensure your solar setup is done right — safely, efficiently, and to the highest standards.</p>
                 </div>
-                <LinkButton className='max-w-[214px] max-h-12' variant={"white"} href="/locations" label="See All Locations " icon={<MoveRight className='ml-2' />} />
+                <LinkButton className='max-w-[254px] max-h-12 font-semibold' variant={"white"} href="/find-installers" label="Find an Installer Near You " icon={<MoveRight className='ml-2' />} />
               </div>
               <div className="flex flex-col gap-y-8 basis-1/2 md:hidden lg:flex">
                 <Image src={"/assets/images/location_frame_2.png"} width={519} height={370} alt='location pin point where felicity solar limited have their offices' />

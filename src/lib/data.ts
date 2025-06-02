@@ -217,6 +217,10 @@ const nav_items = [{
     ],
 },
 {
+    url: "/find-installers",
+    label: "Find Installers"
+},
+{
     url: "/project-showcase",
     label: "Project show cases",
     children: [
