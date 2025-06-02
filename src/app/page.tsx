@@ -50,9 +50,9 @@ export default function Home() {
             <div className="flex flex-col gap-y-6">
               <div className="flex flex-col">
                 <h1 className="text-4xl md:text-5xl block md:leading-14 xl:leading-16 lg:text-6xl lg:flex gap-y-2 flex-col font-semibold text-white w-full xl:w-[90%] md:w-full" data-aos="zoom-in">
-                  <span className="lg:block">Power Your Home or</span>
+                  <span className="lg:block">Power Your Home or {" "}</span>
                   <span className="lg:block">
-                    Business <span className="text-primary">Reliable </span>
+                    Business <span className="text-primary"> with Reliable </span>
                   </span>
                   <span className="md:block">Solar Energy</span>
                 </h1>
