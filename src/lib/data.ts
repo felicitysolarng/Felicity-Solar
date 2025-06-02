@@ -236,7 +236,7 @@ const nav_items = [{
 }
 ]
 
-const distributors = [
+const installers = [
     {
         id: "1",
         city: "lagos",
@@ -441,5 +441,5 @@ const cities = [
     },
 ]
 
-export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles, products, distributors, cities }
+export { testimonials, faq, productsCats, nav_items, company_nav_links, products_nav_links, blogs, milestones, why_choose_us, articles, products, installers, cities }
 

@@ -62,7 +62,7 @@ export default function Home() {
 
             <div className="flex gap-x-10 flex-col md:flex-row md:items-center" data-aos="slide-left">
               <LinkButton
-                className="transition-all duration-[250ms] hover:scale-105 hover:bg-[#007f24] hover:text-white"
+                className="transition-all duration-[250ms] hover:scale-105 hover:bg-[#363f48] hover:text-white"
                 variant={"primary"}
                 href="/get-a-free-quote"
                 size={"lg"}
@@ -82,7 +82,7 @@ export default function Home() {
             data-aos-offset="300"
             data-aos-easing="ease-in-sine">
             <h3 className='text-base italize italic text-primary'>About us</h3>
-            <h2 className='uppercase text-[101928] text-2xl md:text-3xl font-bold'>GUANGZHOU FELICITY SOLAR NIG LTD</h2>
+            <h2 className='uppercase text-[101928] text-2xl md:text-3xl font-bold'>FELICITY SOLAR NIG LTD</h2>
             <div className="flex flex-col gap-y-4">
               <p className='text-[#667185] text-base font-medium'>Established in 2016 and headquartered in Festac, Lagos, Felicity Solar Nigeria has grown to become one of the most recognized and trusted solar energy brands in the country. </p>
               <p className='text-[#667185] text-base font-medium'>With a strong focus on sales and after-sales support, we have built a robust network of over 12 service centers across Nigeria—ensuring fast, efficient, and professional assistance for our customers nationwide </p>

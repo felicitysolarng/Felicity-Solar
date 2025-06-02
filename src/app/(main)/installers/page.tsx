@@ -1,7 +1,7 @@
 import Navbar from '@/components/layouts/navbar/Navbar'
 import Goback from '@/components/ui/go-back'
-import { distributors } from '@/lib/data'
-import {  ChevronRight } from 'lucide-react'
+import { installers } from '@/lib/data'
+import { ChevronRight } from 'lucide-react'
 import { Metadata } from 'next'
 //import Image from 'next/image'
 import Link from 'next/link'
@@ -21,20 +21,20 @@ function page() {
 
       <section className='flex flex-col lg:flex-row pt-12 mx-auto w-[90%] 2xl:w-[75%] md:gap-x-8 lg:gap-x-26 gap-y-10 lg:gap-y-0'>
         <div className="flex lg:hidden my-10 ">
-         <Goback />
+          <Goback />
         </div>
         <div className=" items-center flex-row gap-x-1 hidden lg:flex">
           <Link href={"/"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to homepage'> Homepage</Link>
-          <p className='text-grey-700 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronRight color='#98A2B3' size={16} />Distributors</p>
+          <p className='text-grey-700 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronRight color='#98A2B3' size={16} />Installers</p>
         </div>
 
       </section>
       <header className='mb-2 lg:mb-20'>
-        <h2 className=' text-grey-900 text-4xl font-bold text-center'>Locations</h2>
+        <h2 className=' text-grey-900 text-4xl font-bold text-center'>Certified Installers</h2>
       </header>
       <section className='grid gap-y-10 lg:gap-y-20 grid-cols-1 md:grid-cols-3 gap-x-10 pt-8 pb-22 mx-auto w-[95%] sm:w-[90%] 2xl:w-[80%]'>
         {
-          distributors.map(d => {
+          installers.length > 0 && installers.map(d => {
             return (
               <div key={d?.id} className="flex flex-col bg-grey-700 lg:bg-grey-500 lg:hover:bg-grey-700 max-h-fit lg:max-h-[250px] lg:max-w-[503px] rounded-md px-3 lg:px-6 py-6 lg:py-10 gap-y-4">
                 <div className="flex gap-x-2 items-start">
