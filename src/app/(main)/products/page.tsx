@@ -1,5 +1,5 @@
 import Navbar from '@/components/layouts/navbar/Navbar'
-import Product from '@/components/ui/product'
+import Products from '@/components/ui/Products'
 import { ChevronRight } from 'lucide-react'
 import { Metadata } from 'next'
 import Image from 'next/image'
@@ -10,6 +10,7 @@ export type IProduct = {
   id: string,
   product_name: string,
   price: string,
+  manual?: string,
   discount_rate: string,
   category_name: string,
   image_1: string,
@@ -25,7 +26,11 @@ export type IProductsResponse = {
   data: IProduct[],
   message: string,
   status: number
+  pagination: {
+    current_page: number, total_pages: number, total_rows: number
+  }
 }
+
 export type IProductResponse = {
   data: IProduct,
   message: string,
@@ -41,11 +46,6 @@ export const metadata: Metadata = {
 }
 
 async function page() {
-
-  // Fetch products from the API
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products`);
-  const response: IProductsResponse = await res.json();
-
 
   return (
     <main className='font-[family-name:var(--font-inter)]'>
@@ -72,22 +72,9 @@ async function page() {
       </section>
       <section className='py-32 mx-auto w-[90%] 2xl:w-[75%]'>
         <div className=" w-full flex items-center">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-y-14 gap-x-7 xl:grid-cols-4">
-            {response.data && response.data.length > 0 ?
-              response.data.map(p => {
-                return (
-                  <Product
-                    details={p}
-                    key={p.id}
-                    category_path=""
-                  />
 
-                )
-              })
-              :
-              <p>No Product currently available</p>
-            }
-          </div>
+          <Products />
+
 
 
         </div>

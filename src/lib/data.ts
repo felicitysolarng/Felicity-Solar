@@ -321,6 +321,10 @@ const company_nav_links = [
     {
         url: "/contact-us",
         label: "Contact us"
+    },
+    {
+        url: "/find-installers",
+        label: "Find Installers"
     }
 ]
 

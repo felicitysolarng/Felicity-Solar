@@ -20,11 +20,14 @@ type Props = {
 
 function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white" }: Props) {
     const pathname = usePathname();
-    const isHomePage = pathname === '/'
+    const isHomePage = pathname === '/';
+
     return (<React.Fragment>
         <nav className={cn("h-24 hidden lg:flex sticky top-0 z-50 ", className)}>
             <div className={cn("flex justify-between items-center mx-auto", width)}>
-                <Image src={isHomePage ? "/logo.png" : "/logo1.png"} height={64} width={147} alt='felicity solar logo' priority />
+                <Link href={"/"}>
+                    <Image src={isHomePage ? "/logo.png" : "/logo1.png"} height={64} width={147} alt='felicity solar logo' priority />
+                </Link>
 
                 <ul className="flex gap-x-6 list-none">
                     {nav_items.map((nav) => (

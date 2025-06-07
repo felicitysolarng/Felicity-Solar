@@ -11,25 +11,40 @@ export type AddProductFormData = {
 
 export type ISubmitOrder = {
     fullnames: string;
-    productName: string;
+    product_name: string;
     email: string;
     phone: string;
     qty?: string;
-    notes?: string;
+    additionalMessage?: string;
+}
+export type ISendQuote = {
+    fullnames: string,
+    email: string,
+    location?: string,
+    budget_range: string,
+    notes?: string
 }
 
+export type ICreateQuery = {
+    firstname: string,
+    lastname?: string,
+    email: string,
+    phone?: string,
+    message: string
+}
 export type ICreateProduct = {
-    product_name: string;
-    category_id: string;
-    description: string;
-    price: string;
-    total_stock: string,
+    product_name?: string;
+    category_id?: string;
+    description?: string;
+    price?: string;
+    total_stock?: string,
     key_features?: string;
-    discount_rate: string;
+    discount_rate?: string;
     image_1: string;
     image_2: string;
     image_3: string;
     image_4?: string | null;
+    id?: string
 }
 
 export type FormFieldProps = {

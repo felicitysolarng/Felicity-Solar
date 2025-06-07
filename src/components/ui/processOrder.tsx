@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 type FormSchema = z.infer<typeof OrderProductSchema>;
 
 const order = async (variables: ISubmitOrder) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/order`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/orders`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -46,17 +46,17 @@ function ProcessOrder({ productName }: { productName: string }) {
         resolver: zodResolver(OrderProductSchema),
         defaultValues: {
             fullnames: "",
-            productName: "",
+            product_name: "",
             email: "",
             phone: "",
             qty: "1",
-            notes: ""
+            additionalMessage: ""
         }
     });
 
     useEffect(() => {
         if (productName) {
-            setValue('productName', productName);
+            setValue('product_name', productName);
         }
     }, [productName, setValue])
 
@@ -71,15 +71,19 @@ function ProcessOrder({ productName }: { productName: string }) {
 
         mutation.mutate(data, {
             onSuccess: (data) => {
-                toast.success("Order placed successfully");
-                console.log("Order placed successfully:", data);
+                if (data.status == 201) {
+                    toast.success(data.message);
+                    setIsOpen(false);
+                    setIsSuccess(!isSuccess);
+                }
                 reset();
-                setIsOpen(false);
-                setIsSuccess(!isSuccess);
             },
             onError: (error) => {
+                // Check if error is an object and has a status property
+                if (typeof error === 'object' && error !== null && 'status' in error && (error as any).status === 404) {
+                    toast.error((error as any).error);
+                }
                 console.error("Error placing order:", error);
-                toast.error(error.message);
                 setIsOpen(false);
             }
         });
@@ -111,7 +115,7 @@ function ProcessOrder({ productName }: { productName: string }) {
                                 <p className="text-[15px] border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-sm">
                                     LPBA 48V 200Ah 10kWh Grade A Lithium Phosphate Solar Battery Pack with BMS by Felicity Solar
                                 </p>
-                                {errors.productName && <p className="text-red-500 mt-1 text-sm">{errors.productName.message}</p>}
+
                             </div>
                             <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-x-4">
                                 <div className='w-full'>
@@ -140,20 +144,28 @@ function ProcessOrder({ productName }: { productName: string }) {
                             <div className='w-full mt-4'>
                                 <label htmlFor="qty" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Additional Notes / Use Case</label>
                                 <textarea
-                                    {...register('notes')}
+                                    {...register('additionalMessage')}
                                     rows={4}
                                     className="block w-full overflow-auto rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 resize-none dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-sm"
                                     placeholder="Any additional information or special requests?"
                                 ></textarea>
                             </div>
+                            <div className="flex items-center justify-end gap-x-4">
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className='border border-black text-black cursor-pointer px-2 py-2 text-sm rounded-md mt-8'
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className='bg-primary text-white px-2 py-2 text-sm rounded-md mt-8'
+                                    disabled={mutation.isPending}
+                                >
+                                    {mutation.isPending ? "Submitting Order..." : " Submit"}
+                                </button>
+                            </div>
 
-                            <button
-                                type="submit"
-                                className='bg-primary text-white px-2 py-2 text-sm rounded-md mt-8'
-                                disabled={mutation.isPending}
-                            >
-                                {mutation.isPending ? "Submitting Order..." : " Submit"}
-                            </button>
 
                         </form>
                     </DialogPanel>

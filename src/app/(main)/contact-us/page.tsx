@@ -1,9 +1,12 @@
 import Navbar from '@/components/layouts/navbar/Navbar'
 import ContactForm from '@/components/sections/contact-us/contact-us'
+
 import { Mail, MapPinHouse, PhoneOutgoing } from 'lucide-react'
 
 import { Metadata } from 'next'
 import React from 'react'
+
+
 
 
 export const metadata: Metadata = {
@@ -12,6 +15,7 @@ export const metadata: Metadata = {
 }
 
 function page() {
+  
 
   return (
     <div className="flex flex-col font-[family-name:var(--font-inter)]">
