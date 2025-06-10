@@ -1,5 +1,5 @@
 "use client"
-import { HomeIcon, NotebookPen, ShoppingBag } from 'lucide-react'
+import { HomeIcon, ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -22,11 +22,11 @@ function AdminNavbar() {
             label: "Product listing",
             icon: <ShoppingBag size={16} />
         },
-        {
+        /* {
             href: "/admin/blogs",
             label: "Blogs",
             icon: <NotebookPen size={16} />
-        },
+        }, */
     ];
 
     return (

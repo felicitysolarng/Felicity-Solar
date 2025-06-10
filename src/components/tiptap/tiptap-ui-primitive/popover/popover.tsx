@@ -140,19 +140,29 @@ function Popover({ children, modal = false, ...options }: PopoverProps) {
   )
 }
 
-interface TriggerElementProps extends React.HTMLProps<HTMLElement> {
-  asChild?: boolean
+type TriggerElementProps = React.HTMLAttributes<HTMLElement> & {
+  asChild?: boolean;
+  children: React.ReactNode;
+};
+type ReactElementWithRef = React.ReactElement & { ref?: React.Ref<HTMLElement> };
+interface ExtendedProps extends React.HTMLAttributes<HTMLElement> {
+  'data-state'?: string;
 }
 
 const PopoverTrigger = React.forwardRef<HTMLElement, TriggerElementProps>(
   function PopoverTrigger({ children, asChild = false, ...props }, propRef) {
-    const context = usePopoverContext()
-    const childrenRef = React.isValidElement(children)
-      ? parseInt(React.version, 10) >= 19
-        ? (children.props as any).ref
-        : (children as any).ref
-      : undefined
-    const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
+    const context = usePopoverContext();
+
+    const childrenRef =
+      React.isValidElement(children) && (children as ReactElementWithRef).ref
+        ? (children as ReactElementWithRef).ref
+        : undefined;
+
+    const ref = useMergeRefs([
+      context.refs.setReference,
+      propRef,
+      childrenRef,
+    ]);
 
     if (asChild && React.isValidElement(children)) {
       return React.cloneElement(
@@ -160,10 +170,9 @@ const PopoverTrigger = React.forwardRef<HTMLElement, TriggerElementProps>(
         context.getReferenceProps({
           ref,
           ...props,
-          ...(children.props as any),
-          "data-state": context.open ? "open" : "closed",
-        })
-      )
+          ...(children.props as Record<string, unknown>),
+          'data-state': context.open ? 'open' : 'closed',
+        } as ExtendedProps))
     }
 
     return (

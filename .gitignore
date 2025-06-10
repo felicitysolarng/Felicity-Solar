@@ -24,6 +24,8 @@
 .DS_Store
 *.pem
 
+/app/(main)/find-installers/page.tsx
+/find-installers
 # debug
 npm-debug.log*
 yarn-debug.log*

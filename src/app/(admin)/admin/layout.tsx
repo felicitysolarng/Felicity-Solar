@@ -19,12 +19,12 @@ export default function AdminLayout({
 
 
   return (
-    <body className={`${inter.className} ${inter.variable} antialiased`}>
-      <div className="flex h-screen bg-[#F9FAFB]">
+    <body className={`${inter.className} ${inter.variable} antialiased h-[99vh] overflow-hidden`}>
+      <div className="flex  bg-[#F9FAFB] ">
         <aside className="basis-1/5 bg-black text-white py-8">
           <AdminNavbar />
         </aside>
-        <main className="basis-4/5 flex flex-col h-screen overflow-y-scroll">
+        <main className="basis-4/5 flex flex-col">
           {children}
         </main>
       </div>

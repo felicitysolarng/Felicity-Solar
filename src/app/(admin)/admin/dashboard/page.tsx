@@ -1,24 +1,81 @@
+import Barchart from '@/components/ui/Barchart'
+import { capitalizeFirstLetterOfEachWord } from '@/lib/constants'
+import { format } from 'date-fns'
 import { Metadata } from 'next'
 import React from 'react'
 
+
+type IDashboard = {
+    analytics: {
+        "total_orders": number,
+        "total_products": number,
+        "total_blogs": number,
+        "total_installers": number
+    },
+    order_overview: {
+        month: string,
+        Orders: number
+    }[],
+    sales_by_category: {
+        "category": string,
+        "orders": number
+    }[],
+    new_orders: {
+        "id": number,
+        "product_name": string,
+        "email": string,
+        "phone": string,
+        "fullnames": string,
+        "additionalMessage": string,
+        "qty": number,
+        "created_at": string
+    }[],
+    top_products: {
+        "product_name": string,
+        "total_orders": number
+    }[]
+
+
+}
 export const metadata: Metadata = {
     title: 'Admin Dashboard- Felicity Solar',
     description: 'We have the best Solar products in town. Hybrid inverter, MPPT controller, Solar lithium battery, Gel battery, Solar all in one street light',
 }
 
-function index() {
+
+async function index() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/dashboard`, {
+        cache: 'no-store'// Revalidate every hour
+    });
+    const response: {
+        data: IDashboard,
+        message: string,
+        status: number
+    } = await res.json();
+    if (!response || !response.data) {
+        return <p>An error occured.</p>;
+    }
+    const dashboard = response.data;
+
+    const analytics = dashboard.analytics;
+    const order_overview = dashboard.order_overview;
+    //const sales_by_category = dashboard.sales_by_category;
+    const new_orders = dashboard.new_orders;
+    const top_products = dashboard.top_products;
+
     return (
         <>
-            <div className="flex h-16 border bg-white border-[#F0F2F5] justify-start items-center">
+
+            <div className="flex min-h-16 h-[7vh] border bg-white border-[#F0F2F5] justify-start items-center">
                 <header className=" w-[90%] mx-auto  text-grey-800 font-bold text-2xl">
                     Dashboard
                 </header>
             </div>
 
-            <div className="flex w-[90%] mx-auto py-10 flex-col">
+            <div className="flex w-full mx-auto px-4 xl:px-10 py-10 flex-col h-[91vh] overflow-y-scroll">
                 <h1 className='font-inter font-semibold text-2xl text-grey-800 '>Welcome Back, Admin</h1>
-                <div className="flex py-8">
-                    <div className="flex stats gap-x-8 ">
+                <div className="flex py-8 flex-col gap-y-10">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 2xl:w-[95%] xl:grid-cols-4 gap-y-6 stats gap-x-8 ">
 
                         <div className="bg-white rounded-md border h-[129px] w-[250px] border-grey-100 py-6 px-4 flex justify-center gap-y-2 flex-col">
                             <div className="flex items-center gap-x-2">
@@ -39,7 +96,7 @@ function index() {
 
                                 <p className='font-inter font-medium text-base text-grey-500'>Total Products</p>
                             </div>
-                            <h3 className='font-inter text-grey-900 font-bold text-[1.75rem]'>68</h3>
+                            <h3 className='font-inter text-grey-900 font-bold text-[1.75rem] ml-3'>{analytics.total_products}</h3>
                         </div>
                         <div className="bg-white rounded-md border h-[129px] w-[250px] border-grey-100 py-6 px-4 flex justify-center gap-y-2 flex-col">
                             <div className="flex items-center gap-x-2">
@@ -52,13 +109,121 @@ function index() {
 
                                 <p className='font-inter font-medium text-base text-grey-500'>Total Orders</p>
                             </div>
-                            <h3 className='font-inter text-grey-900 font-bold text-[1.75rem]'>₦680,323</h3>
+                            <h3 className='font-inter text-grey-900 font-bold text-[1.75rem] ml-3'>{analytics.total_orders}</h3>
                         </div>
 
                         <div className="bg-white rounded-md border h-[129px] w-[250px] border-grey-100 py-6 px-4 flex justify-center gap-y-2 flex-col">
-                            <div className="flex font-inter font-medium text-sm text-grey-500">Total Blogs</div>
-                            <h3 className='font-inter text-grey-900 font-bold text-[1.75rem]'>6</h3>
+                            <div className="flex items-center gap-x-2">
+                                <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="24.3334" cy="24" r="24" fill="#FDF0E7" />
+                                    <g clipPath="url(#clip0_309_122)">
+                                        <path d="M31.2656 12.4117V16.6875H35.5411L31.2656 12.4117Z" fill="#ED7020" />
+                                        <path d="M30.5625 18.0938C30.1742 18.0938 29.8594 17.7789 29.8594 17.3906V12H19.7812C18.6181 12 17.6719 12.9463 17.6719 14.1094V21.9698C17.9035 21.9488 18.138 21.9375 18.375 21.9375C20.7716 21.9375 22.917 23.0332 24.3368 24.75H31.9688C32.3571 24.75 32.6719 25.0648 32.6719 25.4531C32.6719 25.8414 32.3571 26.1562 31.9688 26.1562H25.2632C25.7027 27.0139 25.9861 27.964 26.0771 28.9688H31.9688C32.3571 28.9688 32.6719 29.2836 32.6719 29.6719C32.6719 30.0602 32.3571 30.375 31.9688 30.375H26.0771C25.8668 32.6971 24.6261 34.7262 22.8168 36H33.8438C35.0069 36 35.9531 35.0537 35.9531 33.8906V18.0938H30.5625ZM31.9688 21.9375H21.6562C21.2679 21.9375 20.9531 21.6227 20.9531 21.2344C20.9531 20.8461 21.2679 20.5312 21.6562 20.5312H31.9688C32.3571 20.5312 32.6719 20.8461 32.6719 21.2344C32.6719 21.6227 32.3571 21.9375 31.9688 21.9375Z" fill="#ED7020" />
+                                        <path d="M18.375 23.3438C14.8857 23.3438 12.0469 26.1825 12.0469 29.6719C12.0469 33.1612 14.8857 36 18.375 36C21.8643 36 24.7031 33.1612 24.7031 29.6719C24.7031 26.1825 21.8643 23.3438 18.375 23.3438ZM20.25 30.375H18.375C17.9867 30.375 17.6719 30.0602 17.6719 29.6719V26.8594C17.6719 26.4711 17.9867 26.1562 18.375 26.1562C18.7633 26.1562 19.0781 26.4711 19.0781 26.8594V28.9688H20.25C20.6383 28.9688 20.9531 29.2836 20.9531 29.6719C20.9531 30.0602 20.6383 30.375 20.25 30.375Z" fill="#ED7020" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_309_122">
+                                            <rect width="24" height="24" fill="white" transform="translate(12 12)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+
+                                <p className='font-inter font-medium text-base text-grey-500'>Total Blog Articles</p>
+                            </div>
+                            <h3 className='font-inter text-grey-900 font-bold text-[1.75rem] ml-3'>{analytics.total_blogs}</h3>
                         </div>
+                        <div className="bg-white rounded-md border h-[129px] w-[250px] border-grey-100 py-6 px-4 flex justify-center gap-y-2 flex-col">
+                            <div className="flex items-center gap-x-2">
+                                <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="24.3334" cy="24" r="24" fill="#FDF0E7" />
+                                    <g clipPath="url(#clip0_309_122)">
+                                        <path d="M31.2656 12.4117V16.6875H35.5411L31.2656 12.4117Z" fill="#ED7020" />
+                                        <path d="M30.5625 18.0938C30.1742 18.0938 29.8594 17.7789 29.8594 17.3906V12H19.7812C18.6181 12 17.6719 12.9463 17.6719 14.1094V21.9698C17.9035 21.9488 18.138 21.9375 18.375 21.9375C20.7716 21.9375 22.917 23.0332 24.3368 24.75H31.9688C32.3571 24.75 32.6719 25.0648 32.6719 25.4531C32.6719 25.8414 32.3571 26.1562 31.9688 26.1562H25.2632C25.7027 27.0139 25.9861 27.964 26.0771 28.9688H31.9688C32.3571 28.9688 32.6719 29.2836 32.6719 29.6719C32.6719 30.0602 32.3571 30.375 31.9688 30.375H26.0771C25.8668 32.6971 24.6261 34.7262 22.8168 36H33.8438C35.0069 36 35.9531 35.0537 35.9531 33.8906V18.0938H30.5625ZM31.9688 21.9375H21.6562C21.2679 21.9375 20.9531 21.6227 20.9531 21.2344C20.9531 20.8461 21.2679 20.5312 21.6562 20.5312H31.9688C32.3571 20.5312 32.6719 20.8461 32.6719 21.2344C32.6719 21.6227 32.3571 21.9375 31.9688 21.9375Z" fill="#ED7020" />
+                                        <path d="M18.375 23.3438C14.8857 23.3438 12.0469 26.1825 12.0469 29.6719C12.0469 33.1612 14.8857 36 18.375 36C21.8643 36 24.7031 33.1612 24.7031 29.6719C24.7031 26.1825 21.8643 23.3438 18.375 23.3438ZM20.25 30.375H18.375C17.9867 30.375 17.6719 30.0602 17.6719 29.6719V26.8594C17.6719 26.4711 17.9867 26.1562 18.375 26.1562C18.7633 26.1562 19.0781 26.4711 19.0781 26.8594V28.9688H20.25C20.6383 28.9688 20.9531 29.2836 20.9531 29.6719C20.9531 30.0602 20.6383 30.375 20.25 30.375Z" fill="#ED7020" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_309_122">
+                                            <rect width="24" height="24" fill="white" transform="translate(12 12)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+
+                                <p className='font-inter font-medium text-base text-grey-500'>Total Installers</p>
+                            </div>
+                            <h3 className='font-inter text-grey-900 font-bold text-[1.75rem] ml-3'>{analytics.total_installers}</h3>
+                        </div>
+                    </div>
+                    <div className="flex gap-x-6 flex-col xl:flex-row gap-y-8">
+                        <div className="flex flex-col gap-y-8 h-[400px] w-full xl:w-[70%] bg-white rounded-md">
+                            <h2 className='font-inter text-[#101828] px-4 font-semibold text-lg pt-8'>Total Orders overview</h2>
+                            <Barchart data={order_overview} />
+                        </div>
+                        <div className="flex flex-col gap-y-8 h-[400px] px-4 w-full xl:w-[30%] bg-white rounded-md">
+                            <h2 className='font-inter text-[#101828]  font-semibold text-lg pt-8'>Top selling products</h2>
+                            {
+                                top_products.map(t => {
+                                    return <div className="flex gap-x-4 justify-between" key={t.product_name}>
+                                        <div className="flex flex-col gap-y-1">
+                                            <h3 className='font-inter text-grey-700 font-semibold text-[0.8125rem] '>{t.product_name}</h3>
+                                            <p className='font-inter text-grey-700 font-medium text-xs '><span className='text-primary'>No. items ordered:</span> {t.total_orders}</p>
+                                        </div>
+                                      {/*   <p className='font-inter texxt-grey-900 font-semibold text-sm'>₦80,323.12</p> */}
+                                    </div>
+                                })
+                            }
+                        </div>
+                    </div>
+
+                    <div className="flex gap-x-6 flex-col">
+                        <div className="flex flex-col gap-y-8 h-[400px] w-full  bg-white rounded-md">
+                            <h2 className='font-inter text-[#101828] px-4 font-semibold text-lg pt-8'>New Orders</h2>
+                            <div className="relative overflow-hidden  shadow-md sm:rounded-lg pb-8">
+                                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <thead className=" text-gray-700 uppercase bg-grey-100 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th scope="col" className="p-4 text-sm">
+                                                {/*  <div className="flex items-center">
+                                                            <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                                <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
+                                                        </div> */}
+                                                Product Name
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-sm">
+                                                Qty
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-sm">
+                                                Date
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-sm">
+                                                Customer Name
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-sm">
+                                                Customer Phone No.
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-sm">
+                                                Customer Email
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {new_orders.map(p => {
+                                            return <tr key={p.id}>
+                                                <td className="font-inter p-5 text-sm  leading-6 font-medium text-gray-900 break-words"> {p.product_name}</td>
+                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900 ">{p.qty}</td>
+                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900 ">{format(new Date(p.created_at), "do MMM, yyyy h:mmaaa")}</td>
+                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900"> {capitalizeFirstLetterOfEachWord(p.fullnames)} </td>
+                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900">{p.phone}</td>
+                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900">{p.email}</td>
+
+                                            </tr>
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

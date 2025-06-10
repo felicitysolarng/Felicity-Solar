@@ -11,6 +11,10 @@ import { z } from 'zod';
 import SuccessfulOrderModal from './successfulOrderModal';
 import { toast } from 'react-toastify';
 
+type ErrorWithStatus = {
+    status?: number;
+    error?: string;
+};
 
 type FormSchema = z.infer<typeof OrderProductSchema>;
 
@@ -78,11 +82,13 @@ function ProcessOrder({ productName }: { productName: string }) {
                 }
                 reset();
             },
-            onError: (error) => {
-                // Check if error is an object and has a status property
-                if (typeof error === 'object' && error !== null && 'status' in error && (error as any).status === 404) {
-                    toast.error((error as any).error);
+            onError: (error: unknown) => {
+                const typedError = error as ErrorWithStatus;
+
+                if (typedError && typedError.status === 404) {
+                    toast.error(typedError.error || "Not found");
                 }
+
                 console.error("Error placing order:", error);
                 setIsOpen(false);
             }
