@@ -15,7 +15,7 @@ export type IStateResponse = {
 import { useQuery } from '@tanstack/react-query';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function InstallersFilter({ defaultValue }: { defaultValue?: string }) {
+export default function InstallersFilter({ defaultValue }: { defaultValue: string | number }) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
