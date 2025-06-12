@@ -67,7 +67,7 @@ async function index() {
         <>
 
             <div className="flex min-h-16 h-[7vh] border bg-white border-[#F0F2F5] justify-start items-center">
-                <header className=" w-[90%] mx-auto  text-grey-800 font-bold text-2xl">
+                <header className=" w-[94%] mx-auto  text-grey-800 font-bold text-2xl">
                     Dashboard
                 </header>
             </div>

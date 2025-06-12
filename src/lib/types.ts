@@ -46,7 +46,28 @@ export type ICreateProduct = {
     image_4?: string | null;
     id?: string
 }
+export type ICreateArticle = {
+    title?: string;
+    category: string;
+    content?: string;
+    thumbnail: string;
+    id?: string
+}
+export type ICreateProjectShowcase = {
+    title?: string;
+    state: string;
+    content?: string;
+    thumbnail: string;
+    id?: string
+}
 
+
+export type IContactDetails = {
+    phone: string,
+    email: string,
+    id?: string,
+    address: string
+}
 export type FormFieldProps = {
     type: string;
     placeholder: string;

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 function index() {
 
     return (
-        <main className='font-[family-name:var(--font-inter)]'>
+        <main className='font-[family-name:var(--font-inter)]  overflow-y-hidden'>
 
             <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
             <section className='flex flex-col pt-32 pb-8 lg:pb-18 custom-gradient'>

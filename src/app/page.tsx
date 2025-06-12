@@ -27,7 +27,7 @@ export default function Home() {
     <React.Fragment>
       <AOSInitializer />
       <main>
-        <section className="slideshow relative flex flex-col h-screen md:h-[70vh] xl:h-[95vh] justify-center overflow-hidden">
+        <section className="slideshow relative flex flex-col h-screen md:h-[70vh] xl:h-[95vh] justify-center overflow-x-hidden">
           {/* Background Video */}
           <video
             className="absolute inset-0 w-full h-full object-cover z-[-1]"
@@ -160,7 +160,7 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-x-10 gap-y-10 lg:gap-y-28 md:gap-y-16 xl:gap-y-0">
               {
                 blogs.length > 1 ? blogs.map(b =>
-                  <Article key={b.title} title={b.title} category={b.category} cover={b.cover} url='/blog' />
+                  <Article key={b.title} title={b.title} category={b.category} cover={b.cover} url='/blog/default' />
                 ) : <p className='text-grey-700 '>No article currently available</p>
               }
             </div>

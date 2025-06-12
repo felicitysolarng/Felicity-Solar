@@ -5,10 +5,32 @@ import { company_nav_links } from "@/lib/data";
 import { products_nav_links } from "@/lib/data";
 
 
-//
+export type IFooterData = {
+    "id": number,
+    "phone": string,
+    "email": string,
+    "address": string,
+    "created_at": string,
+    "updated_at": string
+}
 
-function Footer() {
+async function Footer() {
     const currentYear = new Date().getFullYear();
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/contact-details`, {
+        cache: 'no-store'// Revalidate every hour
+    });
+    const response: {
+        data: IFooterData,
+        message: string,
+        status: number
+    } = await res.json();
+    if (!response || !response.data) {
+        return <p>An error occured.</p>;
+    }
+    const details = response.data;
+
+ 
     return (
         <footer className="bg-black py-20">
             <div className="grid gap-y-12 mx-auto w-[90%] 2xl:w-[75%] gap-x-8 grid-cols-4 md:grid-cols-3 xl:grid-cols-4">
@@ -46,13 +68,13 @@ function Footer() {
                 </div>
                 <div className="flex flex-col gap-y-4 col-start-1 col-end-5 md:col-start-3 md:col-end-4 xl:col-start-4 xl:col-end-5">
                     <p className="font-semibold text-sm text-white">
-                        <span>Tel:</span> <Link href={"tel:+2347032054367"}>+234 801 234 5678</Link>
+                        <span>Tel:</span> <Link href={details.phone}>{details.phone}</Link>
                     </p>
                     <p className="font-semibold text-sm text-white">
-                        <span>Email:</span> <Link href={"mailto:info@felicitysolar.ng"}>info@felicitysolar.ng</Link>
+                        <span>Email:</span> <Link href={`mailto:${details.email}`}>{details.email}</Link>
                     </p>
                     <p className="font-semibold text-sm text-white">
-                        7 Nworisa Okechukwu Ernest, Adamawa Estate, Amuwo Odofin Lagos
+                        {details.address}
                         {/* Estate 2, Omotayo Omotosho Street, Durbar Road, Amuwo Odofin Estate, Lagos State Nigeria */}
                     </p>
                 </div>

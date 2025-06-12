@@ -14,7 +14,7 @@ function    Article({ cover, title, category, url }: Props) {
     return (
         <article className='flex group flex-col  h-auto xl:min-h-[361px]'>
             <div className="flex h-[230px] xl:max-h-[184px]">
-                <Image src={cover} width={326} height={184} alt={title} className='object-cover object-bottom w-full h-auto' />
+                <Image src={cover} width={326} height={184} alt={title} className='object-cover object-center  w-full h-auto' />
             </div>
 
             <div className="flex flex-col border-x border-b rounded-b-lg p-4 border-grey-200 group-hover:bg-grey-950 py-10 grow">

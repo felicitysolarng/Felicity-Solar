@@ -1,7 +1,7 @@
 'use client';
 
 
-type IState = {
+export type IState = {
     state_name: string,
     state_logo: string,
     id: string
@@ -20,7 +20,7 @@ export default function InstallersFilter({ defaultValue }: { defaultValue: strin
     const searchParams = useSearchParams();
 
     const fetchStates = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/states`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/states-with-installers`);
         if (!res.ok) {
             throw new Error('Failed to fetch states');
         }

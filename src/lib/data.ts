@@ -435,17 +435,17 @@ const cities = [
     {
         name: "Lagos",
         logo: "/assets/images/lagos_logo.png",
-        path: "/project-showcase/lagos"
+        path: "/project-showcase/state/24"
     },
     {
         name: "Abuja",
         logo: "/assets/images/abuja_logo.png",
-        path: "/project-showcase/abuja"
+        path: "/project-showcase/state/37"
     },
     {
         name: "Kano",
         logo: "/assets/images/kano_logo.png",
-        path: "/project-showcase/kano"
+        path: "/project-showcase/state/19"
     },
 ]
 

@@ -1,9 +1,27 @@
 import { z } from "zod";
 
+const AddBlogSchema = z.object({
+    title: z.string().min(1, 'Product name is required'),
+    category: z.string().min(1, 'Category is required'),
+    //content: z.string().min(1, 'content is required'),
+    thumbnail: z.string().min(1, ' required')
+});
+const AddProjectSchema = z.object({
+    title: z.string().min(1, 'Product name is required'),
+    state: z.string().min(1, 'state is required'),
+    //content: z.string().min(1, 'content is required'),
+    thumbnail: z.string().min(1, ' required')
+});
+const ContactDetailsSchema = z.object({
+    email: z.string().min(1, 'Email is required'),
+    address: z.string().min(1, 'Address is required'),
+    //content: z.string().min(1, 'content is required'),
+    phone: z.string().min(1, ' required')
+});
 const AddProductSchema = z.object({
     name: z.string().min(1, 'Product name is required'),
     category: z.string().min(1, 'Category is required'),
-   // description: z.string().min(1, 'description is required'),
+    // description: z.string().min(1, 'description is required'),
     price: z.string().min(1, 'Price is required'),
     discount: z.string().min(1, 'Discount is required'),
     thumbnail1: z.string().min(1, ' required'),
@@ -16,7 +34,7 @@ const AddProductSchema = z.object({
 const EditProductSchema = z.object({
     name: z.string().min(1, 'Product name is required'),
     category: z.string().min(1, 'Category is required'),
-   description: z.string().min(1, 'description is required'),
+    description: z.string().min(1, 'description is required'),
     price: z.string().min(1, 'Price is required'),
     discount: z.string().min(1, 'Discount is required'),
     thumbnail1: z.string().min(1, ' required'),
@@ -50,4 +68,4 @@ const SendQuoteSchema = z.object({
     budget_range: z.string().min(5, 'Must be more than 5 characters'),
     notes: z.string().optional()
 })
-export { AddProductSchema, SendQuoteSchema, OrderProductSchema,EditProductSchema, AddQuerySchema }
+export { AddProductSchema, ContactDetailsSchema, AddBlogSchema, SendQuoteSchema, OrderProductSchema,AddProjectSchema, EditProductSchema, AddQuerySchema }

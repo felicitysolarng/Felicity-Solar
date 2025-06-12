@@ -1,3 +1,4 @@
+import { IFooterData } from '@/components/layouts/footer'
 import Navbar from '@/components/layouts/navbar/Navbar'
 import ContactForm from '@/components/sections/contact-us/contact-us'
 
@@ -14,9 +15,21 @@ export const metadata: Metadata = {
   description: 'We have the best Solar products in town. Hybrid inverter, MPPT controller, Solar lithium battery, Gel battery, Solar all in one street light',
 }
 
-function page() {
-  
+async function page() {
 
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/contact-details`, {
+    cache: 'no-store'// Revalidate every hour
+  });
+  const response: {
+    data: IFooterData,
+    message: string,
+    status: number
+  } = await res.json();
+  if (!response || !response.data) {
+    return <p>An error occured.</p>;
+  }
+  const details = response.data;
+  
   return (
     <div className="flex flex-col font-[family-name:var(--font-inter)]">
       <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white w-full text-grey-800 border-b border-grey-100 ' variant='primary' />
@@ -41,7 +54,7 @@ function page() {
             <div className="flex justify-start gap-x-2">
               <Mail size={35} color='#ed6f20a0' />
               <div className="flex flex-col">
-                <h3 className='font-medium md:font-semibold  text-base text-grey-700 '>info@felicitysolar.ng</h3>
+                <h3 className='font-medium md:font-semibold  text-base text-grey-700 '>{details.email}</h3>
                 <p className='text-sm italic leading-6 text-primary font-medium'>
                   Send an Email
                 </p>
@@ -51,7 +64,7 @@ function page() {
               <PhoneOutgoing size={30} color='#ed6f20a0' />
 
               <div className="flex flex-col">
-                <h3 className='font-medium md:font-semibold text-base text-grey-700 '>+234 817 147 9561</h3>
+                <h3 className='font-medium md:font-semibold text-base text-grey-700 '>{details.phone}</h3>
                 <p className='text-sm italic leading-6 text-primary font-medium'>
                   Make a Call
                 </p>
@@ -62,7 +75,7 @@ function page() {
               <MapPinHouse size={50} color='#ed6f20a0' />
 
               <div className="flex flex-col">
-                <h3 className='font-medium md:font-semibold text-base text-grey-700 '>Estate 2, Omotayo Omotosho Street, Durbar Road, Amuwo Odofin Estate, Lagos State Nigeria</h3>
+                <h3 className='font-medium md:font-semibold text-base text-grey-700 '>{details.address}</h3>
                 <p className='text-sm italic leading-6 text-primary font-medium'>
                   Office Address
                 </p>

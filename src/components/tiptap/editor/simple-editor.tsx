@@ -79,7 +79,8 @@ import { cn } from "@/lib/constants"
 type IProps = {
   content: string | undefined,
   handleChange: (content: string) => void,
-  styles?: string
+  styles?: string,
+  editorStyles?: string
 }
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -182,7 +183,7 @@ const MobileToolbarContent = ({
   </>
 )
 
-export function SimpleEditor({ content, handleChange, styles }: IProps) {
+export function SimpleEditor({ content, editorStyles, handleChange, styles }: IProps) {
   const isMobile = useMobile()
   const windowSize = useWindowSize()
   const [mobileView, setMobileView] = React.useState<
@@ -278,7 +279,7 @@ export function SimpleEditor({ content, handleChange, styles }: IProps) {
           editor={editor}
           content={content}
           role="presentation"
-          className="simple-editor-content "
+          className={cn('simple-editor-content', editorStyles)}
         />
       </div>
     </EditorContext.Provider>

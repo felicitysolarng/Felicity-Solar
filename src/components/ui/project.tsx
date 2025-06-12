@@ -1,19 +1,20 @@
 
+import { IProjects } from '@/app/(main)/project-showcase/state/[stateId]/page'
 import Link from 'next/link'
 import React from 'react'
 
 type IProps = {
-    state: string
-    id: string
+    data: IProjects
 }
 
-function Project({ state, id }: IProps) {
+function Project({ data }: IProps) {
     return (
 
-        <Link href={`/project-showcase/${state}/${id}`} className="relative flex-shrink-0 overflow-hidden bg-orange-500 rounded-lg  shadow-lg group" >
+        <Link href={`/project-showcase/${data.id}`} className="relative flex-shrink-0 overflow-hidden bg-orange-500 rounded-lg  shadow-lg group" >
 
             {/* Main image section */}
-            <div className=" pt-10 px-10 flex items-center min-h-72 justify-center group-hover:scale-110 transition-transform duration-300 bg-[url('/assets/images/solar_panel_project.jpg')] bg-center bg-no-repeat bg-cover" >
+            <div className=" pt-10 px-10 flex items-center min-h-72 justify-center group-hover:scale-110 transition-transform duration-300  bg-center bg-no-repeat bg-cover"
+                style={{ backgroundImage: `url(${data.thumbnail})` }} >
                 <div
                     className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
                     style={{
@@ -30,9 +31,9 @@ function Project({ state, id }: IProps) {
             {/* Text Content */}
             < div className="gap-y-3 text-white px-6 pb-6 mt-6 flex flex-col z-10 absolute bottom-0" >
                 <span className="block opacity-75 bg-primary px-1 text-sm font-medium -mb-1 text-white rounded-xs w-fit">
-                    Solar panel
+                    {data.state_name}
                 </span>
-                <span className="block font-semibold text-xl">50K System Installed at Felicity Solar`&apos;s New Plant</span>
+                <span className="block font-semibold text-xl">{data.title}</span>
             </div >
 
         </Link >

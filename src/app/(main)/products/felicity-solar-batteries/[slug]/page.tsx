@@ -2,7 +2,7 @@
 import Navbar from '@/components/layouts/navbar/Navbar'
 import ProductImageGallery from '@/components/layouts/product_image_gallery'
 import RatingStar from '@/components/layouts/rating-star'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, DownloadCloudIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { getActualPrice } from '@/lib/constants'
@@ -109,12 +109,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                 <RatingStar />
                                 <span className="ml-2 text-gray-600">4.5 (120 reviews)</span>
                             </div>
-                            <p className="text-gray-700 mb-6">Experience premium sound quality and industry-leading noise cancellation
+                            {/* 
+                              <p className="text-gray-700 mb-6">Experience premium sound quality and industry-leading noise cancellation
                                 with
                                 these wireless headphones. Perfect for music lovers and frequent travelers.</p>
 
 
-                            {/* 
+                          
                             <div className="mb-6">
                                 <h3 className="text-lg font-semibold mb-2">Color:</h3>
                                 <div className="flex space-x-2">
@@ -135,17 +136,16 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                     className="w-12 text-center rounded-md border-gray-300  shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
                             </div> 
                             */}
-
+                            {product?.manual &&
+                                <Link href={product?.manual} className='flex items-center justify-center border rounded-full border-primary px-4 font-inter font-medium text-primary hover:bg-primary hover:text-white transition-all hover:cursor-pointer h-11 w-[190px]'>
+                                    <DownloadCloudIcon className='mr-2' /> Product Manual
+                                </Link>
+                            }
                             <div className="flex space-x-4 mb-6 mt-10 flex-col gap-y-6">
                                 <ProcessOrder productName={product?.product_name ?? ""} />
                                 <div className="w-full">
                                     <h3 className="text-lg font-semibold mb-2">Key Features:</h3>
-                                    <ul className="list-disc list-inside text-gray-700">
-                                        <li>Industry-leading noise cancellation</li>
-                                        <li>30-hour battery life</li>
-                                        <li>Touch sensor controls</li>
-                                        <li>Speak-to-chat technology</li>
-                                    </ul>
+                                    <div className='flex flex-col gap-y-4' dangerouslySetInnerHTML={{ __html: product?.key_features }} />
                                 </div>
                                 {/*   <button
                                     className="bg-gray-200 flex gap-2 items-center  text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
@@ -165,7 +165,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
                         <div className="flex produt_description mt-10 flex-col">
                             <h3 className="text-lg font-semibold mb-2">Description:</h3>
-                            <p className='text-gray-700'>{product?.description}</p>
+                            <div className='flex flex-col gap-y-4' dangerouslySetInnerHTML={{ __html: product?.description }} />
                         </div>
 
                     </div>

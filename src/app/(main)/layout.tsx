@@ -7,7 +7,7 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="h-full overflow-y-scroll">
       {children}
       <Footer />
     </div>

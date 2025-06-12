@@ -142,14 +142,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                 <ProcessOrder productName={product?.product_name ?? ""} />
                                 <div className="w-full">
                                     <h3 className="text-lg font-semibold mb-2">Key Features:</h3>
-                                    <div className='flex flex-col gap-y-4' dangerouslySetInnerHTML={{ __html: product?.key_features }} />
+                                    <div className='keyFeatures-container flex flex-col gap-y-4' dangerouslySetInnerHTML={{ __html: product?.key_features }} />
                                 </div>
 
 
                                 {product?.manual &&
                                     <Link href={product?.manual} className='flex items-center justify-center border rounded-full border-primary px-4 font-inter font-medium text-primary hover:bg-primary hover:text-white transition-all hover:cursor-pointer h-11 w-[190px]'>
                                         <DownloadCloudIcon className='mr-2' /> Product Manual
-                                    </Link>}
+                                    </Link>
+                                }
                                 {/*   <button
                                     className="bg-gray-200 flex gap-2 items-center  text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

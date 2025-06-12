@@ -20,7 +20,7 @@ export default function AdminLayout({
 
   return (
     <body className={`${inter.className} ${inter.variable} antialiased h-[99vh] overflow-hidden`}>
-      <div className="flex  bg-[#F9FAFB] ">
+      <div className="flex h-screen overflow-hidden bg-[#F9FAFB] ">
         <aside className="basis-1/5 bg-black text-white py-8">
           <AdminNavbar />
         </aside>
