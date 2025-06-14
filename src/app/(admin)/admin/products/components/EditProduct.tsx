@@ -47,15 +47,23 @@ const editProduct = async (variables: ICreateProduct) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(variables),
+        credentials: 'include',
     });
 
     if (!res.ok) {
-        throw new Error('Failed to edit product');
+        const errorBody = await res.json();
+
+        const error = new Error(errorBody.error || 'An error occurred');
+        // Attach custom structured properties
+        (error as any).status = res.status;
+        (error as any).data = errorBody;
+        throw error;
     }
 
     const response = await res.json();
     return response;
-}
+};
+
 
 type FormSchema = z.infer<typeof AddProductSchema>;
 
@@ -166,12 +174,18 @@ function EditProduct({ id }: IProps) {
         }
         mutation.mutate(payload, {
             onSuccess(data) {
-                toast.success(data.message)
-                //console.log({ msg: "Product created successfully:", data, variables, context });
+        
+                toast.success(data.message);
                 reset();
                 router.back();
                 // Optionally, you can reset the form or redirect the user
 
+            },
+            onError(error: any) {
+                if (error.status === 403) {
+                    toast.error("Unauthorized Access, Kindly Login");
+                    router.push("/auth/login")
+                }
             },
         });
     }

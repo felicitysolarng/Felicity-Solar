@@ -55,10 +55,11 @@ export type ICreateArticle = {
 }
 export type ICreateProjectShowcase = {
     title?: string;
-    state: string;
+    state?: string;
     content?: string;
     thumbnail: string;
-    id?: string
+    id?: string,
+    projectState?: string
 }
 
 

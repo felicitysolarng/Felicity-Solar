@@ -49,7 +49,7 @@ function Articles() {
         return <div className='flex h-screen font-semibold text-red-700'>Error loading articles...</div>
     }
     if (!data || !data.data || data.data.length === 0) {
-        return <div className='flex justify-center items-center h-screen'>No Article found</div>
+        return <div className='flex  items-center font-bold text-red-700 text-3xl'>No Article found</div>
     }
 
 

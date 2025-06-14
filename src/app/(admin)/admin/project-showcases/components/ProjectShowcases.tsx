@@ -4,24 +4,16 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { capitalizeFirstLetterOfEachWord } from '@/lib/constants';
 import { SquarePen } from 'lucide-react';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import Link from 'next/link';
 import Pagination from '@/components/ui/pagination';
 import DeleteArticle from './DeleteShowcase';
 import { IPagination } from '../../blogs/components/Articles';
+import { IProjects } from '@/app/(main)/project-showcase/state/[stateId]/page';
 
-
-type IProject = {
-    "id": number,
-    "title": string,
-    "thumbnail": string,
-    "state": string,
-    "content": string,
-    "created_at": string
-}
 
 type IResponse = {
-    data: IProject[],
+    data: IProjects[],
     message: string,
     status: number,
     pagination: IPagination
@@ -78,7 +70,7 @@ function ProjectShowcases() {
     if (!data || !data.data || data.data.length === 0) {
         return <div className='flex justify-center items-center h-screen'>No Project found</div>
     }
-    const articles: IProject[] = data.data;
+    const articles: IProjects[] = data.data;
     const pagination: IPagination = data.pagination;
 
     return (
@@ -104,8 +96,8 @@ function ProjectShowcases() {
                     {articles.map(p => {
                         return <tr key={p.id}>
                             <td className="font-inter p-5 text-sm lg:text-base leading-6 font-medium text-gray-900 break-words"> {p.title}</td>
-                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900 ">{format(new Date(p.created_at), "do MMM, yyyy h:mmaaa")}</td>
-                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900"> {capitalizeFirstLetterOfEachWord(p.state)} </td>
+                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900 ">{isValid(new Date(p?.created_at ?? "")) && format(new Date(p.created_at ?? ""), "do MMM, yyyy h:mmaaa")}</td>
+                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900"> {capitalizeFirstLetterOfEachWord(p.state_name)} </td>
 
                             <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900 ">
                                 <div className="flex gap-x-6 items-center">

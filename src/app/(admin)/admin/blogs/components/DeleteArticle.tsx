@@ -1,6 +1,6 @@
 "use client";
 import { Description, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Trash2 } from 'lucide-react';
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
@@ -16,6 +16,7 @@ async function deleteArticle(id: string | number) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ id }),
+        credentials: 'include',
     });
 
     return await response.json();
@@ -23,17 +24,19 @@ async function deleteArticle(id: string | number) {
 
 function DeleteArticle({ id }: Props) {
     const [isOpen, setIsOpen] = useState(false);
+    const queryClient = useQueryClient();
 
     const mutation = useMutation({
         mutationFn: () => deleteArticle(id),
-        mutationKey: ['deletingProduct', id],
-        onSuccess(data, variables, context) {
-            console.log({ data, variables, context });
-            toast.error(data.message)
+        mutationKey: ['deletingArticle', id],
+        onSuccess(data) {
+            queryClient.invalidateQueries({ queryKey: ['articles'] });
+            toast.success(data.message)
             setIsOpen(false)
         },
         onError(error, variables, context) {
             console.error({ error, variables, context });
+            toast.error(error.message)
             setIsOpen(false)
         },
     })

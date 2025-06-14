@@ -16,7 +16,7 @@ import { IStateResponse } from '@/components/InstallerFilter';
 //import { FormFieldProps, AddProductFormData } from '@/lib/types';
 //import FormField from '@/components/ui/FormField';
 
-const fetchStates = async () => {
+export const fetchStates = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/states`);
     const response: IStateResponse = await res.json();
     return response
@@ -30,6 +30,7 @@ const createShowcase = async (variables: ICreateProjectShowcase) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(variables),
+        credentials: 'include',
     });
 
     if (!res.ok) {

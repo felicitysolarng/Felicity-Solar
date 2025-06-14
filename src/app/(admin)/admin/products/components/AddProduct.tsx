@@ -36,10 +36,17 @@ const createProduct = async (variables: ICreateProduct) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(variables),
+        credentials: "include",
     });
 
     if (!res.ok) {
-        throw new Error('Failed to create product');
+        const errorBody = await res.json();
+
+        const error = new Error(errorBody.error || 'An error occurred');
+        // Attach custom structured properties
+        (error as any).status = res.status;
+        (error as any).data = errorBody;
+        throw error;
     }
 
     const response = await res.json();
@@ -145,12 +152,21 @@ function AddProduct() {
         }
         mutation.mutate(payload, {
             onSuccess(data) {
-                /* console.log({ msg: "Product created successfully:", data, variables, context }); */
+
+
                 toast.success(data.message);
                 setDescription("");
                 setKeyFeatures("");
                 reset();
+                router.push("/admin/products")
                 // Optionally, you can reset the form or redirect the user
+
+            },
+            onError: (error: any) => {
+                toast.error(error.message)
+                if (error.status === 403) {
+                    router.push("/auth/login")
+                }
 
             },
         });
@@ -331,7 +347,7 @@ function AddProduct() {
                                     className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('category')}
                                 >
-                                    <option value={"null"} >Select category</option>
+                                    <option value={""} >Select category</option>
                                     {
                                         categories && categories?.length > 0 && categories.map(c => {
                                             return <option className='text-sm font-inter' key={c?.id} value={c?.id}>{c?.category_name}</option>

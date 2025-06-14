@@ -1,6 +1,6 @@
 "use client";
 import { Description, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Trash2 } from 'lucide-react';
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
@@ -16,6 +16,7 @@ async function deleteShowcase(id: string | number) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ id }),
+        credentials: 'include',
     });
 
     return await response.json();
@@ -23,17 +24,21 @@ async function deleteShowcase(id: string | number) {
 
 function DeleteShowcase({ id }: Props) {
     const [isOpen, setIsOpen] = useState(false);
+    const queryClient = useQueryClient();
 
     const mutation = useMutation({
         mutationFn: () => deleteShowcase(id),
         mutationKey: ['deletingShowcases', id],
-        onSuccess(data, variables, context) {
+        onSuccess(data) {
             //console.log({ data, variables, context });
-            toast.success(data.message)
+            toast.success(data.message);
+            queryClient.invalidateQueries({ queryKey: ['project-showcases'] });
+
             setIsOpen(false)
         },
         onError(error, variables, context) {
             console.error({ error, variables, context });
+            toast.error(error.message)
             setIsOpen(false)
         },
     })

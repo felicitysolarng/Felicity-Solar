@@ -1,8 +1,10 @@
 "use client";
 import { Description, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import { useMutation } from '@tanstack/react-query';
+import {  useMutation, useQueryClient } from '@tanstack/react-query';
 import { Trash2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
 
 type Props = {
     id: string
@@ -15,6 +17,7 @@ async function deleteProduct(id: string) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ id }),
+        credentials: "include"
     });
 
     return await response.json();
@@ -22,21 +25,30 @@ async function deleteProduct(id: string) {
 
 function DeleteProduct({ id }: Props) {
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+    const queryClient = useQueryClient();
 
     const mutation = useMutation({
         mutationFn: () => deleteProduct(id),
         mutationKey: ['deletingProduct', id],
-        onSuccess(data, variables, context) {
-            console.log({ data, variables, context });
+        onSuccess(data) {
+            //console.log({ data, variables, context });
+            if (data.status === 401) {
+                toast.error("Unauthorized Access, Kindly Login");
+                router.push("/auth/login");
+                return;
+            }
+            toast.success(data.message);
+            queryClient.invalidateQueries({ queryKey: ['products'] });
             setIsOpen(false)
         },
-        onError(error, variables, context) {
-            console.log({ error, variables, context });
-
+        onError(error) {
+            console.log({ error });
+            toast.error(error.message)
             setIsOpen(false)
         },
     })
- 
+
     return (
 
         <>

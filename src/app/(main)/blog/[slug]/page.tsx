@@ -1,12 +1,10 @@
 
 import { IBlog } from '@/app/(admin)/admin/blogs/components/Articles';
-import { fetchArticle } from '@/app/(admin)/admin/blogs/components/EditArticle';
 import Navbar from '@/components/layouts/navbar/Navbar';
 import { ChevronRight } from 'lucide-react';
-//import { Metadata } from "next";
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-//import { useRouter } from 'next/router'
 
 
 
@@ -25,6 +23,43 @@ interface ErrorResponse {
 }
 
 type BlogResponse = SuccessResponse | ErrorResponse;
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+    const id = (await params).slug;
+
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs/${id}`, {
+            next: { revalidate: 60 }, // Optional: revalidate every 60s
+        });
+
+        if (!res.ok) {
+            throw new Error("Failed to fetch article");
+        }
+
+        const data: {
+            data: IBlog;
+            message: string;
+            status: number;
+        } = await res.json();
+
+        const article = data.data;
+
+        return {
+            title: `${article.title} | Felicity Solar`,
+            description: article.content.slice(0, 160), // Shorten description for SEO
+            openGraph: {
+                images: [article.thumbnail],
+            },
+        };
+    } catch (error) {
+        console.log(error);
+
+        return {
+            title: "Article Not Found | Felicity Solar",
+            description: "We couldn't find this article..",
+        };
+    }
+}
 
 async function fetchBlogDetails(id: string): Promise<BlogResponse> {
     try {
@@ -89,8 +124,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                     <section className='w-full lg:w-4/5 pb-32 pt-14'>
                         <div className="flex w-full h-[300px] rounded-md">
                             <Image src={details.data.thumbnail} width={678} className='rounded-md' height={300} alt={""} />
+
                         </div>
-                        <div className='mt-10' dangerouslySetInnerHTML={{ __html: details.data.content }} /> 
+                        <div className="flex flex-col gap-y-2 mt-5 mb-18">
+                            <h3 className='uppercase text-primary font-bold text-xs xl:text-sm '>{details?.data?.category}</h3>
+                            <h2 className='text-2xl font-bold text-grey-800'>{details?.data?.title}</h2>
+                        </div>
+
+                        <div className='article-container flex flex-col gap-y-6' dangerouslySetInnerHTML={{ __html: details.data.content }} />
                     </section>
 
                 </main>

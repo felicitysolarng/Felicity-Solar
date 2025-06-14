@@ -41,6 +41,7 @@ const editArticle = async (variables: ICreateArticle) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(variables),
+        credentials: 'include',
     });
 
     if (!res.ok) {

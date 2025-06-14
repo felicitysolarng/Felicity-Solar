@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 //import { Delete, DeleteIcon, Trash, Trash2 } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query';
 import { capitalizeFirstLetterOfEachWord } from '@/lib/constants';
-import { SquarePen } from 'lucide-react';
+import { Plus, SquarePen } from 'lucide-react';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import Pagination from '@/components/ui/pagination';
@@ -47,7 +47,7 @@ function Articles() {
     const limit = 20;
 
 
-    const { data, isLoading, isError } = useQuery({
+    const { data, isLoading, isError, error } = useQuery({
         queryKey: ['articles'],
         queryFn: () => fetchArticles(currentPage, limit)
     })
@@ -80,7 +80,16 @@ function Articles() {
         return <div className='flex h-screen font-semibold text-red-700'>Error loading articles...</div>
     }
     if (!data || !data.data || data.data.length === 0) {
-        return <div className='flex justify-center items-center h-screen'>No Article found</div>
+        return <div className='flex justify-center items-center h-screen gap-y-5 flex-col'>
+            <h1 className='font-bold text-4xl'> No Article found</h1>
+            <div className='flex flex-col'>
+                <Link href={"/admin/blogs/create"} className='bg-primary h-10 text-white rounded-md text-sm font-medium flex items-center px-2'>
+                    <Plus size={16} className='mr-1' />
+                    Add Article
+                </Link>
+            </div>
+
+        </div>
     }
     const articles: IBlog[] = data.data;
     const pagination: IPagination = data.pagination;

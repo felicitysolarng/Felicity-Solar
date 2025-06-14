@@ -23,6 +23,7 @@ const createArticle = async (variables: ICreateArticle) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(variables),
+        credentials: 'include',
     });
 
     if (!res.ok) {
@@ -111,13 +112,15 @@ function AddArticle() {
             thumbnail: data.thumbnail
         }
         mutation.mutate(payload, {
-            onSuccess(data, variables, context) {
-                console.log({ msg: "Product created successfully:", data, variables, context });
+            onSuccess(data) {
+            
                 toast.success(data.message);
                 setContent("");
                 setFileName("");
                 reset();
+                
                 // Optionally, you can reset the form or redirect the user
+                router.push("/admin/blogs")
 
             },
         });

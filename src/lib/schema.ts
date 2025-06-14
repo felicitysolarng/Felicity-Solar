@@ -61,6 +61,11 @@ const OrderProductSchema = z.object({
     additionalMessage: z.string().optional()
 });
 
+const LoginSchema = z.object({
+    email: z.string().min(5, 'Email is required'),
+    password: z.string().min(5, 'Email is required'),
+})
+
 const SendQuoteSchema = z.object({
     fullnames: z.string().min(3, 'Fullnames is required'),
     email: z.string().min(5, 'Email is required'),
@@ -68,4 +73,4 @@ const SendQuoteSchema = z.object({
     budget_range: z.string().min(5, 'Must be more than 5 characters'),
     notes: z.string().optional()
 })
-export { AddProductSchema, ContactDetailsSchema, AddBlogSchema, SendQuoteSchema, OrderProductSchema,AddProjectSchema, EditProductSchema, AddQuerySchema }
+export { LoginSchema, AddProductSchema, ContactDetailsSchema, AddBlogSchema, SendQuoteSchema, OrderProductSchema, AddProjectSchema, EditProductSchema, AddQuerySchema }

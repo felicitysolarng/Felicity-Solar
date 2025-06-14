@@ -12,6 +12,8 @@ import { SimpleEditor } from '@/components/tiptap/editor/simple-editor';
 import { useRouter } from 'next/navigation';
 import { IPagination } from '../../blogs/components/Articles';
 import { AddProjectSchema } from '@/lib/schema';
+import { IProjects } from '@/app/(main)/project-showcase/state/[stateId]/page';
+import { fetchStates } from './AddShowcase';
 //import { cn } from '@/lib/constants';
 //import { FormFieldProps, AddProductFormData } from '@/lib/types';
 //import FormField from '@/components/ui/FormField';
@@ -20,20 +22,14 @@ type IProps = {
     id: string
 }
 
-type IProject = {
-    "id": number,
-    "title": string,
-    "thumbnail": string,
-    "content": string,
-    "state": string,
-    "updated_at": string,
-    "created_at": string
-}
+
 
 type IResponse = {
     status: number,
     message: string,
-    data: IProject,
+    data: {
+        data: IProjects
+    },
     pagination: IPagination
 }
 
@@ -44,6 +40,7 @@ const editProjectShowcase = async (variables: ICreateProjectShowcase) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(variables),
+        credentials: 'include',
     });
 
     if (!res.ok) {
@@ -53,6 +50,7 @@ const editProjectShowcase = async (variables: ICreateProjectShowcase) => {
     const response = await res.json();
     return response;
 }
+
 export const fetchProjectShowcase = async (id: string | number) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/project_showcases/${id}`);
     if (!res.ok) {
@@ -79,7 +77,7 @@ function EditProjectShowcase({ id }: IProps) {
         queryFn: () => fetchProjectShowcase(id)
     })
 
-    const projectShowcase: IProject | undefined = data?.data;
+    const projectShowcase: IProjects | undefined = data?.data.data;
 
     const {
         register,
@@ -97,14 +95,17 @@ function EditProjectShowcase({ id }: IProps) {
         }
     });
 
+    const { data: statesData, isLoading: statesLoading } = useQuery({
+        queryKey: ['states'],
+        queryFn: fetchStates,
+    })
+
 
     //console.log(uploading);
     useEffect(() => {
-     console.log(data);
-
         if (projectShowcase) {
             setValue("title", projectShowcase.title);
-            setValue("state", projectShowcase.state);
+            setValue("state", projectShowcase.state_name);
             setValue("thumbnail", projectShowcase.thumbnail);
             setContent(projectShowcase.content);
             //console.log(data);
@@ -156,7 +157,7 @@ function EditProjectShowcase({ id }: IProps) {
         const payload: ICreateProjectShowcase = {
             id,
             title: data.title,
-            state: data.state,
+            projectState: data.state,
             content: content,
             thumbnail: data.thumbnail
         }
@@ -176,7 +177,7 @@ function EditProjectShowcase({ id }: IProps) {
         });
     }
 
-    if (isLoading) {
+    if (isLoading || statesLoading) {
         return <div className='flex justify-center  h-screen'>
             <div className="w-full">
                 <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] w-full mb-4"></div>
@@ -200,12 +201,14 @@ function EditProjectShowcase({ id }: IProps) {
     }
 
     const bgImg = watch("thumbnail");
+    const states = statesData?.data;
+
+
 
     return (
         <div className="flex flex-col gap-y-6  h-[91vh] overflow-y-scroll">
             <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
             <div className="flex py-8 px-6 gap-x-6 ">
-
                 <div className="w-[80%] mx-auto py-6 px-5 flex flex-col gap-y-8 bg-white rounded-md">
                     <div className="flex flex-col gap-y-6">
 
@@ -270,16 +273,20 @@ function EditProjectShowcase({ id }: IProps) {
                                 />
                                 {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
                             </div>
-
                             <div>
                                 <label className="block text-sm font-medium mb-1">Project State</label>
-
-                                <input
-                                    type="text"
-                                    placeholder="Enter Project state"
+                                <select
+                                    defaultValue={""}
                                     className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('state')}
-                                />
+                                >
+                                    <option value={""} className='text-sm font-inter' >Select state</option>
+                                    {
+                                        states && states?.length > 0 && states.map(c => {
+                                            return <option className='text-sm font-inter' key={c?.id} value={c?.id}>{c?.state_name}</option>
+                                        })
+                                    }
+                                </select>
                                 {errors.state && <p className="text-red-500 text-sm">{errors.state.message}</p>}
                             </div>
                         </div>
@@ -302,7 +309,6 @@ function EditProjectShowcase({ id }: IProps) {
                         </div>
                     </form>
                 </div>
-
             </div>
         </div >
     )
