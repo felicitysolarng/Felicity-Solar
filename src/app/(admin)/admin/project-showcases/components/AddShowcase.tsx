@@ -4,7 +4,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { AddBlogSchema, AddProjectSchema } from '@/lib/schema';
+import { AddProjectSchema } from '@/lib/schema';
 import { ChevronLeft, CloudUpload } from 'lucide-react';
 import axios from 'axios';
 import { ICreateProjectShowcase } from '@/lib/types';

@@ -47,7 +47,7 @@ function Articles() {
     const limit = 20;
 
 
-    const { data, isLoading, isError, error } = useQuery({
+    const { data, isLoading, isError} = useQuery({
         queryKey: ['articles'],
         queryFn: () => fetchArticles(currentPage, limit)
     })

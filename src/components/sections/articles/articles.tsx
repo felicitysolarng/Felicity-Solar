@@ -8,9 +8,6 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react'
 
 
-fetchArticle
-//
-
 function Articles() {
     const [currentPage, setCurrentPage] = useState(1)
     const limit = 20;

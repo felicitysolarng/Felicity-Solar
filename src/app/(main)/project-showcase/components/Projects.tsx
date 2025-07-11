@@ -26,9 +26,7 @@ const fetchProjects = async (payload: { page: string | number, limit: string | n
     }
 }
 
-type Props = {}
-
-function Projects({ }: Props) {
+function Projects() {
     const [currentPage, setCurrentPage] = useState(1);
     const limit = 20;
 

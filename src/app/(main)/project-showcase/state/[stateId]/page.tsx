@@ -4,7 +4,6 @@ import React from 'react'
 import type { Metadata } from 'next'
 import Project from '@/components/ui/project'
 import { capitalizeFirstLetter } from '@/lib/constants'
-import Pagination from '@/components/ui/pagination'
 //
 
 
@@ -21,7 +20,7 @@ export type IProjects = {
 }
 export type IError = {
   status: string,
-  error: String
+  error: string
 }
 
 type Props = {

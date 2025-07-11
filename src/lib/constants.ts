@@ -1,7 +1,5 @@
 import { twMerge } from 'tailwind-merge'
 import { type ClassValue, clsx } from "clsx";
-import axios from 'axios';
-import { MAX_FILE_SIZE } from './tiptap-utils';
 
 const DATA_PREFIX = "felicity::";
 
