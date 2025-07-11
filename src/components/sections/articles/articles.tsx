@@ -1,7 +1,6 @@
 "use client";
 
 import { fetchArticles, IBlog, IPagination } from '@/app/(admin)/admin/blogs/components/Articles';
-import { fetchArticle } from '@/app/(admin)/admin/blogs/components/EditArticle';
 import Article from '@/components/ui/article'
 import Pagination from '@/components/ui/pagination'
 import { useQuery } from '@tanstack/react-query';

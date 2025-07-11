@@ -61,7 +61,7 @@ function AddProduct() {
     const fileInputRef2 = useRef<HTMLInputElement | null>(null);
     const fileInputRef3 = useRef<HTMLInputElement | null>(null);
     const fileInputRef4 = useRef<HTMLInputElement | null>(null);
-    const [uploading, setUploading] = useState(false);
+  //    const [uploading, setUploading] = useState(false);
     const [description, setDescription] = useState("");
     const [keyFeatures, setKeyFeatures] = useState("");
     const router = useRouter();
@@ -114,7 +114,7 @@ function AddProduct() {
         formData.append("file", file);
         formData.append("upload_preset", "felicity-solar"); // Replace with yours
 
-        setUploading(true);
+      //setUploading(true);
 
         try {
             const res = await axios.post(
@@ -127,7 +127,7 @@ function AddProduct() {
         } catch (err) {
             console.error("Image upload failed:", err);
         } finally {
-            setUploading(false);
+          //setUploading(false);
         }
     };
 
