@@ -67,7 +67,7 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility"
 import { ThemeToggle } from "@/components/tiptap/editor/theme-toggle"
 
 // --- Lib ---
-import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils"
+import { handleImageUpload, MAX_FILE_SIZE, tiptapImageUpload } from "@/lib/tiptap-utils"
 
 // --- Styles ---
 import "@/components/tiptap/editor/simple-editor.scss"
@@ -190,7 +190,7 @@ export function SimpleEditor({ content, editorStyles, handleChange, styles }: IP
     "main" | "highlighter" | "link"
   >("main")
   //const [description, setDescription] = React.useState<string>("")
-  const toolbarRef = React.useRef<HTMLDivElement>(null)
+  const toolbarRef = React.useRef<HTMLDivElement>(null);
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -218,7 +218,7 @@ export function SimpleEditor({ content, editorStyles, handleChange, styles }: IP
         accept: "image/*",
         maxSize: MAX_FILE_SIZE,
         limit: 3,
-        upload: handleImageUpload,
+        upload: tiptapImageUpload,
         onError: (error) => console.error("Upload failed:", error),
       }),
       TrailingNode,

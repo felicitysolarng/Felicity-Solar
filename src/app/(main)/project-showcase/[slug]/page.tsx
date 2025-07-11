@@ -110,8 +110,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     }
 
     if (isSuccess(details)) {
-        console.log(details?.data.content);
-
+   
         const markup = { __html: details?.data?.content };
         return (
             <div className="flex flex-col">

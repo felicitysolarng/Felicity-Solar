@@ -66,7 +66,7 @@ function AddProduct() {
     const [keyFeatures, setKeyFeatures] = useState("");
     const router = useRouter();
 
-    console.log(uploading);
+    //console.log(uploading);
 
     const {
         register,

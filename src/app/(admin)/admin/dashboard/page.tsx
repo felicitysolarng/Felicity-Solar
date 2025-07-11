@@ -45,16 +45,23 @@ export const metadata: Metadata = {
 
 async function index() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/dashboard`, {
-        cache: 'no-store'// Revalidate every hour
+        cache: 'no-store',// Revalidate every hour,
+        credentials: "include"
     });
     const response: {
         data: IDashboard,
         message: string,
         status: number
     } = await res.json();
+
+
     if (!response || !response.data) {
         return <p>An error occured.</p>;
     }
+
+
+
+
     const dashboard = response.data;
 
     const analytics = dashboard.analytics;
@@ -62,6 +69,7 @@ async function index() {
     //const sales_by_category = dashboard.sales_by_category;
     const new_orders = dashboard.new_orders;
     const top_products = dashboard.top_products;
+
 
     return (
         <>
@@ -163,13 +171,13 @@ async function index() {
                         <div className="flex flex-col gap-y-8 h-[400px] px-4 w-full xl:w-[30%] bg-white rounded-md">
                             <h2 className='font-inter text-[#101828]  font-semibold text-lg pt-8'>Top selling products</h2>
                             {
-                                top_products.map(t => {
-                                    return <div className="flex gap-x-4 justify-between" key={t.product_name}>
+                                top_products.map((t, i) => {
+                                    return <div className="flex gap-x-4 justify-between" key={i}>
                                         <div className="flex flex-col gap-y-1">
                                             <h3 className='font-inter text-grey-700 font-semibold text-[0.8125rem] '>{t.product_name}</h3>
                                             <p className='font-inter text-grey-700 font-medium text-xs '><span className='text-primary'>No. items ordered:</span> {t.total_orders}</p>
                                         </div>
-                                      {/*   <p className='font-inter texxt-grey-900 font-semibold text-sm'>₦80,323.12</p> */}
+                                        {/*   <p className='font-inter texxt-grey-900 font-semibold text-sm'>₦80,323.12</p> */}
                                     </div>
                                 })
                             }

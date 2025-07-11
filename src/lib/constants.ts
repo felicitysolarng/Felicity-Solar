@@ -1,5 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { type ClassValue, clsx } from "clsx";
+import axios from 'axios';
+import { MAX_FILE_SIZE } from './tiptap-utils';
 
 const DATA_PREFIX = "felicity::";
 
@@ -42,7 +44,7 @@ export function capitalizeFirstLetter(word: string) {
     return word; // Return the original string if it's empty
   }
   const firstChar = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-  
+
   return firstChar
 }
 export function capitalizeFirstLetterOfEachWord(sentence: string) {

@@ -153,34 +153,35 @@ function EditContactDetails() {
                     <form onSubmit={handleSubmit(onSubmit)} className="py-6">
                         <div className="grid grid-cols-1 gap-4 mb-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Phone Details</label>
-
+                                <label id='phone' className="block text-sm font-medium mb-1 text-">Phone Details</label>
                                 <input
                                     type="text"
+                                    id='phone'
                                     placeholder="Enter Phone contacts"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary text-grey-900"
                                     {...register('phone')}
                                 />
                                 {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">Email Address</label>
-
+                                <label htmlFor='email' className="block text-sm font-medium mb-1 text-grey-900">Email Address</label>
                                 <input
                                     type="text"
+                                    id='email'
                                     placeholder="Enter email address"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary text-grey-900"
                                     {...register('email')}
                                 />
                                 {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                             </div>
                             <div>
-                                <label className="block text-sm font-medium mb-1">Email Address</label>
+                                <label htmlFor='address' className="block text-sm font-medium mb-1 text-grey-900"> Address</label>
                                 <textarea
                                     rows={4}
+                                    id='address'
                                     placeholder="Enter address"
-                                    className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring focus:border-none focus:ring-primary resize-none"
+                                    className="w-full text-grey-900 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring focus:border-none focus:ring-primary resize-none"
                                     {...register('address')}
                                 />
                                 {errors.address && <p className="text-red-500 text-sm">{errors.address.message}</p>}
