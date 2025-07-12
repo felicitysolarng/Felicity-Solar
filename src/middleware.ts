@@ -9,6 +9,9 @@ export function middleware(request: NextRequest) {
     const token = request.cookies.get('token')?.value;
 
     console.log(token);
+    console.log({pathname:pathname,token:token});
+    console.log(request);
+    
     
     if (protectedRoutes.some(route => pathname.startsWith(route)) && !token) {
         const loginUrl = new URL("/auth/login", request.url);
