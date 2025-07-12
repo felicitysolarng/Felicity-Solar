@@ -185,9 +185,9 @@ async function index() {
                     </div>
 
                     <div className="flex gap-x-6 flex-col">
-                        <div className="flex flex-col gap-y-8 h-[400px] w-full  bg-white rounded-md">
+                        <div className="flex flex-col gap-y-8 h-[500px] w-full  bg-white rounded-md">
                             <h2 className='font-inter text-[#101828] px-4 font-semibold text-lg pt-8'>New Orders</h2>
-                            <div className="relative overflow-hidden  shadow-md sm:rounded-lg pb-8">
+                            <div className="relative overflow-y-scroll appearance-none  shadow-md sm:rounded-lg pb-8">
                                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <thead className=" text-gray-700 uppercase bg-grey-100 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
