@@ -34,7 +34,10 @@ function Login() {
             credentials: 'include'
         });
 
+        if (res.status === 401) {
+            console.log(res);
 
+        }
         if (!res.ok) {
             throw new Error('Failed to Login');
         }
