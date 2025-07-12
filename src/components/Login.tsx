@@ -31,7 +31,7 @@ function Login() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(variables),
-            //credentials: 'include'
+            credentials: 'include'
         });
 
 
@@ -40,7 +40,7 @@ function Login() {
         }
         
         const response = await res.json();
-        console.log(response);
+
         return response;
     }
 
