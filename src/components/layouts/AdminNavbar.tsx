@@ -24,6 +24,11 @@ function AdminNavbar() {
             icon: <ShoppingBag size={16} />
         },
         {
+            href: "/admin/orders",
+            label: "Orders listing",
+            icon: <ShoppingBag size={16} />
+        },
+        {
             href: "/admin/blogs",
             label: "Blogs",
             icon: <NotebookPen size={16} />

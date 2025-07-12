@@ -207,7 +207,7 @@ function EditProjectShowcase({ id }: IProps) {
 
     return (
         <div className="flex flex-col gap-y-6  h-[91vh] overflow-y-scroll">
-            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
+            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-grey-800' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
             <div className="flex py-8 px-6 gap-x-6 ">
                 <div className="w-[80%] mx-auto py-6 px-5 flex flex-col gap-y-8 bg-white rounded-md">
                     <div className="flex flex-col gap-y-6">
@@ -232,7 +232,7 @@ function EditProjectShowcase({ id }: IProps) {
                                             </div>
                                             :
                                             <>
-                                                <CloudUpload size={30} />
+                                                <CloudUpload size={30} className='dark:text-grey-800'/>
                                                 <p className="text-sm text-black font-semibold">{filename.length > 0 ? filename : "Thumbnail"}</p>
                                             </>
 
@@ -240,7 +240,7 @@ function EditProjectShowcase({ id }: IProps) {
 
                                     </div>
                                     <div className="flex justify-center flex-col ">
-                                        <label className="block text-sm font-medium mb-3">Project Thumbnail</label>
+                                        <label className="block text-sm font-medium mb-3 dark:text-grey-800">Project Thumbnail</label>
                                         <input
                                             ref={fileInputRef}
                                             onChange={(e) => handleImageUpload(e, "thumbnail")}
@@ -263,27 +263,27 @@ function EditProjectShowcase({ id }: IProps) {
                     <form onSubmit={handleSubmit(onSubmit)} className="py-6">
                         <div className="grid grid-cols-1 gap-4 mb-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Project Title</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">Project Title</label>
 
                                 <input
                                     type="text"
                                     placeholder="Enter project title"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md dark:text-grey-800 h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('title')}
                                 />
                                 {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
                             </div>
                             <div>
-                                <label className="block text-sm font-medium mb-1">Project State</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">Project State</label>
                                 <select
                                     defaultValue={""}
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md dark:text-grey-800 h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('state')}
                                 >
-                                    <option value={""} className='text-sm font-inter' >Select state</option>
+                                    <option value={""} className='text-sm font-inter dark:text-grey-800' >Select state</option>
                                     {
                                         states && states?.length > 0 && states.map(c => {
-                                            return <option className='text-sm font-inter' key={c?.id} value={c?.id}>{c?.state_name}</option>
+                                            return <option className='text-sm font-inter dark:text-grey-800' key={c?.id} value={c?.id}>{c?.state_name}</option>
                                         })
                                     }
                                 </select>
@@ -292,9 +292,9 @@ function EditProjectShowcase({ id }: IProps) {
                         </div>
 
                         <div className="mb-4 h-max">
-                            <label className="block text-sm font-medium mb-1">Content</label>
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-800">Content</label>
 
-                            <SimpleEditor editorStyles={"xl:max-w-[900px]"} styles='min-h-[400px]' content={content} handleChange={handleDescription} />
+                            <SimpleEditor editorStyles={"xl:max-w-[900px] dark:text-grey-800"} styles='min-h-[400px]' content={content} handleChange={handleDescription} />
 
                         </div>
 

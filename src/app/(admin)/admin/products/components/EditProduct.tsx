@@ -242,7 +242,7 @@ function EditProduct({ id }: IProps) {
     return (
         <div className="flex flex-col h-[91vh] overflow-y-scroll">
 
-            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
+            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-grey-800' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
             <div className="flex py-8 px-6 gap-x-6 ">
 
                 <div className="w-[37%] px-4 py-6 bg-white rounded-md">
@@ -291,7 +291,7 @@ function EditProduct({ id }: IProps) {
                         <div className="flex flex-col gap-y-6">
                             <div className="flex">
                                 {watch("price") &&
-                                    <p className='text-base font-semibold'>Price: <span> &#x20A6;{formatPrice(Number(watch("price")))}</span>
+                                    <p className='text-base font-semibold dark:text-grey-900'>Price: <span> &#x20A6;{formatPrice(Number(watch("price")))}</span>
                                     </p>
                                 }
                             </div>
@@ -309,8 +309,8 @@ function EditProduct({ id }: IProps) {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef)}
                                 >
-                                    <CloudUpload size={30} />
-                                    <p className="text-sm text-black font-semibold">First Image</p>
+                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <p className="text-sm text-black font-semibold dark:text-grey-800">First Image</p>
 
                                     <input
                                         type="file"
@@ -326,7 +326,7 @@ function EditProduct({ id }: IProps) {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef2)}
                                 >
-                                    <CloudUpload size={30} />
+                                    <CloudUpload size={30} className='dark:text-grey-800'/>
                                     <p className="text-sm text-black font-semibold">Second Image</p>
 
                                     <input
@@ -343,7 +343,7 @@ function EditProduct({ id }: IProps) {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef3)}
                                 >
-                                    <CloudUpload size={30} />
+                                    <CloudUpload size={30} className='dark:text-grey-800'/>
                                     <p className="text-sm text-black font-semibold">Third Image</p>
 
                                     <input
@@ -360,7 +360,7 @@ function EditProduct({ id }: IProps) {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef4)}
                                 >
-                                    <CloudUpload size={30} />
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold">Fourth Image</p>
 
                                     <input
@@ -377,27 +377,27 @@ function EditProduct({ id }: IProps) {
                     <form onSubmit={handleSubmit(onSubmit)} className="py-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Product Name</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">Product Name</label>
 
                                 <input
                                     type="text"
                                     placeholder="Enter product name"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md dark:text-grey-800 h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('name')}
                                 />
                                 {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">Product Category</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">Product Category</label>
                                 <select
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md h-11 dark:text-grey-800 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('category')}
                                 >
-                                    <option value={"null"} >Select category</option>
+                                    <option value={"null"} className='dark:text-grey-900'>Select category</option>
                                     {
                                         categories && categories?.length > 0 && categories.map(c => {
-                                            return <option className='text-sm font-inter' key={c?.id} value={c?.id}>{c?.category_name}</option>
+                                            return <option className='text-sm font-inter dark:text-grey-800' key={c?.id} value={c?.id}>{c?.category_name}</option>
                                         })
                                     }
                                 </select>
@@ -406,18 +406,18 @@ function EditProduct({ id }: IProps) {
                         </div>
 
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Product Description</label>
-                            <SimpleEditor styles='max-h-[400px] min-h-[300px]' content={description} handleChange={handleDescription} />
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-800">Product Description</label>
+                            <SimpleEditor styles='max-h-[400px] min-h-[300px] dark:text-grey-800' content={description} handleChange={handleDescription} />
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Price</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">Price</label>
                                 <div className="flex items-center border rounded-md px-3 py-2">
-                                    <span className="mr-2 text-gray-500">₦</span>
+                                    <span className="mr-2 text-gray-500 dark:text-grey-800">₦</span>
                                     <input
                                         type="number"
-                                        className="w-full focus:outline-none text-sm"
+                                        className="w-full focus:outline-none text-sm dark:text-grey-800"
                                         {...register('price')}
                                     />
                                 </div>
@@ -425,25 +425,25 @@ function EditProduct({ id }: IProps) {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">Discount</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">Discount</label>
                                 <div className="flex items-center border rounded-md px-3 py-2">
                                     <input
                                         type="number"
-                                        className="w-full focus:outline-none text-sm"
+                                        className="w-full focus:outline-none text-sm dark:text-grey-800"
                                         {...register('discount')}
                                     />
-                                    <span className="ml-2 text-gray-500">%</span>
+                                    <span className="ml-2 text-gray-500 dark:text-grey-800">%</span>
                                 </div>
                                 {errors.discount && <p className="text-red-500 text-sm">{errors.discount.message}</p>}
                             </div>
 
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Key Features</label>
-                            <SimpleEditor styles='min-h-[250px]' content={keyFeatures} handleChange={handleKeyFeatures} />
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-800">Key Features</label>
+                            <SimpleEditor styles='min-h-[250px] dark:text-grey-800' content={keyFeatures} handleChange={handleKeyFeatures} />
                         </div>
                         <div className="flex justify-start gap-4">
-                            <button type="submit" className="bg-orange-600 hover:bg-orange-700 text-white text-sm px-6 py-2 rounded-md">
+                            <button type="submit" className="bg-orange-600 dark:text-white hover:bg-orange-700 text-white text-sm px-6 py-2 rounded-md">
                                 {mutation.isPending ? "submiting" : "Done"}
                             </button>
                         </div>

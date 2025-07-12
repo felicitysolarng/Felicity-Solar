@@ -39,11 +39,11 @@ const Pagination: React.FC<PaginationProps> = ({
     >
       <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
         Showing page{" "}
-        <span className="font-semibold text-gray-900 dark:text-white">
+        <span className="font-semibold text-gray-900 dark:text-grey-800">
           {currentPage}
         </span>{" "}
         of{" "}
-        <span className="font-semibold text-gray-900 dark:text-white">
+        <span className="font-semibold text-gray-900 dark:text-grey-800">
           {totalPages} {" "}
         </span>
       </span>

@@ -34,7 +34,8 @@ const createShowcase = async (variables: ICreateProjectShowcase) => {
     });
 
     if (!res.ok) {
-        throw new Error('Failed to create ');
+        const err = await res.json();
+        throw new Error(err.error || 'An error occurred while creating the showcase');
     }
 
     const response = await res.json();
@@ -121,25 +122,28 @@ function AddShowcase() {
 
         const payload: ICreateProjectShowcase = {
             title: data.title,
-            state: data.state,
+            projectState: data.state,
             content: content,
             thumbnail: data.thumbnail
         }
         mutation.mutate(payload, {
-            onSuccess(data, variables, context) {
-                console.log({ msg: "Project created successfully:", data, variables, context });
+            onSuccess(data) {
+                if (data.status !== 201) {
+                    toast.error(data.message);
+                    return;
+                }
                 toast.success(data.message);
                 setContent("");
                 setFileName("");
                 reset();
                 // Optionally, you can reset the form or redirect the user
-
+                router.push("/admin/project-showcases");
             },
         });
     }
 
     if (isLoading) {
-        return <div className='flex justify-center px-10 py-30  h-screen'>
+        return <div className='flex justify-center px-10 py-30 w-4/5 mx-auto  h-screen'>
             <div className="w-full">
                 <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] w-full mb-4"></div>
                 <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] w-full mb-2.5"></div>
@@ -164,7 +168,7 @@ function AddShowcase() {
 
     return (
         <div className="flex flex-col gap-y-6  h-[91vh] overflow-y-scroll">
-            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
+            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-grey-800' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
             <div className="flex py-8 px-6 gap-x-6 ">
 
                 <div className="w-[80%] mx-auto py-6 px-5 flex flex-col gap-y-8 bg-white rounded-md">
@@ -190,7 +194,7 @@ function AddShowcase() {
                                             </div>
                                             :
                                             <>
-                                                <CloudUpload size={30} />
+                                                <CloudUpload size={30} className='dark:text-grey-800' />
                                                 <p className="text-sm text-black font-semibold">{filename.length > 0 ? filename : "Thumbnail"}</p>
                                             </>
 
@@ -198,7 +202,7 @@ function AddShowcase() {
 
                                     </div>
                                     <div className="flex justify-center flex-col ">
-                                        <label className="block text-sm font-medium mb-3">Showcase Thumbnail</label>
+                                        <label className="block text-sm font-medium mb-3 dark:text-grey-800">Showcase Thumbnail</label>
                                         <input
                                             ref={fileInputRef}
                                             onChange={(e) => handleImageUpload(e, "thumbnail")}
@@ -221,12 +225,12 @@ function AddShowcase() {
                     <form onSubmit={handleSubmit(onSubmit)} className="py-6">
                         <div className="grid grid-cols-1 gap-4 mb-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Showcase Title</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">Showcase Title</label>
 
                                 <input
                                     type="text"
                                     placeholder="Enter Showcase title"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border dark:text-grey-800 rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('title')}
                                 />
                                 {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
@@ -234,15 +238,15 @@ function AddShowcase() {
 
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">State</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-800">State</label>
                                 <select
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md dark:text-grey-800 h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('state')}
                                 >
-                                    <option value={"null"} >Select state</option>
+                                    <option value={""} className='dark:text-grey-800'>Select state</option>
                                     {
                                         states && states?.length > 0 && states.map(c => {
-                                            return <option className='text-sm font-inter' key={c?.id} value={c?.id}>{c?.state_name}</option>
+                                            return <option className='text-sm font-inter dark:text-grey-800' key={c?.id} value={c?.id}>{c?.state_name}</option>
                                         })
                                     }
                                 </select>
@@ -251,9 +255,9 @@ function AddShowcase() {
                         </div>
 
                         <div className="mb-4 h-max">
-                            <label className="block text-sm font-medium mb-1">Content</label>
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-800">Content</label>
 
-                            <SimpleEditor editorStyles={"xl:max-w-[900px]"} styles='min-h-[400px]' content={content} handleChange={handleDescription} />
+                            <SimpleEditor editorStyles={"xl:max-w-[900px] dark:text-grey-800"} styles='min-h-[400px]' content={content} handleChange={handleDescription} />
 
                         </div>
 

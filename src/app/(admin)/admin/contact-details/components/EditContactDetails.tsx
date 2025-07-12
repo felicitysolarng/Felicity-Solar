@@ -142,7 +142,7 @@ function EditContactDetails() {
 
     return (
         <div className="flex flex-col gap-y-6 h-[91vh] overflow-y-scroll">
-            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
+            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-grey-800' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
             <div className="flex py-8 px-6 gap-x-6 ">
 
                 <div className="w-[80%] py-6 px-10 flex flex-col gap-y-8 bg-white rounded-md">
@@ -153,7 +153,7 @@ function EditContactDetails() {
                     <form onSubmit={handleSubmit(onSubmit)} className="py-6">
                         <div className="grid grid-cols-1 gap-4 mb-4">
                             <div>
-                                <label id='phone' className="block text-sm font-medium mb-1 text-">Phone Details</label>
+                                <label id='phone' className="block text-sm font-medium mb-1 text-grey-900">Phone Details</label>
                                 <input
                                     type="text"
                                     id='phone'
