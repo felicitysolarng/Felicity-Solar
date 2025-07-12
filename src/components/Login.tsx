@@ -77,6 +77,9 @@ function Login() {
                     toast.success(data.message);
                     router.push("/admin/dashboard")
                 }
+                console.log("Login response: " + data);
+
+                console.log(data);
                 reset();
             },
             onError(error) {
