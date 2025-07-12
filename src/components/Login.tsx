@@ -31,15 +31,16 @@ function Login() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(variables),
-            // credentials: 'include'
+            credentials: 'include'
         });
-        console.log(res);
+
 
         if (!res.ok) {
             throw new Error('Failed to Login');
         }
-
+        
         const response = await res.json();
+        console.log(response);
         return response;
     }
 
