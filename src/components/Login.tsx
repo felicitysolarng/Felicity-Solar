@@ -38,7 +38,7 @@ function Login() {
         if (!res.ok) {
             throw new Error('Failed to Login');
         }
-        
+
         const response = await res.json();
 
         return response;
@@ -72,6 +72,8 @@ function Login() {
         mutation.mutate(payload, {
             onSuccess(data) {
                 if (data.status === 200) {
+                    console.log(data);
+
                     toast.success(data.message);
                     router.push("/admin/dashboard")
                 }
