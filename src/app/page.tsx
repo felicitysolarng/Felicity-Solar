@@ -26,6 +26,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <AOSInitializer />
+  
       <main>
         <section className="slideshow relative flex flex-col h-screen md:h-[70vh] xl:h-[95vh] justify-center overflow-x-hidden">
           {/* Background Video */}

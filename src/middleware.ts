@@ -8,6 +8,8 @@ export function middleware(request: NextRequest) {
 
     const token = request.cookies.get('token')?.value;
 
+    console.log(token);
+    
     if (protectedRoutes.some(route => pathname.startsWith(route)) && !token) {
         const loginUrl = new URL("/auth/login", request.url);
         return NextResponse.redirect(loginUrl)

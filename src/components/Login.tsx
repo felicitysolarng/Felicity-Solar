@@ -34,12 +34,10 @@ function Login() {
             credentials: 'include'
         });
 
-        if (res.status === 401) {
-            console.log(res);
 
-        }
         if (!res.ok) {
-            throw new Error('Failed to Login');
+            const err = await res.json();
+            throw new Error(err.error || 'An error occurred during login');
         }
 
         const response = await res.json();
@@ -75,19 +73,16 @@ function Login() {
         mutation.mutate(payload, {
             onSuccess(data) {
                 if (data.status === 200) {
-                    console.log(data);
-
+                  
                     toast.success(data.message);
                     router.push("/admin/dashboard")
                 }
-                console.log("Login response: " + data);
-
-                console.log(data);
+               
                 reset();
             },
             onError(error) {
                 toast.error(error.message);
-                console.error(`An error occured => ${error.message}`);
+                console.log(`An error occured => ${error.message}`);
 
             },
         });
