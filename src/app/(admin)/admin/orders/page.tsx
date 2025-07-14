@@ -36,7 +36,7 @@ async function index() {
     }
 
     const new_orders = response.data;
-    console.log(response);
+   
 
     return (
         <div className='h-screen '>
