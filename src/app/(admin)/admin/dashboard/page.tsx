@@ -1,6 +1,7 @@
 import Barchart from '@/components/ui/Barchart'
 import { capitalizeFirstLetterOfEachWord } from '@/lib/constants'
 import { format } from 'date-fns'
+import { ChartNoAxesCombined } from 'lucide-react'
 import { Metadata } from 'next'
 import React from 'react'
 
@@ -69,6 +70,8 @@ async function index() {
     //const sales_by_category = dashboard.sales_by_category;
     const new_orders = dashboard.new_orders;
     const top_products = dashboard.top_products;
+
+
 
 
     return (
@@ -170,7 +173,8 @@ async function index() {
                         </div>
                         <div className="flex flex-col gap-y-8 h-[400px] px-4 w-full xl:w-[30%] bg-white rounded-md">
                             <h2 className='font-inter text-[#101828]  font-semibold text-lg pt-8'>Top selling products</h2>
-                            {
+                            {top_products.length > 0
+                                ?
                                 top_products.map((t, i) => {
                                     return <div className="flex gap-x-4 justify-between" key={i}>
                                         <div className="flex flex-col gap-y-1">
@@ -180,59 +184,71 @@ async function index() {
                                         {/*   <p className='font-inter texxt-grey-900 font-semibold text-sm'>₦80,323.12</p> */}
                                     </div>
                                 })
+                                : <div className="flex flex-col gap-y-5">
+                                    <ChartNoAxesCombined size={50} />
+                                    <h2 className='text-red-800 italic text-sm font-medium'>
+
+                                        No Top selling products yet
+                                    </h2>
+                                </div>
+
+
+
                             }
                         </div>
                     </div>
 
-                    <div className="flex gap-x-6 flex-col">
-                        <div className="flex flex-col gap-y-8 h-[500px] w-full  bg-white rounded-md">
-                            <h2 className='font-inter text-[#101828] px-4 font-semibold text-lg pt-8'>New Orders</h2>
-                            <div className="relative overflow-y-scroll appearance-none  shadow-md sm:rounded-lg pb-8">
-                                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <thead className=" text-gray-700 uppercase bg-grey-100 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th scope="col" className="p-4 text-sm">
-                                                {/*  <div className="flex items-center">
+
+                    {new_orders.length > 0 &&
+                        <div className="flex gap-x-6 flex-col">
+                            <div className="flex flex-col gap-y-8 h-[500px] w-full  bg-white rounded-md">
+                                <h2 className='font-inter text-[#101828] px-4 font-semibold text-lg pt-8'>New Orders</h2>
+                                <div className="relative overflow-y-scroll appearance-none  shadow-md sm:rounded-lg pb-8">
+                                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        <thead className=" text-gray-700 uppercase bg-grey-100 dark:bg-gray-700 dark:text-gray-400">
+                                            <tr>
+                                                <th scope="col" className="p-4 text-sm">
+                                                    {/*  <div className="flex items-center">
                                                             <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                                                 <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
                                                         </div> */}
-                                                Product Name
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 text-sm">
-                                                Qty
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 text-sm">
-                                                Date
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 text-sm">
-                                                Customer Name
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 text-sm">
-                                                Customer Phone No.
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 text-sm">
-                                                Customer Email
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {new_orders.map(p => {
-                                            return <tr key={p.id}>
-                                                <td className="font-inter p-5 text-sm  leading-6 font-medium text-gray-900 break-words"> {p.product_name}</td>
-                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900 ">{p.qty}</td>
-                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900 ">{format(new Date(p.created_at), "do MMM, yyyy h:mmaaa")}</td>
-                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900"> {capitalizeFirstLetterOfEachWord(p.fullnames)} </td>
-                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900">{p.phone}</td>
-                                                <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900">{p.email}</td>
-
+                                                    Product Name
+                                                </th>
+                                                <th scope="col" className="px-6 py-3 text-sm">
+                                                    Qty
+                                                </th>
+                                                <th scope="col" className="px-6 py-3 text-sm">
+                                                    Date
+                                                </th>
+                                                <th scope="col" className="px-6 py-3 text-sm">
+                                                    Customer Name
+                                                </th>
+                                                <th scope="col" className="px-6 py-3 text-sm">
+                                                    Customer Phone No.
+                                                </th>
+                                                <th scope="col" className="px-6 py-3 text-sm">
+                                                    Customer Email
+                                                </th>
                                             </tr>
-                                        })}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                        </thead>
+                                        <tbody>
+                                            {new_orders.map(p => {
+                                                return <tr key={p.id}>
+                                                    <td className="font-inter p-5 text-sm  leading-6 font-medium text-gray-900 break-words"> {p.product_name}</td>
+                                                    <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900 ">{p.qty}</td>
+                                                    <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900 ">{format(new Date(p.created_at), "do MMM, yyyy h:mmaaa")}</td>
+                                                    <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900"> {capitalizeFirstLetterOfEachWord(p.fullnames)} </td>
+                                                    <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900">{p.phone}</td>
+                                                    <td className="font-inter p-5 whitespace-nowrap text-sm  leading-6 font-medium text-gray-900">{p.email}</td>
 
-                    </div>
+                                                </tr>
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>}
                 </div>
             </div>
 
