@@ -26,7 +26,7 @@ export function removeItem(key: string): void {
     localStorage.removeItem(`${DATA_PREFIX}${key}`);
   }
 }
-export const getActualPrice = (price: string, discountRate: string) => {
+export const getActualPrice = (price: string | number, discountRate: string | number) => {
   const priceNumber = Number(price);
   const discountRateNumber = Number(discountRate);
   if (isNaN(priceNumber) || isNaN(discountRateNumber)) {

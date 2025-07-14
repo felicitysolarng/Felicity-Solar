@@ -243,7 +243,10 @@ function EditProduct({ id }: IProps) {
     return (
         <div className="flex flex-col h-[91vh] overflow-y-scroll">
 
-            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-grey-800' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
+            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-grey-800' onClick={() => router.back()}>
+                <ChevronLeft color='#344054' size={18} />
+                Back
+            </button>
             <div className="flex py-8 px-6 gap-x-6 ">
 
                 <div className="w-[37%] px-4 py-6 bg-white rounded-md">
