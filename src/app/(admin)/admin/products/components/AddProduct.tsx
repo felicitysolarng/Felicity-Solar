@@ -200,7 +200,7 @@ function AddProduct() {
 
     return (
         <div className="flex flex-col gap-y-6  h-[91vh] overflow-y-scroll">
-            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
+            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-grey-800' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
             <div className="flex py-8 px-6 gap-x-6 ">
 
 
@@ -262,7 +262,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef)}
                                 >
-                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold">First Image</p>
 
                                     <input
@@ -279,7 +279,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef2)}
                                 >
-                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold">Second Image</p>
 
                                     <input
@@ -296,7 +296,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef3)}
                                 >
-                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold">Third Image</p>
 
                                     <input
@@ -313,7 +313,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef4)}
                                 >
-                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold">Fourth Image</p>
 
                                     <input

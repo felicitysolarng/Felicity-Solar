@@ -113,12 +113,12 @@ function AddArticle() {
         }
         mutation.mutate(payload, {
             onSuccess(data) {
-            
+
                 toast.success(data.message);
                 setContent("");
                 setFileName("");
                 reset();
-                
+
                 // Optionally, you can reset the form or redirect the user
                 router.push("/admin/blogs")
 
@@ -128,12 +128,12 @@ function AddArticle() {
 
 
     const bgImg = watch("thumbnail");
-   
+
 
 
     return (
         <div className="flex flex-col gap-y-6  h-[91vh] overflow-y-scroll">
-            <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} /> Back</button>
+                <button className='font-inter font-semibold mt-4 px-6 flex text-sm items-center cursor-pointer dark:text-[#344054]' onClick={() => router.back()}> <ChevronLeft color='#344054' size={18} className='text-grey-900 dark:text-grey-900' /> Back</button>
             <div className="flex py-8 px-6 gap-x-6 ">
 
                 <div className="w-[80%] mx-auto py-6 px-5 flex flex-col gap-y-8 bg-white rounded-md">
@@ -146,7 +146,7 @@ function AddArticle() {
                                 <div className="flex gap-x-10">
                                     <div
                                         className="flex w-[30%] border border-grey-100 flex-col px-6 rounded-md gap-y-4 h-[150px] gap-x-6 items-center justify-center"
-                                        style={bgImg.length > 0 ? { backgroundImage: `url(${bgImg})`, backgroundSize: "cover", backgroundPosition: "center" } : { backgroundColor: "#FDF0E7" }} 
+                                        style={bgImg.length > 0 ? { backgroundImage: `url(${bgImg})`, backgroundSize: "cover", backgroundPosition: "center" } : { backgroundColor: "#FDF0E7" }}
                                     >
                                         {uploading
                                             ?
@@ -159,7 +159,7 @@ function AddArticle() {
                                             </div>
                                             :
                                             <>
-                                                <CloudUpload size={30} />
+                                                <CloudUpload size={30} className='dark:text-[#344054]'/>
                                                 <p className="text-sm text-black font-semibold">{filename.length > 0 ? filename : "Thumbnail"}</p>
                                             </>
 
@@ -167,7 +167,7 @@ function AddArticle() {
 
                                     </div>
                                     <div className="flex justify-center flex-col ">
-                                        <label className="block text-sm font-medium mb-3">Blog Thumbnail</label>
+                                        <label className="block text-sm font-medium mb-3 dark:text-[#344054]">Blog Thumbnail</label>
                                         <input
                                             ref={fileInputRef}
                                             onChange={(e) => handleImageUpload(e, "thumbnail")}
@@ -190,24 +190,24 @@ function AddArticle() {
                     <form onSubmit={handleSubmit(onSubmit)} className="py-6">
                         <div className="grid grid-cols-1 gap-4 mb-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Blog Title</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-[#344054]">Blog Title</label>
 
                                 <input
                                     type="text"
                                     placeholder="Enter blog title"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border dark:text-[#344054] rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('title')}
                                 />
                                 {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">Blog Category</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-[#344054]">Blog Category</label>
 
                                 <input
                                     type="text"
                                     placeholder="Enter blog category"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full dark:text-[#344054] border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('category')}
                                 />
                                 {errors.category && <p className="text-red-500 text-sm">{errors.category.message}</p>}
@@ -215,9 +215,9 @@ function AddArticle() {
                         </div>
 
                         <div className="mb-4 h-max">
-                            <label className="block text-sm font-medium mb-1">Content</label>
+                            <label className="block text-sm font-medium mb-1 dark:text-[#344054]">Content</label>
 
-                            <SimpleEditor editorStyles={"xl:max-w-[900px]"} styles='min-h-[400px]' content={content} handleChange={handleDescription} />
+                            <SimpleEditor editorStyles={"xl:max-w-[900px]"} styles='min-h-[400px] dark:text-[#344054]' content={content} handleChange={handleDescription} />
 
                         </div>
 

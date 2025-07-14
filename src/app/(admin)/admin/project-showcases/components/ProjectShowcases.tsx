@@ -68,7 +68,7 @@ function ProjectShowcases() {
         return <div className='flex h-screen font-semibold text-red-700'>Error loading Project Showcase...</div>
     }
     if (!data || !data.data || data.data.length === 0) {
-        return <div className='flex justify-center items-center h-screen'>No Project found</div>
+        return <div className='flex justify-center items-center h-screen dark:text-red-800 font-semibold'>No Project found</div>
     }
     const articles: IProjects[] = data.data;
     const pagination: IPagination = data.pagination;
