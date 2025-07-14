@@ -295,7 +295,7 @@ function EditProduct({ id }: IProps) {
                                     <p className='text-base font-semibold dark:text-grey-900'>Price: <span>
                                         {/* &#x20A6;{formatPrice(Number(watch("price")))} */}
 
-                                        &#8358;{Number(getActualPrice(watch("price"), watch("discount"))).toLocaleString()}
+                                        &#8358;{formatPrice(Number(getActualPrice(watch("price"), watch("discount"))))}
                                     </span>
                                     </p>
                                 }
