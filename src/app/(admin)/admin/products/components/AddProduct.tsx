@@ -330,27 +330,27 @@ function AddProduct() {
                     <form onSubmit={handleSubmit(onSubmit)} className="py-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Product Name</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-900">Product Name</label>
 
                                 <input
                                     type="text"
                                     placeholder="Enter product name"
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border rounded-md h-11 dark:text-grey-900 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('name')}
                                 />
                                 {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">Product Category</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-900">Product Category</label>
                                 <select
-                                    className="w-full border rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                    className="w-full border dark:text-grey-900 rounded-md h-11 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
                                     {...register('category')}
                                 >
-                                    <option value={""} >Select category</option>
+                                    <option value={""} className='dark:text-grey-900'>Select category</option>
                                     {
                                         categories && categories?.length > 0 && categories.map(c => {
-                                            return <option className='text-sm font-inter' key={c?.id} value={c?.id}>{c?.category_name}</option>
+                                            return <option className='text-sm font-inter dark:text-grey-900' key={c?.id} value={c?.id}>{c?.category_name}</option>
                                         })
                                     }
                                 </select>
@@ -359,7 +359,7 @@ function AddProduct() {
                         </div>
 
                         <div className="mb-4 h-max">
-                            <label className="block text-sm font-medium mb-1">Product Description</label>
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-900">Product Description</label>
                             {/*  <textarea
                             rows={4}
                             placeholder="Enter product description"
@@ -367,18 +367,18 @@ function AddProduct() {
                             {...register('description')}
                         />
                         {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>} */}
-                            <SimpleEditor styles='min-h-[400px]' content={description} handleChange={handleDescription} />
+                            <SimpleEditor styles='min-h-[400px] dark:text-grey-900' content={description} handleChange={handleDescription} />
                             {/* {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>} */}
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Price</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-900">Price</label>
                                 <div className="flex items-center border rounded-md px-3 py-2">
-                                    <span className="mr-2 text-gray-500">₦</span>
+                                    <span className="mr-2 text-gray-500 dark:text-grey-900">₦</span>
                                     <input
                                         type="number"
-                                        className="w-full focus:outline-none text-sm"
+                                        className="w-full focus:outline-none text-sm dark:text-grey-900"
                                         {...register('price')}
                                     />
                                 </div>
@@ -386,11 +386,11 @@ function AddProduct() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">Discount</label>
+                                <label className="block text-sm font-medium mb-1 dark:text-grey-900">Discount</label>
                                 <div className="flex items-center border rounded-md px-3 py-2">
                                     <input
                                         type="number"
-                                        className="w-full focus:outline-none text-sm"
+                                        className="w-full focus:outline-none text-sm dark:text-grey-900"
                                         {...register('discount')}
                                     />
                                     <span className="ml-2 text-gray-500">%</span>
@@ -400,7 +400,7 @@ function AddProduct() {
 
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Key Features</label>
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-900">Key Features</label>
                             <SimpleEditor styles='min-h-[250px]' content={keyFeatures} handleChange={handleKeyFeatures} />
                             {/* {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>} */}
                             {/*  <textarea
