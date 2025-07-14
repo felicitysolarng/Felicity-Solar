@@ -11,6 +11,7 @@ import { ICreateProduct } from '@/lib/types';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { SimpleEditor } from '@/components/tiptap/editor/simple-editor';
+import { getActualPrice } from '@/lib/constants';
 //import { FormFieldProps, AddProductFormData } from '@/lib/types';
 //import FormField from '@/components/ui/FormField';
 
@@ -174,7 +175,7 @@ function EditProduct({ id }: IProps) {
         }
         mutation.mutate(payload, {
             onSuccess(data) {
-        
+
                 toast.success(data.message);
                 reset();
                 router.back();
@@ -291,7 +292,11 @@ function EditProduct({ id }: IProps) {
                         <div className="flex flex-col gap-y-6">
                             <div className="flex">
                                 {watch("price") &&
-                                    <p className='text-base font-semibold dark:text-grey-900'>Price: <span> &#x20A6;{formatPrice(Number(watch("price")))}</span>
+                                    <p className='text-base font-semibold dark:text-grey-900'>Price: <span>
+                                        {/* &#x20A6;{formatPrice(Number(watch("price")))} */}
+
+                                        &#8358;{Number(getActualPrice(watch("price"), watch("discount"))).toLocaleString()}
+                                    </span>
                                     </p>
                                 }
                             </div>
@@ -309,7 +314,7 @@ function EditProduct({ id }: IProps) {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef)}
                                 >
-                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold dark:text-grey-800">First Image</p>
 
                                     <input
@@ -326,7 +331,7 @@ function EditProduct({ id }: IProps) {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef2)}
                                 >
-                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold">Second Image</p>
 
                                     <input
@@ -343,7 +348,7 @@ function EditProduct({ id }: IProps) {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef3)}
                                 >
-                                    <CloudUpload size={30} className='dark:text-grey-800'/>
+                                    <CloudUpload size={30} className='dark:text-grey-800' />
                                     <p className="text-sm text-black font-semibold">Third Image</p>
 
                                     <input

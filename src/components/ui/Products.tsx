@@ -49,7 +49,7 @@ function Products() {
 
 
     if (products.length === 0) {
-        return <p>No Product currently available</p>
+        return <p className='text-lg font-medium'>No Product currently available</p>
     }
 
     return (

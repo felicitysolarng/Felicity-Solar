@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 //import { Delete, DeleteIcon, Trash, Trash2 } from 'lucide-react'
 import { IProductsResponse } from '@/app/(main)/products/page';
 import { useQuery } from '@tanstack/react-query';
-import { capitalizeFirstLetterOfEachWord } from '@/lib/constants';
+import { capitalizeFirstLetterOfEachWord, getActualPrice } from '@/lib/constants';
 import { SquarePen } from 'lucide-react';
 import { format } from 'date-fns';
 import DeleteProduct from './DeleteProduct';
@@ -58,7 +58,7 @@ function Products() {
         return <div className='flex h-screen font-semibold text-red-700'>Error loading products...</div>
     }
     if (!data || !data.data || data.data.length === 0) {
-        return <div className='flex justify-center items-center h-screen'>No products found</div>
+        return <div className='flex justify-center items-center h-screen dark:text-red-600 font-semibold text-lg'>No products found</div>
     }
     const products: IProductsResponse = data;
 
@@ -94,7 +94,11 @@ function Products() {
                             <td className="font-inter p-5 text-sm lg:text-base leading-6 font-medium text-gray-900 break-words"> {p.product_name}</td>
                             <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900 ">{format(new Date(p.created_at), "do MMM, yyyy h:mmaaa")}</td>
                             <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900"> {capitalizeFirstLetterOfEachWord(p.category_name)} </td>
-                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900">&#8358;{Number(p?.price).toLocaleString()}</td>
+                            <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900">
+                               {/*  &#8358;{Number(p?.price).toLocaleString()} */}
+
+                                &#8358;{Number(getActualPrice(p?.price, p?.discount_rate)).toLocaleString()}
+                            </td>
                             <td className="font-inter p-5 whitespace-nowrap text-sm lg:text-base leading-6 font-medium text-gray-900 ">
                                 <div className="flex gap-x-6 items-center">
                                     <Link href={`/admin/products/edit/${p.id}`}>

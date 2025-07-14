@@ -61,7 +61,7 @@ function AddProduct() {
     const fileInputRef2 = useRef<HTMLInputElement | null>(null);
     const fileInputRef3 = useRef<HTMLInputElement | null>(null);
     const fileInputRef4 = useRef<HTMLInputElement | null>(null);
-  //    const [uploading, setUploading] = useState(false);
+    //    const [uploading, setUploading] = useState(false);
     const [description, setDescription] = useState("");
     const [keyFeatures, setKeyFeatures] = useState("");
     const router = useRouter();
@@ -114,7 +114,7 @@ function AddProduct() {
         formData.append("file", file);
         formData.append("upload_preset", "felicity-solar"); // Replace with yours
 
-      //setUploading(true);
+        //setUploading(true);
 
         try {
             const res = await axios.post(
@@ -127,7 +127,7 @@ function AddProduct() {
         } catch (err) {
             console.error("Image upload failed:", err);
         } finally {
-          //setUploading(false);
+            //setUploading(false);
         }
     };
 
@@ -246,7 +246,7 @@ function AddProduct() {
                         </div>
                         <div className="flex flex-col gap-y-6">
                             <div className="flex">
-                                {watch("price") && <p className='text-base font-semibold'>Price: <span>N{watch("price")}</span></p>}
+                                {watch("price") && <p className='text-base font-semibold dark:text-grey-800'>Price: <span>&#8358;{watch("price")}</span></p>}
                             </div>
                         </div>
                     </div>
@@ -262,7 +262,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef)}
                                 >
-                                    <CloudUpload size={30} />
+                                    <CloudUpload size={30} className='dark:text-grey-800'/>
                                     <p className="text-sm text-black font-semibold">First Image</p>
 
                                     <input
@@ -279,7 +279,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef2)}
                                 >
-                                    <CloudUpload size={30} />
+                                    <CloudUpload size={30} className='dark:text-grey-800'/>
                                     <p className="text-sm text-black font-semibold">Second Image</p>
 
                                     <input
@@ -296,7 +296,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef3)}
                                 >
-                                    <CloudUpload size={30} />
+                                    <CloudUpload size={30} className='dark:text-grey-800'/>
                                     <p className="text-sm text-black font-semibold">Third Image</p>
 
                                     <input
@@ -313,7 +313,7 @@ function AddProduct() {
                                     className="flex w-full flex-col px-6 rounded-md gap-y-4 bg-[#FDF0E7] h-[150px] gap-x-6 items-center justify-center cursor-pointer"
                                     onClick={() => handleIconClick(fileInputRef4)}
                                 >
-                                    <CloudUpload size={30} />
+                                    <CloudUpload size={30} className='dark:text-grey-800'/>
                                     <p className="text-sm text-black font-semibold">Fourth Image</p>
 
                                     <input
@@ -390,6 +390,8 @@ function AddProduct() {
                                 <div className="flex items-center border rounded-md px-3 py-2">
                                     <input
                                         type="number"
+                                        step="0.1"
+                                        placeholder="Enter discount (optional)"
                                         className="w-full focus:outline-none text-sm dark:text-grey-900"
                                         {...register('discount')}
                                     />
@@ -401,7 +403,7 @@ function AddProduct() {
                         </div>
                         <div className="mb-4">
                             <label className="block text-sm font-medium mb-1 dark:text-grey-900">Key Features</label>
-                            <SimpleEditor styles='min-h-[250px]' content={keyFeatures} handleChange={handleKeyFeatures} />
+                            <SimpleEditor styles='min-h-[250px] dark:text-grey-800' content={keyFeatures} handleChange={handleKeyFeatures} />
                             {/* {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>} */}
                             {/*  <textarea
                             rows={4}
