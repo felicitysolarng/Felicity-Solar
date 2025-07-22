@@ -66,13 +66,12 @@ export default function Home() {
               <LinkButton
                 className="transition-all duration-[250ms] hover:scale-105 hover:bg-[#363f48] hover:text-white"
                 variant={"primary"}
-                href="/get-a-free-quote"
+                href="https://api.whatsapp.com/send/?text=Hi%20Felicity%20Solar,%20I%20need%20a%20free%20quote&phone=2348171479561"
                 size={"lg"}
                 label="Get a Free Quote"
               />
               <div className="flex items-center">
                 {/* SVG and contact info remains unchanged */}
-                ...
               </div>
             </div>
           </div>
