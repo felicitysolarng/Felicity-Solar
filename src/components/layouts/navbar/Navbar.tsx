@@ -144,7 +144,7 @@ function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white"
 
 
 
-                <LinkButton variant={variant} href="/get-a-free-quote" label="Get a Quote" />
+                <LinkButton variant={variant} href="https://api.whatsapp.com/send/?text=Hi%20Felicity%20Solar,%20I%20need%20a%20free%20quote&phone=2348171479561" label="Get a Quote" />
             </div>
 
         </nav>
