@@ -4,7 +4,6 @@ import Link from "next/link";
 import { company_nav_links } from "@/lib/data";
 import { products_nav_links } from "@/lib/data";
 import { Facebook, Instagram, Linkedin, YoutubeIcon } from 'lucide-react';
-import tiktokLogo from "../../../public/assets/icons/tiktok.svg"
 
 
 export type IFooterData = {
