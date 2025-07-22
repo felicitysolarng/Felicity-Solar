@@ -12,7 +12,7 @@ import Link from 'next/link';
 import TabSection from '@/components/sections/product-tabs/TabSection';
 import AOSInitializer from "@/components/AOSInitializer";
 import Footer from "@/components/layouts/footer";
-import React from "react";
+import React, { Suspense } from "react";
 
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <AOSInitializer />
-  
+
       <main>
         <section className="slideshow relative flex flex-col h-screen md:h-[70vh] xl:h-[95vh] justify-center overflow-x-hidden">
           {/* Background Video */}
@@ -40,7 +40,8 @@ export default function Home() {
             poster="/assets/images/landing_page_hero1.png" // Preview image
             id="hero-video"
           >
-            <source src="/assets/vid/bg_video.mp4" type="video/mp4" />
+            {/*  <source src="/assets/vid/bg_video.mp4" type="video/mp4" /> */}
+            <source src="https://res.cloudinary.com/dqkc8vle0/video/upload/v1753180012/bg_video_lvytnb.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
@@ -190,7 +191,10 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Suspense fallback={<p>Loading contact info...</p>}>
+        <Footer />
+      </Suspense>
+
     </React.Fragment>
 
   );
