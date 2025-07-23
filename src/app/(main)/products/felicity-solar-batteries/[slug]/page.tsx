@@ -9,13 +9,14 @@ import { getActualPrice } from '@/lib/constants'
 import { Metadata } from 'next'
 import { IProduct } from '../../page'
 import ProcessOrder from '@/components/ui/processOrder'
+import { notFound } from 'next/navigation'
 
 type Props = {
     params: Promise<{ slug: string }>
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-    const id = (await params).slug;
+    const id =  (await params).slug;
 
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
@@ -51,11 +52,12 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
     }
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Page({ params }: { params: { slug: string } }) {
     const slug = (await params).slug;
+ 
     // Fetch product details from the API
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
-        next: { revalidate: 3600 } // Revalidate every hour
+        next: { revalidate: 60 } // Revalidate every hour
     });
     const response: {
         data: IProduct,
@@ -63,7 +65,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         status: number
     } = await res.json();
     if (!response || !response.data) {
-        return <p>An error occured.</p>;
+         notFound();
     }
     const product = response.data;
 

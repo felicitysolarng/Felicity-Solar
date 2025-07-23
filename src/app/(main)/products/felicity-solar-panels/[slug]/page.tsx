@@ -56,7 +56,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const slug = (await params).slug;
     // Fetch product details from the API
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
-        next: { revalidate: 3600 } // Revalidate every hour
+        next: { revalidate: 60 } // Revalidate every hour
     });
     const response: {
         data: IProduct,

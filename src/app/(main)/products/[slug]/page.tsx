@@ -15,7 +15,7 @@ type Props = {
 
 const getProduct = async (slug: string): Promise<IProduct> => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
-        next: { revalidate: 3600 } // Revalidate every hour
+        next: { revalidate: 60 } // Revalidate every hour
     });
     if (!res.ok) {
         throw new Error('Failed to fetch product');
@@ -53,7 +53,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const slug = (await params).slug;
     // Fetch product details from the API
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
-        next: { revalidate: 3600 } // Revalidate every hour
+        next: { revalidate: 60 } // Revalidate every hour
     });
     const response: {
         data: IProduct,

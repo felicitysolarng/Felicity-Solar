@@ -19,9 +19,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
     const id = (await params).slug;
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
-            next: { revalidate: 60 }, // Optional: revalidate every 60s
-        });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`);
 
         if (!res.ok) {
             throw new Error("Failed to fetch product");
@@ -56,7 +54,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const slug = (await params).slug;
     // Fetch product details from the API
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
-        next: { revalidate: 3600 } // Revalidate every hour
+        next: { revalidate: 60 } // Revalidate every hour
     });
     const response: {
         data: IProduct,

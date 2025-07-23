@@ -14,12 +14,20 @@ export const metadata: Metadata = {
   description: 'We have the best Solar products in town. Hybrid inverter, MPPT controller, Solar lithium battery, Gel battery, Solar all in one street light',
 }
 
-async function page() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/category/5`);
-  const response: IProductsResponse = await res.json();
-  if (!response || !response.data) {
-    return <p>No products available at the moment.</p>;
+const getProducts = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/category/5`);
+    const data: IProductsResponse = await res.json();
+    if (data.status === 200) {
+      return data.data ?? [];
+    }
+  } catch (error) {
+    console.error(error);
+    return [];
   }
+}
+async function page() {
+  const products = await getProducts();
 
   return (
     <main className='font-[family-name:var(--font-inter)]'>
@@ -45,8 +53,9 @@ async function page() {
       <section className='py-32 mx-auto w-[90%] 2xl:w-[75%]'>
         <div className=" w-full flex items-center">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-y-14 gap-x-7 xl:grid-cols-3">
-            {response.data && response.data.length > 0 ?
-              response.data.map(p => {
+            {products
+              && products.length > 0 ?
+              products.map(p => {
                 return (
                   <Product
                     details={p}
