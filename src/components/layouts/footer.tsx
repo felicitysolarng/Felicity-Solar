@@ -92,19 +92,19 @@ async function Footer() {
                     }
 
                     <div className="social-links gap-x-4 items-center flex">
-                        <Link href={"https://www.facebook.com/share/1CbSDGBnJi/?mibextid=wwXIfr"} >
+                        <Link href={"https://www.facebook.com/share/1CbSDGBnJi/?mibextid=wwXIfr"} target="__blank">
                             <Facebook size={20} color='white' />
                         </Link>
-                        <Link href={"https://www.instagram.com/felicitysolarnig?igsh=MWR4ZDYzeml3b3Ezbw=="} >
+                        <Link href={"https://www.instagram.com/felicitysolarnig?igsh=MWR4ZDYzeml3b3Ezbw=="} target="__blank">
                             <Instagram size={20} color='white' />
                         </Link>
-                        <Link href={"https://www.linkedin.com/in/felicity-solar-nig"} >
+                        <Link href={"https://www.linkedin.com/in/felicity-solar-nig"} target="__blank" >
                             <Linkedin size={20} color='white' />
                         </Link>
                         {/* <Link href={"https://www.tiktok.com/@felicitysolarnigeria?_t=ZM-8yD4WHp6GOM&_r=1"} >
                             <Image src={tiktokLogo} alt='tiktok logo' height={20} width={20} />
                         </Link> */}
-                        <Link href={"http://www.youtube.com/@felicitysolarnigeria"} >
+                        <Link href={"http://www.youtube.com/@felicitysolarnigeria"} target="__blank">
                             <YoutubeIcon size={20} color='white' />
                         </Link>
                     </div>
