@@ -66,7 +66,7 @@ export default function Home() {
               <LinkButton
                 className="transition-all duration-[250ms] hover:scale-105 hover:bg-[#363f48] hover:text-white"
                 variant={"primary"}
-                href="https://api.whatsapp.com/send/?text=Hi%20Felicity%20Solar,%20I%20need%20a%20free%20quote&phone=2348171479561"
+                href="https://api.whatsapp.com/send/?text=Hi%20Felicity%20Solar,%20I%20need%20a%20free%20quote&phone=2348171479561&utm_source=website&utm_medium=cta&utm_campaign=whatsapp"
                 size={"lg"}
                 label="Get a Free Quote"
               />
@@ -179,7 +179,7 @@ export default function Home() {
               <div className="flex gap-x-6 flex-col md:flex-row gap-y-8 md:gap-y-0">
                 <LinkButton className='max-w-[310px] px-6 text-base font-medium h-12 md:max-h-12 group-hover:text-white' variant={"white"} href={"/get-a-free-quote"} label="Get a Free Quote Now" icon={<MoveRight className='ml-2' />} />
 
-                <Link href="https://api.whatsapp.com/send/?text=Hi&phone=2348171479561" target="__blank" className='flex justify-center items-center gap-x-2 h-12 rounded-md max-w-[310px] bg-[#25D366] px-6 text-base font-medium md:max-h-12 group-hover:text-white'>
+                <Link href="https://api.whatsapp.com/send/?text=Hi&phone=2348171479561&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="__blank" className='flex justify-center items-center gap-x-2 h-12 rounded-md max-w-[310px] bg-[#25D366] px-6 text-base font-medium md:max-h-12 group-hover:text-white'>
                   <WhatsApp />
                   <span>Send a Message</span>
                   <MoveRight className='ml-0' />
