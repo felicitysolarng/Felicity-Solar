@@ -110,8 +110,8 @@ async function Footer() {
                     </div>
                 </div>
                 <p className='font-inter text-sm lg:text-base md:text-center text-white col-start-1 col-end-5'><span>Copyright &copy; {currentYear} All Rights Reserved | </span> Developed by
-                    {/* <Link href="#" target="__blank" className='text-primary'>Orisfina Tech</Link> */}
-                    <span className='text-primary'> {" "}Orisfina Tech</span>
+                    <Link href="https://www.orisfinatech.com.ng" target="__blank" className='text-primary'>Orisfina Tech</Link> 
+                  {/*   <span className='text-primary'> {" "}Orisfina Tech</span> */}
                 </p>
 
             </div>
