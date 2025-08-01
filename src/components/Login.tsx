@@ -43,7 +43,7 @@ function Login() {
         return response;
     }
 
-    const storeCookies = async (variables: { token: string }) => {
+  /*   const storeCookies = async (variables: { token: string }) => {
         const res = await fetch("/api/set-cookie", {
             method: "POST",
             headers: {
@@ -58,7 +58,7 @@ function Login() {
         }
 
         return await res.json();
-    };
+    }; */
 
 
     const {
@@ -79,9 +79,9 @@ function Login() {
     const mutation = useMutation({
         mutationFn: (variables: ILogin) => handleLogin(variables)
     })
-    const store_cookies = useMutation({
+  /*   const store_cookies = useMutation({
         mutationFn: (variables: { token: string }) => storeCookies(variables)
-    });
+    }); */
 
    /*  const onSubmit2: SubmitHandler<FormSchema> = (data) => {
         const payload: ILogin = {
