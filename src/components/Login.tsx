@@ -89,31 +89,30 @@ function Login() {
     const onSubmit: SubmitHandler<FormSchema> = (data) => {
         const payload: ILogin = {
             password: data.password,
-            email: data.email
-        }
+            email: data.email,
+        };
 
         mutation.mutate(payload, {
             onSuccess(data) {
                 if (data.status === 200) {
-                    store_cookies.mutateAsync({ token: data.token }).then(() => {
-                        toast.success("Login successful");
-                        console.log("Cookies set successfully");
-                    }).catch((error) => {
-                        toast.error(`Error setting cookies: ${error.message}`);
-                        console.error("Error setting cookies:", error);
-                    });
-
-                    // Redirect to admin dashboard
-                    console.log("Redirecting to admin dashboard");
+                    store_cookies
+                        .mutateAsync({ token: data.token })
+                        .then(() => {
+                            toast.success('Login successful');
+                            router.push('/admin/dashboard');
+                        })
+                        .catch((error) => {
+                            toast.error(`Error setting cookies: ${error.message}`);
+                        });
                 } else {
                     toast.error(data.message);
-                    console.log(`An error occurred => ${data.message}`);
                 }
-                reset();
 
+                reset();
             },
         });
-    }
+    };
+
 
     return (
         <section className="bg-black dark:bg-gray-900 h-full">
