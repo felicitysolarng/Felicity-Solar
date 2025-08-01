@@ -29,33 +29,13 @@ function Login() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(variables),
-            //credentials: 'include'
+            credentials: 'include'
         });
 
 
         if (!res.ok) {
             const err = await res.json();
             throw new Error(err.error || 'An error occurred during login');
-        }
-
-        const response = await res.json();
-
-        return response;
-    }
-    const storeCookies = async (variables: { token: string }) => {
-        const res = await fetch(`/api/set-cookie`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(variables),
-            // credentials: 'include'
-        });
-
-
-        if (!res.ok) {
-            const err = await res.json();
-            throw new Error(err.error || 'An error occurred during cookie storage');
         }
 
         const response = await res.json();
@@ -81,38 +61,33 @@ function Login() {
     const mutation = useMutation({
         mutationFn: (variables: ILogin) => handleLogin(variables)
     })
-    const store_cookies = useMutation({
-        mutationFn: (variables: { token: string }) => storeCookies(variables)
-    })
-
 
     const onSubmit: SubmitHandler<FormSchema> = (data) => {
         const payload: ILogin = {
             password: data.password,
-            email: data.email,
-        };
+            email: data.email
+        }
 
         mutation.mutate(payload, {
             onSuccess(data) {
                 if (data.status === 200) {
-                    store_cookies
-                        .mutateAsync({ token: data.token })
-                        .then(() => {
-                            toast.success('Login successful');
-                            router.push('/admin/dashboard');
-                        })
-                        .catch((error) => {
-                            toast.error(`Error setting cookies: ${error.message}`);
-                        });
-                } else {
-                    toast.error(data.message);
+                    console.log(`Login successful: ${data.message}`);
+
+                    toast.success(data.message);
+                    router.push("/admin/dashboard");
+                    console.log(`Redirecting to dashboard...`);
+                    
                 }
 
                 reset();
             },
-        });
-    };
+            onError(error) {
+                toast.error(error.message);
+                console.log(`An error occured => ${error.message}`);
 
+            },
+        });
+    }
 
     return (
         <section className="bg-black dark:bg-gray-900 h-full">
