@@ -83,7 +83,7 @@ function Login() {
         mutationFn: (variables: { token: string }) => storeCookies(variables)
     });
 
-    const onSubmit2: SubmitHandler<FormSchema> = (data) => {
+   /*  const onSubmit2: SubmitHandler<FormSchema> = (data) => {
         const payload: ILogin = {
             password: data.password,
             email: data.email
@@ -108,7 +108,7 @@ function Login() {
 
             },
         });
-    }
+    } */
     const onSubmit: SubmitHandler<FormSchema> = (data) => {
         const payload: ILogin = {
             password: data.password,
