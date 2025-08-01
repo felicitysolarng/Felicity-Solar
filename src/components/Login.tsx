@@ -29,7 +29,7 @@ function Login() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(variables),
-            credentials: 'include'
+            //credentials: 'include'
         });
 
 
@@ -42,6 +42,24 @@ function Login() {
 
         return response;
     }
+
+    const storeCookies = async (variables: { token: string }) => {
+        const res = await fetch("/api/set-cookie", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(variables),
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.error || "Error setting cookie");
+        }
+
+        return await res.json();
+    };
+
 
     const {
         register,
@@ -61,8 +79,11 @@ function Login() {
     const mutation = useMutation({
         mutationFn: (variables: ILogin) => handleLogin(variables)
     })
+    const store_cookies = useMutation({
+        mutationFn: (variables: { token: string }) => storeCookies(variables)
+    });
 
-    const onSubmit: SubmitHandler<FormSchema> = (data) => {
+    const onSubmit2: SubmitHandler<FormSchema> = (data) => {
         const payload: ILogin = {
             password: data.password,
             email: data.email
@@ -76,7 +97,7 @@ function Login() {
                     toast.success(data.message);
                     router.push("/admin/dashboard");
                     console.log(`Redirecting to dashboard...`);
-                    
+
                 }
 
                 reset();
@@ -88,6 +109,32 @@ function Login() {
             },
         });
     }
+    const onSubmit: SubmitHandler<FormSchema> = (data) => {
+        const payload: ILogin = {
+            password: data.password,
+            email: data.email,
+        };
+
+        mutation.mutate(payload, {
+            onSuccess(data) {
+                if (data.status === 200) {
+                    // Explicitly call /api/set-cookie with the token
+                    store_cookies.mutateAsync({ token: data.token })
+                        .then(() => {
+                            toast.success("Login successful");
+                            router.push("/admin/dashboard");
+                        })
+                        .catch((error) => {
+                            toast.error(`Error setting cookies: ${error.message}`);
+                        });
+                } else {
+                    toast.error(data.message);
+                }
+
+                reset();
+            },
+        });
+    };
 
     return (
         <section className="bg-black dark:bg-gray-900 h-full">
