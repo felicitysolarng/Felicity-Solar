@@ -118,15 +118,18 @@ function Login() {
         mutation.mutate(payload, {
             onSuccess(data) {
                 if (data.status === 200) {
+                    router.push("/api/set-cookie");
+                    console.log(`Login successful: ${data.message}`);
+                    toast.success(data.message);
                     // Explicitly call /api/set-cookie with the token
-                    store_cookies.mutateAsync({ token: data.token })
+                  /*   store_cookies.mutateAsync({ token: data.token })
                         .then(() => {
                             toast.success("Login successful");
                             router.push("/admin/dashboard");
                         })
                         .catch((error) => {
                             toast.error(`Error setting cookies: ${error.message}`);
-                        });
+                        }); */
                 } else {
                     toast.error(data.message);
                 }

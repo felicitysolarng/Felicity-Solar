@@ -16,3 +16,13 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ message: "Cookie set successfully" });
 }
+
+export async function GET() {
+    const cookieStore = await cookies(); // ✅ wait for the cookies API to resolve
+
+    const token = cookieStore.get("token")?.value;
+    if (!token) {
+        return NextResponse.json({ error: "No token found" }, { status: 404 });
+    }
+    return NextResponse.json({ token });
+}
