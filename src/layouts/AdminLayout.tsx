@@ -7,7 +7,7 @@ interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-const AdminLayout = ({ children }: AdminLayoutProps) => {
+const AdminRouteLayout = ({ children }: AdminLayoutProps) => {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [checking, setChecking] = useState(true);
@@ -29,4 +29,4 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   return isAuthenticated ? <>{children}</> : null;
 };
 
-export default AdminLayout;
+export default AdminRouteLayout;
