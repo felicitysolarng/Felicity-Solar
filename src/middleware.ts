@@ -8,6 +8,7 @@ export function middleware(request: NextRequest) {
 
     const token = request.cookies.get('token')?.value;
     const tok = request.cookies.getAll();
+    
     console.log(`Cookies: ${JSON.stringify(tok)}`);
     console.log(`Token: ${tok}`);
 
