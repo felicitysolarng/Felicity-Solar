@@ -7,6 +7,10 @@ export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     const token = request.cookies.get('token')?.value;
+    const tok = request.cookies.getAll();
+    console.log(`Cookies: ${JSON.stringify(tok)}`);
+    console.log(`Token: ${tok}`);
+
 
     console.log(`Middleware triggered for ${pathname}, token: ${token}`);
 
