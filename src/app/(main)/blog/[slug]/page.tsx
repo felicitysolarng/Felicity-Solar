@@ -5,7 +5,18 @@ import { ChevronRight } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { format, parseISO } from 'date-fns';
 
+
+
+const formatDate = (dateString: string) => {
+
+    if (!dateString) return '';
+
+    const isoDate = dateString.replace(' ', 'T');
+    const formattedDate = format(parseISO(isoDate), "do MMMM, yyyy");
+    return formattedDate;
+}
 
 
 type Props = {
@@ -111,7 +122,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     }
 
     if (isSuccess(details)) {
-
+       
         return (
             <div className="flex flex-col">
                 <Navbar linkClassName="text-black" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
@@ -129,6 +140,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                         <div className="flex flex-col gap-y-2 mt-5 mb-18">
                             <h3 className='uppercase text-primary font-bold text-xs xl:text-sm '>{details?.data?.category}</h3>
                             <h2 className='text-2xl font-bold text-grey-800'>{details?.data?.title}</h2>
+                            <p className='text-grey-700 text-base'>{formatDate(details?.data?.created_at)}</p>
                         </div>
 
                         <div className='article-container flex flex-col gap-y-6' dangerouslySetInnerHTML={{ __html: details.data.content }} />
