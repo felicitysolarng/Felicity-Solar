@@ -12,7 +12,6 @@ export function middleware(request: NextRequest) {
     console.log(`Cookies: ${JSON.stringify(tok)}`);
     console.log(`Token: ${tok}`);
 
-
     console.log(`Middleware triggered for ${pathname}, token: ${token}`);
 
     if (protectedRoutes.some(route => pathname.startsWith(route)) && !token) {
