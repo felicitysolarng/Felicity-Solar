@@ -18,8 +18,6 @@ type ILogin = {
 
 type FormSchema = z.infer<typeof LoginSchema>;
 
-
-
 function Login() {
     const router = useRouter();
 
@@ -31,7 +29,7 @@ function Login() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(variables),
-            credentials: 'include'
+            //credentials: 'include'
         });
 
 
@@ -44,6 +42,24 @@ function Login() {
 
         return response;
     }
+
+    /*   const storeCookies = async (variables: { token: string }) => {
+          const res = await fetch("/api/set-cookie", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(variables),
+          });
+  
+          if (!res.ok) {
+              const err = await res.json();
+              throw new Error(err.error || "Error setting cookie");
+          }
+  
+          return await res.json();
+      }; */
+
 
     const {
         register,
@@ -63,30 +79,57 @@ function Login() {
     const mutation = useMutation({
         mutationFn: (variables: ILogin) => handleLogin(variables)
     })
+    /*   const store_cookies = useMutation({
+          mutationFn: (variables: { token: string }) => storeCookies(variables)
+      }); */
 
+    /*  const onSubmit2: SubmitHandler<FormSchema> = (data) => {
+         const payload: ILogin = {
+             password: data.password,
+             email: data.email
+         }
+ 
+         mutation.mutate(payload, {
+             onSuccess(data) {
+                 if (data.status === 200) {
+                     console.log(`Login successful: ${data.message}`);
+ 
+                     toast.success(data.message);
+                     router.push("/admin/dashboard");
+                     console.log(`Redirecting to dashboard...`);
+ 
+                 }
+ 
+                 reset();
+             },
+             onError(error) {
+                 toast.error(error.message);
+                 console.log(`An error occured => ${error.message}`);
+ 
+             },
+         });
+     } */
     const onSubmit: SubmitHandler<FormSchema> = (data) => {
         const payload: ILogin = {
             password: data.password,
-            email: data.email
-        }
+            email: data.email,
+        };
 
         mutation.mutate(payload, {
             onSuccess(data) {
                 if (data.status === 200) {
-                  
+                    const token = data.token;
+                    localStorage.setItem("token", token);
                     toast.success(data.message);
-                    router.push("/admin/dashboard")
+                    router.push("/admin/dashboard");
+                } else {
+                    toast.error(data.message);
                 }
-               
+
                 reset();
             },
-            onError(error) {
-                toast.error(error.message);
-                console.log(`An error occured => ${error.message}`);
-
-            },
         });
-    }
+    };
 
     return (
         <section className="bg-black dark:bg-gray-900 h-full">

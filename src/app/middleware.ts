@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
 
     log(`Middleware triggered for ${request.nextUrl.pathname}, token: ${token}, isAdmin: ${token2}, isAdmin: ${isAdmin}`);
     // Block access if no token or not an admin
-    if (!token || isAdmin !== "true") {
+    if (!token) {
       return NextResponse.redirect(new URL("/auth/login", request.url));
     }
   }
