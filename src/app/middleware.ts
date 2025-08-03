@@ -7,11 +7,11 @@ export function middleware(request: NextRequest) {
   const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
 
   if (isAdminRoute) {
-    const token = request.cookies.get("auth-token")?.value;
-    const token2 = request.cookies.get("token")?.value;
+    const token = request.cookies.get("token")?.value;
+    const token2 = request.cookies.get("auth-token")?.value;
     const isAdmin = request.cookies.get("is-admin")?.value;
 
-    log(`Token: ${token}, Token2: ${token2}, IsAdmin: ${isAdmin}`);
+    log(`Middleware triggered for ${request.nextUrl.pathname}, token: ${token}, isAdmin: ${token2}, isAdmin: ${isAdmin}`);
     // Block access if no token or not an admin
     if (!token) {
       return NextResponse.redirect(new URL("/auth/login", request.url));
