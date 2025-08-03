@@ -1,4 +1,5 @@
 // middleware.ts
+import { log } from "console";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
@@ -6,11 +7,11 @@ export function middleware(request: NextRequest) {
   const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
 
   if (isAdminRoute) {
-    const token = request.cookies.get("token")?.value;
-   // const auth_token = request.cookies.get("auth-token")?.value;
-   // const isAdmin = request.cookies.get("is-admin")?.value;
-    console.log(`Token: ${token}}`);
+    const token = request.cookies.get("auth-token")?.value;
+    const token2 = request.cookies.get("token")?.value;
+    const isAdmin = request.cookies.get("is-admin")?.value;
 
+    log(`Token: ${token}, Token2: ${token2}, IsAdmin: ${isAdmin}`);
     // Block access if no token or not an admin
     if (!token) {
       return NextResponse.redirect(new URL("/auth/login", request.url));
