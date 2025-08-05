@@ -29,16 +29,21 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
           gtag("config", "G-TTYZVHR9NE");`}
         </Script>
-       {/*  <script
+        {/*  <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
           crossOrigin="anonymous"
         /> */}
-         <Script
+        {/*  <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
           strategy="afterInteractive"
           crossOrigin="anonymous"
-        />
+        /> */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body className={`${inter.className} ${inter.variable} antialiased`}>
         <AOSInitializer />
