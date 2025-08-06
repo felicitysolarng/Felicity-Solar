@@ -86,7 +86,7 @@ function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white"
                                                         Charge Controllers
                                                     </Tabs.Trigger>
                                                     <Tabs.Trigger value={"floor_light"} className='text-grey-800 text-sm hover:[#fdfdfd] py-3 rounded-md px-3 xl:text-base data-[state=active]:bg-grey-100 font-medium'>
-                                                        Solar Floor Light
+                                                        Solar Light
                                                     </Tabs.Trigger>
                                                 </Tabs.List>
                                                 <Tabs.Content value="panels" className='basis-3/5 flex flex-col gap-y-2'>
@@ -123,7 +123,7 @@ function Navbar({ className, width = "w-[90%]", linkClassName, variant = "white"
                                                 </Tabs.Content>
                                                 <Tabs.Content value="floor_light" className='basis-3/5 flex flex-col gap-y-2'>
                                                     <h3 className=' text-grey-900 text-lg font-medium'>Flood lights or street lights — we’ve got solar lighting built to last</h3>
-                                                    <Link href={"/products/felicity-solar-lights"} className='text-base no-underline flex items-center text-primary  font-medium'>Explore Lighting Options <ExternalLink size={16} className='ml-1' /></Link>
+                                                    <Link href={"/products/felicity-solar-street-light"} className='text-base no-underline flex items-center text-primary  font-medium'>Explore Lighting Options <ExternalLink size={16} className='ml-1' /></Link>
                                                     <div className="flex">
                                                         <Image alt='FL-P2-40W-all-in-one-street-light' src={'/assets/images/FL-P2-40W-all-in-one-street-light-all-view.jpeg'} width={220} height={250} />
                                                         <Image alt='150W Waterproof Solar Outdoor Flood Garden Stadium Reflector Floodlights/Led Flood Light' src={'/assets/images/floor_light2.webp'} width={220} height={250} />
