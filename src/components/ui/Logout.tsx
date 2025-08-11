@@ -3,11 +3,22 @@
 import { useRouter } from 'next/navigation';
 
 export default function LogoutButton() {
-    const router = useRouter();
+    // const router = useRouter();
 
     const handleLogout = async () => {
-        await fetch(`${process.env.NEXT_PUBLIC_URL}/api`); // calls the route handler you created
-        router.push('/auth/login'); // or wherever you want to redirect
+
+        try {
+            const response = await fetch(`/api/logout`, {
+                method: "GET"
+            });
+            const data = await response.json();
+            console.log(data);
+
+        } catch (error) {
+            console.log(error);
+        }
+        // calls the route handler you created
+        // router.push('/auth/login'); // or wherever you want to redirect
     };
 
     return (
