@@ -1,9 +1,10 @@
 'use client';
 
-//import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 export default function LogoutButton() {
-    // const router = useRouter();
+    const router = useRouter();
 
     const handleLogout = async () => {
 
@@ -12,13 +13,12 @@ export default function LogoutButton() {
                 method: "GET"
             });
             const data = await response.json();
-            console.log(data);
-
+            toast.success(data.message);
+            router.push('/auth/login');
         } catch (error) {
             console.log(error);
         }
-        // calls the route handler you created
-        // router.push('/auth/login'); // or wherever you want to redirect
+
     };
 
     return (
