@@ -28,7 +28,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/project_showcases/${id}`, {
-            next: { revalidate: 60 }, // Optional: revalidate every 60s
+            next: { revalidate: 3600 }, // Optional: revalidate every 60s
         });
 
         if (!res.ok) {

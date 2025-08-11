@@ -18,7 +18,8 @@ export const metadata: Metadata = {
 async function page() {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/contact-details`, {
-    cache: 'no-store'// Revalidate every hour
+    next: { revalidate: 3600 },
+    // cache: 'no-store'// Revalidate every hour
   });
   const response: {
     data: IFooterData,
@@ -29,7 +30,7 @@ async function page() {
     return <p>An error occured.</p>;
   }
   const details = response.data;
-  
+
   return (
     <div className="flex flex-col font-[family-name:var(--font-inter)]">
       <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white w-full text-grey-800 border-b border-grey-100 ' variant='primary' />

@@ -20,7 +20,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
-            next: { revalidate: 60 }, // Optional: revalidate every 60s
+            next: { revalidate: 120 }, // Optional: revalidate every 60s
         });
 
         if (!res.ok) {
@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
  
     // Fetch product details from the API
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
-        next: { revalidate: 60 } // Revalidate every hour
+        next: { revalidate: 120 } // Revalidate every hour
     });
     const response: {
         data: IProduct,

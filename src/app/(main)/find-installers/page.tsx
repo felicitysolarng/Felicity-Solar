@@ -54,7 +54,8 @@ async function Page({ searchParams }: { searchParams: Promise<{ stateId: number 
 
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/installers/${stateId}`, {
-      cache: "no-store", // Ensures fresh data each time
+      next: { revalidate: 3600 },
+      //cache: "no-store", // Ensures fresh data each time
     });
 
     if (!res.ok) {

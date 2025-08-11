@@ -17,7 +17,8 @@ type IResponse = {
 const fetchProjects = async (payload: { page: string | number, limit: string | number }): Promise<IResponse> => {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/project_showcases?page=${payload.page}&limit=${payload.limit}`, {
-            cache: 'no-store'// Revalidate every hour
+            //cache: 'no-store'// Revalidate every hour
+            next: { revalidate: 3600 },
         });
         const response: IResponse = await res.json();
         return response;

@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 
 async function index() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/dashboard`, {
-        cache: 'no-store',// Revalidate every hour,
+        next: { revalidate: 360 },
         credentials: "include"
     });
     const response: {
