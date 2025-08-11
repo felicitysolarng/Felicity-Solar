@@ -6,8 +6,8 @@ export async function GET() {
     const cookieStore = cookies();
     (await cookieStore).set('token', '', {
         expires: new Date(0),
-        path: '/auth/login',
+        path: '/',
     });
 
-    return NextResponse.json({ message: 'Logged out' });
+    return NextResponse.json({ message: 'Logged out successfully', status: 200 });
 }
