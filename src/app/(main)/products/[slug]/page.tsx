@@ -85,6 +85,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                         <div className="flex gap-x-10 flex-col md:flex-row">
 
                             <ProductImageGallery
+                                desc={product?.product_name}
                                 cover={product?.image_1}
                                 img2={product?.image_2}
                                 img3={product?.image_3}

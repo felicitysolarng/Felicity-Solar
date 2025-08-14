@@ -3,26 +3,46 @@ import Image from 'next/image'
 import { IProduct } from '@/app/(main)/products/page'
 import Link from 'next/link'
 import { getActualPrice } from '@/lib/constants'
+import { cldUrl } from '@/utils/cloudinary'
 
 
 
 
 type Props = {
     details: IProduct,
-    category_path?: string
+    category_path?: string,
+    height?: number,
+    width?: number
 }
 
-function Product({ details, category_path }: Props) {
-    const { id, product_name, price, image_1,discount_rate } = details;
+function Product({ details, category_path, height = 600, width = 500 }: Props) {
+    const { id, product_name, price, image_1, discount_rate } = details;
+    const parts = image_1.split('/');
+    const filename = parts[parts.length - 1];
+    const publicId = filename.split('.')[0];
+    const blur = cldUrl(publicId, { w: 20, h: Math.round(20 * (height / width)), q: '1', f: 'auto' }); // tiny preview
 
+
+   
     return (
         <>
             <article className='w-full min-h-[517px] min-w-[264px] max-w-[396px]'>
                 <Link href={`/products${`${category_path ? `/${category_path}` : ""}`}/${id}`} className="group flex flex-col justify-center items-center"  >
-                    <Image src={image_1} alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8 border border-gray-100" width={600} height={500} />
+                    <Image
+                        //src={image_1}
+                        src={cldUrl(publicId, { w: width, h: height })}
+                        alt={details.product_name}
+                        className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8 border border-gray-100"
+                        width={600}
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={blur}
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 240px"
+                        height={500}
+                    />
                     <h3 className="mt-4 text-sm text-center text-gray-700">{product_name}</h3>
                     <p className="mt-1 text-center text-lg font-medium text-gray-900">
-                       {/*  &#8358;{Number(price).toLocaleString()} */}
+                        {/*  &#8358;{Number(price).toLocaleString()} */}
 
                         &#8358;{Number(getActualPrice(price, discount_rate)).toLocaleString()}
                     </p>

@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'media.istockphoto.com',
       },
       {
@@ -44,10 +48,6 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'felicitysolarcompany.com.ng',
-      },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
       }
     ],
   },

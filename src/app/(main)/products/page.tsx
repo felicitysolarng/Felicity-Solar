@@ -74,9 +74,6 @@ async function page() {
         <div className=" w-full flex items-center">
 
           <Products />
-
-
-
         </div>
       </section>
 
