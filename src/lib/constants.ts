@@ -17,8 +17,8 @@ export function saveItem<T>(key: string, value: T): void {
 
 export const getProductId = (slug: string) => {
   if (slug) {
-    const path = slug.split("-");
-    const id = path[path.length - 1];
+    const id = slug.split("-").pop();
+   // const id = path[path.length - 1];
     return id
   }
   return ""
