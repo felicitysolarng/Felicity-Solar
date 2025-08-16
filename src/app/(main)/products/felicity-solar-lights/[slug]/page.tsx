@@ -5,7 +5,7 @@ import RatingStar from '@/components/layouts/rating-star'
 import { ChevronLeft, ChevronRight, DownloadCloudIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
-import { getActualPrice } from '@/lib/constants'
+import { getActualPrice, getProductId } from '@/lib/constants'
 import { Metadata } from 'next'
 import { IProduct } from '../../page'
 import ProcessOrder from '@/components/ui/processOrder'
@@ -16,11 +16,11 @@ type Props = {
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-    const id = (await params).slug;
-
+    const slug = (await params).slug;
+    const id = getProductId(slug);
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
-            next: { revalidate: 120 }, // Optional: revalidate every 60s
+            next: { revalidate: 3600 }, // Optional: revalidate every 60s
         });
 
         if (!res.ok) {
@@ -55,8 +55,9 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     const slug = (await params).slug;
     // Fetch product details from the API
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${slug}`, {
-        next: { revalidate: 120 } // Revalidate every hour
+     const id = getProductId(slug);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
+        next: { revalidate: 3600 } // Revalidate every hour
     });
     const response: {
         data: IProduct,

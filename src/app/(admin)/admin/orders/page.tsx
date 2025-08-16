@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 async function index() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/orders`, {
-        next: { revalidate: 120 },
+        next: { revalidate: 3600 },
         credentials: "include"
     });
     const response: {

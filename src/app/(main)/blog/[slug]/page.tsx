@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
+import { getProductId } from '@/lib/constants';
 
 
 
@@ -36,8 +37,9 @@ interface ErrorResponse {
 type BlogResponse = SuccessResponse | ErrorResponse;
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-    const id = (await params).slug;
+    const slug = (await params).slug;
 
+    const id = getProductId(slug)
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs/${id}`, {
             next: { revalidate: 3600 }, // Optional: revalidate every 60s
@@ -72,7 +74,9 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
     }
 }
 
-async function fetchBlogDetails(id: string): Promise<BlogResponse> {
+async function fetchBlogDetails(slug: string): Promise<BlogResponse> {
+    const id = getProductId(slug);
+
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs/${id}`);
         const resp: {
@@ -105,8 +109,10 @@ function isSuccess(response: BlogResponse): response is SuccessResponse {
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-    const id = (await params).slug;
+    const slug = (await params).slug;
 
+    const id = getProductId(slug);
+    
     const details = await fetchBlogDetails(id)
 
     if (details.status !== 200) {
@@ -122,7 +128,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     }
 
     if (isSuccess(details)) {
-       
+
         return (
             <div className="flex flex-col">
                 <Navbar linkClassName="text-black" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />

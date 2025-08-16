@@ -3,6 +3,7 @@
 import { fetchArticles, IBlog, IPagination } from '@/app/(admin)/admin/blogs/components/Articles';
 import Article from '@/components/ui/article'
 import Pagination from '@/components/ui/pagination'
+import { generateSlug } from '@/lib/constants';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react'
 
@@ -52,15 +53,13 @@ function Articles() {
     const articles: IBlog[] = data.data;
     const pagination: IPagination = data.pagination;
 
-    console.log(articles);
-
     return (
         <React.Fragment>
             <div className="grid gap-y-12 grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
                 {
                     articles.length > 0 ? articles.map(b => {
                         return (
-                            <Article key={b.id} title={b.title} category={b.category} cover={b.thumbnail} url={`/blog/${b.id}`} />
+                            <Article key={b.id} title={b.title} category={b.category} cover={b.thumbnail} url={`/blog/${generateSlug(String(b.id))}-${b.id}`} />
                         )
                     }
                     ) : <p className='text-grey-700 '>No article currently available</p>

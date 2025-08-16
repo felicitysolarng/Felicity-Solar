@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { IProduct } from '@/app/(main)/products/page'
 import Link from 'next/link'
-import { getActualPrice } from '@/lib/constants'
+import { generateSlug, getActualPrice } from '@/lib/constants'
 import { cldUrl } from '@/utils/cloudinary'
 
 
@@ -23,11 +23,11 @@ function Product({ details, category_path, height = 600, width = 500 }: Props) {
     const blur = cldUrl(publicId, { w: 20, h: Math.round(20 * (height / width)), q: '1', f: 'auto' }); // tiny preview
 
 
-   
+
     return (
         <>
             <article className='w-full min-h-[517px] min-w-[264px] max-w-[396px]'>
-                <Link href={`/products${`${category_path ? `/${category_path}` : ""}`}/${id}`} className="group flex flex-col justify-center items-center"  >
+                <Link href={`/products${`${category_path ? `/${category_path}` : ""}`}/${generateSlug(product_name)}-${id}`} className="group flex flex-col justify-center items-center"  >
                     <Image
                         //src={image_1}
                         src={cldUrl(publicId, { w: width, h: height })}
@@ -37,7 +37,7 @@ function Product({ details, category_path, height = 600, width = 500 }: Props) {
                         loading="lazy"
                         placeholder="blur"
                         blurDataURL={blur}
-                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 240px"
+                        sizes="(max-width: 768px) 50vw, (max-width: 36000px) 25vw, 240px"
                         height={500}
                     />
                     <h3 className="mt-4 text-sm text-center text-gray-700">{product_name}</h3>
@@ -49,7 +49,7 @@ function Product({ details, category_path, height = 600, width = 500 }: Props) {
 
                 </Link>
                 <div className="flex w-full justify-center items-center">
-                    <Link href={`/products${`${category_path ? `/${category_path}` : ""}`}/${id}`} className="text-sm font-inter font-normal bg-primary text-white px-2 py-2 rounded-sm flex w-max mt-4" aria-label={`View details of ${product_name}`}>
+                    <Link href={`/products${`${category_path ? `/${category_path}` : ""}`}/${generateSlug(product_name)}-${id}`} className="text-sm font-inter font-normal bg-primary text-white px-2 py-2 rounded-sm flex w-max mt-4" aria-label={`View details of ${product_name}`}>
                         View Details</Link>
                 </div>
 

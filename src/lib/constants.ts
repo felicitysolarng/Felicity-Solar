@@ -1,5 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 import { type ClassValue, clsx } from "clsx";
+import slugify from "react-slugify";
 
 const DATA_PREFIX = "felicity::";
 
@@ -14,11 +15,23 @@ export function saveItem<T>(key: string, value: T): void {
   }
 }
 
+export const getProductId = (slug: string) => {
+  if (slug) {
+    const path = slug.split("-");
+    const id = path[path.length - 1];
+    return id
+  }
+  return ""
+}
+
 export function getItem<T>(key: string): T | null | undefined {
   if (typeof window !== "undefined") {
     const got = localStorage.getItem(`${DATA_PREFIX}${key}`);
     return got ? (JSON.parse(got) as T) : null;
   }
+}
+export function generateSlug(name: string) {
+  return slugify(name);
 }
 
 export function removeItem(key: string): void {
