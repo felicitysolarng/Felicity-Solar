@@ -75,7 +75,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 }
 
 async function fetchBlogDetails(slug: string): Promise<BlogResponse> {
-    const id = getProductId(slug);
+    const id = getProductId(slug) ?? "";
 
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs/${id}`);
@@ -111,7 +111,7 @@ function isSuccess(response: BlogResponse): response is SuccessResponse {
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     const slug = (await params).slug;
 
-    const id = getProductId(slug);
+    const id = getProductId(slug) ??"";
     
     const details = await fetchBlogDetails(id)
 

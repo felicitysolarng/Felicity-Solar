@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation'
 import LogoutButton from '../ui/Logout'
+//import QuoteNotifications from '../Notification'
 
 //HomeIcon, NotebookPen,
 
@@ -66,6 +67,7 @@ function AdminNavbar() {
                     );
                 })}
 
+               {/*  <QuoteNotifications /> */}
                 <LogoutButton />
             </ul>
         </div>

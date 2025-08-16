@@ -15,7 +15,7 @@ type Props = {
 
 
 const getProduct = async (slug: string): Promise<IProduct> => {
-    const id = getProductId(slug);
+    const id = getProductId(slug) ??"";
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
         next: { revalidate: 3600 } // Revalidate every hour
@@ -30,7 +30,7 @@ const getProduct = async (slug: string): Promise<IProduct> => {
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
     const slug = (await params).slug;
 
-    const id = getProductId(slug);
+    const id = getProductId(slug) ??"";
     const data = getProduct(id);
     if (!data) {
         return {
@@ -56,7 +56,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const slug = (await params).slug;
 
     // Fetch product details from the API
-    const id = getProductId(slug);
+    const id = getProductId(slug) ??"";
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
         next: { revalidate: 3600 } // Revalidate every hour
     });
