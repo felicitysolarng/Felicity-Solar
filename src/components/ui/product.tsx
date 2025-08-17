@@ -15,7 +15,7 @@ type Props = {
     width?: number
 }
 
-function Product({ details, category_path, height = 600, width = 500 }: Props) {
+function Product({ details, category_path, height = 500, width = 400 }: Props) {
     const { id, product_name, price, image_1, discount_rate } = details;
     const parts = image_1.split('/');
     const filename = parts[parts.length - 1];
@@ -33,7 +33,7 @@ function Product({ details, category_path, height = 600, width = 500 }: Props) {
                         src={cldUrl(publicId, { w: width, h: height })}
                         alt={details.product_name}
                         className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8 border border-gray-100"
-                        width={600}
+                        width={400}
                         loading="lazy"
                         placeholder="blur"
                         blurDataURL={blur}
