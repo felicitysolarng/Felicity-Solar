@@ -13,14 +13,14 @@ const items = [
         id: "FL-15003",
         title: "FL-15003 150W Floor Light with 45W Panel",
         description: "The Felicity FL-15003 is a high-lumen 150W floor light powered by a durable 45W solar panel, delivering bright, eco-friendly lighting for outdoor environments. Perfect for pathways, parks, gardens, and compounds, this light combines performance and aesthetics with zero electricity cost.",
-        link: "/products/felicity-solar-lights",
+        link: "/products/felicity-solar-street-light",
         image: "/assets/images/FL-15003-150W-floor-light-with-45W-panel-packaged-view.jpeg",
     },
     {
         id: "FL-10003",
         title: "FL-10003 100W floor light with 35W panel",
         description: "High-efficiency monocrystalline solar panel with fast charging and long life-span. ·Long-term environmental Batteries with overcharge and over discharge protection, more safe and reliable.",
-        link: "/products/felicity-solar-lights",
+        link: "/products/felicity-solar-street-light",
         image: "/assets/images/FL-15003-150W-floor-light-with-45W-panel.jpeg",
     },
 ];
