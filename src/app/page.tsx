@@ -40,7 +40,7 @@ export default function Home() {
             poster="/assets/images/landing_page_hero1.png" // Preview image
             id="hero-video"
           >
-            {/*  <source src="/assets/vid/bg_video.mp4" type="video/mp4" /> */}
+              <source src="https://vimeo.com/1114402830" type="video/mp4" /> 
             {/* <source src="https://res.cloudinary.com/dqkc8vle0/video/upload/v1753180012/bg_video_lvytnb.mp4" type="video/mp4" />*/}
             <source src="#" type="video/mp4" />
             Your browser does not support the video tag.
