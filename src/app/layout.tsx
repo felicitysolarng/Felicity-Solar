@@ -11,41 +11,36 @@ const inter = Inter({
   display: "swap",
 });
 
+export const metadata = {
+  title: "Felicity Solar",
+  description: "Solar energy solutions",
+};
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
+      <body className={`${inter.className} ${inter.variable} antialiased`}>
+        {/* Google Analytics */}
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-TTYZVHR9NE"
+          strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
-          {` window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-              }
-          gtag("js", new Date());
-
-          gtag("config", "G-TTYZVHR9NE");`}
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TTYZVHR9NE');
+          `}
         </Script>
-        {/*  <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
-          crossOrigin="anonymous"
-        /> */}
-        {/*  <Script
+
+        {/* Google AdSense */}
+        <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
           strategy="afterInteractive"
           crossOrigin="anonymous"
-        /> */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
-          crossOrigin="anonymous"
-        ></script>
-      </head>
-      <body className={`${inter.className} ${inter.variable} antialiased`}>
+        />
+
         <AOSInitializer />
         <ReactQueryProvider>
           {children}
