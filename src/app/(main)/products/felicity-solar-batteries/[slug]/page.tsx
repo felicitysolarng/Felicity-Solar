@@ -10,6 +10,7 @@ import { Metadata } from 'next'
 import { IProduct } from '../../page'
 import ProcessOrder from '@/components/ui/processOrder'
 import { notFound } from 'next/navigation'
+import GA4Tracker from '@/utils/G4Tracker'
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -74,6 +75,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     return (
         <main className='font-[family-name:var(--font-inter)]'>
             <Navbar linkClassName="text-grey-800 font-semibold" className='hidden lg:flex bg-white text-black border-b border-grey-100' variant='primary' />
+               {/* GA4 tracking */}
+                        <GA4Tracker product={{
+                            id: product.id,
+                            product_name: product.product_name,
+                            category_name: product.category_name,
+                            price: Number(product.price)
+                        }} />
             <section className='flex justify-center flex-col mt-12 lg:mt-0 w-[90%] 2xl:w-[75%] mx-auto'>
                 <div className="flex lg:hidden my-10 ">
                     <Link href={"/products"} className='text-grey-400 items-center flex font-medium text-sm' aria-label='link to products page'><ChevronLeft color='#98A2B3' size={16} /> Go back</Link>
