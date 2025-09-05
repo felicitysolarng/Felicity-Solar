@@ -26,6 +26,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
           crossOrigin="anonymous"
         ></script>
+        <Script
+          id="adsense-script"
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169195841154004"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`${inter.className} ${inter.variable} antialiased`}>
         {/* Google Analytics */}
