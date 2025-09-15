@@ -20,6 +20,7 @@ export type IProduct = {
   image_5: string,
   key_features: string,
   description: string,
+  video_link?: string,
   created_at: string,
 }
 export type IProductsResponse = {

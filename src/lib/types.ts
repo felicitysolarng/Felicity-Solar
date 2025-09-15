@@ -44,6 +44,7 @@ export type ICreateProduct = {
     image_2: string;
     image_3: string;
     image_4?: string | null;
+    video_link?: string | null;
     id?: string
 }
 export type ICreateArticle = {

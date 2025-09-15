@@ -2,6 +2,7 @@
 import Navbar from '@/components/layouts/navbar/Navbar'
 import ProductImageGallery from '@/components/layouts/product_image_gallery'
 import RatingStar from '@/components/layouts/rating-star'
+import VideoWidget from '@/components/ui/VideoWidget'
 import { ChevronLeft, ChevronRight, DownloadCloudIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -184,6 +185,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
                             <div className='flex flex-col gap-y-4' dangerouslySetInnerHTML={{ __html: product?.description }} />
                         </div>
+
+                        {/* Product Video Section */}
+                        {product?.video_link && (
+                            <div className="mt-10">
+                                <VideoWidget 
+                                    videoUrl={product.video_link}
+                                    title={`${product.product_name} - Product Demo`}
+                                    className="max-w-4xl"
+                                />
+                            </div>
+                        )}
 
                     </div>
                 </div>

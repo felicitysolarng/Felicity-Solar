@@ -88,6 +88,7 @@ function AddProduct() {
             thumbnail2: '',
             thumbnail3: '',
             thumbnail4: null,
+            videoLink: '',
         }
     });
     const handleKeyFeatures = (content: string) => {
@@ -148,7 +149,7 @@ function AddProduct() {
             image_2: data.thumbnail2,
             image_3: data.thumbnail3,
             image_4: data.thumbnail4 || null, // Allowing thumbnail4 to be optional
-
+            video_link: data.videoLink || undefined,
         }
         mutation.mutate(payload, {
             onSuccess(data) {
@@ -411,6 +412,18 @@ function AddProduct() {
                             className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring focus:border-none focus:ring-primary resize-none"
                             {...register('keyFeatures')}
                         /> */}
+                        </div>
+                        
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-900">Product Video (YouTube Link)</label>
+                            <input
+                                type="url"
+                                placeholder="https://www.youtube.com/watch?v=..."
+                                className="w-full border rounded-md h-11 dark:text-grey-900 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                {...register('videoLink')}
+                            />
+                            <p className="text-xs text-gray-500 mt-1">Optional: Add a YouTube video link to showcase this product</p>
+                            {errors.videoLink && <p className="text-red-500 text-sm">{errors.videoLink.message}</p>}
                         </div>
                         <div className="flex justify-start gap-4">
                             <button

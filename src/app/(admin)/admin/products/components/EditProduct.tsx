@@ -4,7 +4,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { AddProductSchema } from '@/lib/schema';
+import { EditProductSchema } from '@/lib/schema';
 import { ChevronLeft, CloudUpload } from 'lucide-react';
 import axios from 'axios';
 import { ICreateProduct } from '@/lib/types';
@@ -66,7 +66,7 @@ const editProduct = async (variables: ICreateProduct) => {
 };
 
 
-type FormSchema = z.infer<typeof AddProductSchema>;
+type FormSchema = z.infer<typeof EditProductSchema>;
 
 const formatPrice = (amount: number) => {
     if (!amount) return;
@@ -90,6 +90,8 @@ function EditProduct({ id }: IProps) {
         queryFn: () => fetchProduct(id)
     })
 
+    console.log(data);
+
     const router = useRouter();
     const {
         register,
@@ -99,7 +101,7 @@ function EditProduct({ id }: IProps) {
         reset,
         setValue,
     } = useForm<FormSchema>({
-        resolver: zodResolver(AddProductSchema),
+        resolver: zodResolver(EditProductSchema),
         defaultValues: {
             name: '',
             category: '',
@@ -109,6 +111,7 @@ function EditProduct({ id }: IProps) {
             thumbnail2: '',
             thumbnail3: '',
             thumbnail4: null,
+            videoLink: '',
         }
     });
 
@@ -158,6 +161,8 @@ function EditProduct({ id }: IProps) {
         mutationFn: (variables: ICreateProduct) => editProduct(variables)
     })
     const onSubmit: SubmitHandler<FormSchema> = (data) => {
+
+
         const payload: ICreateProduct = {
             product_name: data.name,
             category_id: String(data.category),
@@ -171,11 +176,16 @@ function EditProduct({ id }: IProps) {
             image_3: data.thumbnail3,
             id,
             image_4: data.thumbnail4 || null, // Allowing thumbnail4 to be optional
-
+            video_link: data.videoLink && data.videoLink.trim() !== '' ? data.videoLink : null, // Convert empty/whitespace strings to null
         }
+
+        console.log('Payload:', payload);
+        console.log('VideoLink raw value:', data.videoLink);
+        console.log('VideoLink processed value:', payload.video_link);
+
         mutation.mutate(payload, {
             onSuccess(data) {
-
+                console.log('Success:', data);
                 toast.success(data.message);
                 reset();
                 router.back();
@@ -183,9 +193,12 @@ function EditProduct({ id }: IProps) {
 
             },
             onError(error: any) {
+                console.error('Error:', error);
                 if (error.status === 403) {
                     toast.error("Unauthorized Access, Kindly Login");
                     router.push("/auth/login")
+                } else {
+                    toast.error(error.message || "An error occurred while updating the product");
                 }
             },
         });
@@ -200,7 +213,6 @@ function EditProduct({ id }: IProps) {
         if (data?.status == 200) {
             setValue("category", String(data?.data.category_id));
             setValue("name", data?.data.product_name);
-
             setValue("price", data?.data.price ?? "");
             setValue("discount", data?.data.discount_rate);
             setDescription(data?.data.description);
@@ -209,7 +221,7 @@ function EditProduct({ id }: IProps) {
             setValue("thumbnail2", data?.data.image_2);
             setValue("thumbnail3", data?.data.image_3);
             setValue("thumbnail4", data?.data.image_4);
-
+            setValue("videoLink", data?.data.video_link || "");
         }
     }, [data, setValue])
 
@@ -240,6 +252,7 @@ function EditProduct({ id }: IProps) {
         </div>
     }
     const categories = categoriesResponse?.data?.data;
+
     return (
         <div className="flex flex-col h-[91vh] overflow-y-scroll">
 
@@ -450,8 +463,25 @@ function EditProduct({ id }: IProps) {
                             <label className="block text-sm font-medium mb-1 dark:text-grey-800">Key Features</label>
                             <SimpleEditor styles='min-h-[250px] dark:text-grey-800' content={keyFeatures} handleChange={handleKeyFeatures} />
                         </div>
+
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-1 dark:text-grey-800">Product Video (YouTube Link)</label>
+                            <input
+                                type="url"
+                                placeholder="https://www.youtube.com/watch?v=..."
+                                className="w-full border rounded-md h-11 dark:text-grey-800 px-3 py-2 text-sm focus:outline-none focus:border-none focus:ring focus:ring-primary"
+                                {...register('videoLink')}
+                            />
+                            <p className="text-xs text-gray-500 mt-1">Optional: Add a YouTube video link to showcase this product</p>
+                            {errors.videoLink && <p className="text-red-500 text-sm">{errors.videoLink.message}</p>}
+                        </div>
                         <div className="flex justify-start gap-4">
-                            <button type="submit" className="bg-orange-600 dark:text-white hover:bg-orange-700 text-white text-sm px-6 py-2 rounded-md">
+                            <button
+                                type="submit"
+                                onClick={() => console.log('Button clicked, form errors:', errors)}
+                                disabled={mutation.isPending}
+                                className="bg-orange-600 dark:text-white hover:bg-orange-700 text-white text-sm px-6 py-2 rounded-md disabled:opacity-50"
+                            >
                                 {mutation.isPending ? "submiting" : "Done"}
                             </button>
                         </div>
