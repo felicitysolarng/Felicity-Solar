@@ -29,20 +29,40 @@ export default function Home() {
 
       <main>
         <section className="slideshow relative flex flex-col h-screen md:h-[70vh] xl:h-[95vh] justify-center overflow-x-hidden">
-          {/* Background Video */}
+          {/* Background Video - Cloudinary Optimized */}
           <video
             className="absolute inset-0 w-full h-full object-cover z-[-1]"
             autoPlay
             muted
             loop
             playsInline
-            preload="none" // Do not load until needed
-            poster="/assets/images/landing_page_hero1.png" // Preview image
+            preload="metadata" // Load metadata for better UX
+            poster="https://res.cloudinary.com/dqkc8vle0/image/upload/f_auto,q_auto:good,w_1920,h_1080,c_fill/v1757957869/felicity_bg-video_dacbci.jpg" // Optimized poster
             id="hero-video"
           >
-              <source src="https://vimeo.com/1114402830" type="video/mp4" /> 
-            {/* <source src="https://res.cloudinary.com/dqkc8vle0/video/upload/v1753180012/bg_video_lvytnb.mp4" type="video/mp4" />*/}
-            <source src="#" type="video/mp4" />
+            {/* Mobile optimized version - smaller dimensions and lower quality */}
+            <source 
+              src="https://res.cloudinary.com/dqkc8vle0/video/upload/f_auto,q_auto:low,w_750,h_422,c_fill,br_500k/v1757957869/felicity_bg-video_dacbci.mp4" 
+              type="video/mp4" 
+              media="(max-width: 768px)" 
+            />
+            {/* Tablet optimized version */}
+            <source 
+              src="https://res.cloudinary.com/dqkc8vle0/video/upload/f_auto,q_auto:good,w_1280,h_720,c_fill,br_1500k/v1757957869/felicity_bg-video_dacbci.mp4" 
+              type="video/mp4" 
+              media="(max-width: 1024px)" 
+            />
+            {/* Desktop optimized version */}
+            <source 
+              src="https://res.cloudinary.com/dqkc8vle0/video/upload/f_auto,q_auto:good,w_1920,h_1080,c_fill,br_3000k/v1757957869/felicity_bg-video_dacbci.mp4" 
+              type="video/mp4" 
+              media="(min-width: 1025px)" 
+            />
+            {/* Fallback for older browsers */}
+            <source 
+              src="https://res.cloudinary.com/dqkc8vle0/video/upload/f_mp4,q_auto:good,w_1920,h_1080,c_fill/v1757957869/felicity_bg-video_dacbci.mp4" 
+              type="video/mp4" 
+            />
             Your browser does not support the video tag.
           </video>
 
