@@ -17,9 +17,9 @@ const VideoWidget: React.FC<VideoWidgetProps> = ({ videoUrl, title, className = 
   };
 
   // Function to get YouTube thumbnail
-  const getYouTubeThumbnail = (videoId: string): string => {
+ /*  const getYouTubeThumbnail = (videoId: string): string => {
     return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-  };
+  }; */
 
   // Extract video ID from the URL
   const videoId = getYouTubeVideoId(videoUrl);
@@ -33,7 +33,7 @@ const VideoWidget: React.FC<VideoWidgetProps> = ({ videoUrl, title, className = 
   }
 
   const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-  const thumbnailUrl = getYouTubeThumbnail(videoId);
+  //const thumbnailUrl = getYouTubeThumbnail(videoId);
 
   return (
     <div className={`video-widget ${className}`}>
