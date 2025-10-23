@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import ReactQueryProvider from "./provider";
 import { ToastContainer } from 'react-toastify';
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next"
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,6 +56,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </ReactQueryProvider>
         <ToastContainer />
+        <Analytics />
       </body>
     </html>
   );
