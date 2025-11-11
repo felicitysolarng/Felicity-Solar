@@ -49,8 +49,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'felicitysolarcompany.com.ng',
       }
-    ],
-    unoptimized: true,
+    ]
   },
 };
 
