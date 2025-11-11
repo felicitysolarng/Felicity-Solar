@@ -50,6 +50,7 @@ const nextConfig: NextConfig = {
         hostname: 'felicitysolarcompany.com.ng',
       }
     ],
+    unoptimized: true,
   },
 };
 
