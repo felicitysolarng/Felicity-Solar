@@ -49,7 +49,9 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'felicitysolarcompany.com.ng',
       }
-    ]
+    ],
+    minimumCacheTTL: 2678400, // 31 days
+    qualities: [25, 50, 75, 100],
   },
 };
 
