@@ -208,6 +208,7 @@ export default function Home() {
                   height={370}
                   alt="location pin point where felicity solar limited have their offices"
                 />
+                
               </div>
             </div>
           </div>
